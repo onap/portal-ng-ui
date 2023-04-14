@@ -1,0 +1,630 @@
+/*
+ * Copyright (c) 2022. Deutsche Telekom AG
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+
+/* https://www.w3schools.com/css/css3_variables.asp */
+:root {
+  --alert-transparency: 0.9;
+  --light-gray: #f5f5f5;
+  --dark-gray: #5a5858;
+  --active-gray: #d9d9d9;
+  --black: #000;
+  --white: #fff;
+  --danger: #d90000;
+  --secondary: #ededed;
+  --major: #fad4b8;
+  --minor: #fecb00;
+  --intense-blue: #00a0de;
+
+}
+
+/* ########################################
+ *           Colors
+ * ########################################
+ */
+
+
+.blue {
+  color: var(--blue);
+}
+
+.orange {
+  color: #ffa500;
+}
+
+.red {
+  color: #ff0000;
+}
+
+.green {
+  color: #008000;
+}
+
+.dark-gray {
+  color: var(--dark-gray);
+}
+.black {
+  color: var(--black);
+}
+
+.max-w-100px {
+  max-width: 100px;
+}
+.max-w-120px {
+  max-width: 120px;
+}
+
+.right-10 {
+  right: 10px;
+}
+.opacity-1 {
+  opacity: 1 !important;
+}
+
+.alert {
+  z-index: 1;
+}
+
+.alert-primary {
+  background-color: #cce5ff !important;
+}
+.alert-secondary {
+  background-color: #e2e3e5 !important;
+}
+.alert-success {
+  background-color: #d4edda !important;
+}
+.alert-info {
+  background-color: #d1ecf1 !important;
+}
+.alert-warning {
+  background-color: #fff3cd !important;
+}
+.alert-danger {
+  color: var(--red) !important;
+  background-color: #f8d7da !important;
+}
+.alert-light {
+  background-color: #fefefe !important;
+}
+.alert-dark {
+  background-color: #d6d8d9 !important;
+}
+
+.navbar-collapse.in {
+  display: block !important;
+}
+
+.btn {
+  max-height: 40px;
+}
+.max-w-fit-content {
+  max-width: fit-content;
+}
+.btn-delete-bg {
+  background-position: center;
+  background-image: url('assets/images/icons/delete-icon.svg');
+}
+
+.opacity-1 {
+  opacity: 1 !important;
+}
+
+button[aria-label='Close']:focus {
+  outline: none;
+}
+
+.breadcrumb-item a {
+  color: var(--blue) !important;
+}
+.bg-lightGray {
+  background-color: var(--light-gray);
+}
+/* Make pagination responsive: https://github.com/twbs/bootstrap/issues/23504#issuecomment-592757850 */
+ul.pagination {
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
+/* Allow other elements to be in line with the pagination */
+ngb-pagination {
+  display: inline-block;
+}
+
+.form-control:disabled,
+.form-control[readonly],
+option:disabled {
+  background-color: #e9ecef !important;
+  opacity: 1 !important;
+}
+
+/*
+  Red asterisk that is not visible to screen readers
+  https://stackoverflow.com/questions/26634156/can-i-prevent-after-pseudo-element-from-being-read-by-screen-readers#26634352
+*/
+.required:after {
+  content: '';
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  background-image: url(src/assets/images/icons/Asterisk.svg);
+  background-size: 0.5em 0.5em;
+  vertical-align: top;
+  margin-left: 0.15em;
+  margin-top: 0.1em;
+}
+
+.breadcrumb-item::before {
+  margin-top: 4px;
+}
+.uuid-cell {
+  width: 350px;
+  min-width: 350px;
+  max-width: 350px;
+}
+.btn-invisible {
+  background-color: initial;
+  border: none;
+}
+.dropdown-toggle::after {
+  height: 6px !important;
+}
+
+#deployment-summary-accordion > .card {
+  border-radius: 0.25rem;
+}
+
+/* Override the (overly large) padding of the accordion header element */
+#deployment-summary-accordion > .card > .card-header {
+  padding-left: 17px;
+  padding-right: 17px;
+}
+
+/* add a scrollbar to the content area of the accordion */
+#deployment-summary-accordion > .card > div[id^='panel-'] {
+  max-height: 50vh;
+  overflow: auto;
+}
+
+/* telekom-styles is removing the bottom border on this element otherwise*/
+.accordion .card:first-of-type {
+  border: 1px solid #b2b2b2 !important;
+}
+.w-20px {
+  width: 20px !important;
+}
+
+/* override the telekom-styles behaviour: Pagination is too small */
+.pagination-sm .page-link {
+  line-height: 1.8 !important;
+}
+
+/* adding focus to buttons with class btn-default */
+.btn-default:focus {
+  outline: 5px auto var(--cyan) !important;
+  outline-offset: -2px !important;
+}
+
+.border-blue {
+  border-color: var(--light-blue) !important;
+}
+.ngx-charts-outer {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.outline-blue {
+  border: 1px solid var(--light-blue) !important;
+  border-radius: 0.25rem;
+}
+.outline-grey {
+  border-color: 1px solid var(--secondary);
+  border-radius: 0.25rem;
+}
+
+.border-radius-top-none {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.accordion .card:last-of-type {
+  border-top-left-radius: 0.25rem !important;
+  border-top-right-radius: 0.25rem !important;
+}
+
+.text-align-start {
+  text-align: start;
+}
+
+.row-active {
+  background-color: var(--active-gray) !important;
+  border: 1px solid var(--light-blue) !important;
+  border-radius: 0.25rem;
+}
+
+.accordion > .card > .card-header {
+  padding-left: 0 !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.draggable {
+  cursor: grab;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+/* used for perceivedSeverity: major in the alarm list */
+.table-major {
+  background-color: var(--major) !important;
+}
+
+/* for ng-bootstraps nav tabs in the alarm details. Hovering over elements looks weird otherwise */
+.no-border-hover:hover > a {
+  border-bottom: none !important;
+}
+
+/* Prevent [sort icons] from breaking into a new line in table headers */
+th {
+  white-space: nowrap;
+}
+
+/* Override calc() to achieve same height of inputs and buttons */
+.form-control {
+  height: auto !important;
+}
+.active-badge {
+  box-shadow: 0 0 2pt 2pt var(--light-blue);
+}
+
+.badge {
+  font-size: 100% !important;
+}
+
+.badge-major {
+  color: var(--dark);
+  background-color: var(--major);
+}
+
+/* Context menu overrides */
+.ngx-contextmenu {
+  box-shadow: 0 0 17px 0 rgba(0, 0, 0, 0.59);
+}
+.ngx-contextmenu > .dropdown-menu > li > a:hover {
+  text-decoration: none !important;
+}
+
+.border-radius {
+  border-radius: 0.25rem !important;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:valid {
+  background-image: url('assets/images/icons/triangular-warning-sign.svg') !important;
+  background-position: right calc(0.75em + 0.1875rem) center !important;
+}
+
+.no-border {
+  border: none !important;
+}
+.border-gray {
+  border: 1px solid var(--gray);
+}
+
+.btn-outline-secondary {
+  color: var(--dark-gray) !important;
+  border-color: var(--dark-gray) !important;
+}
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus,
+.btn-outline-secondary:not(:focus),
+.btn-outline-secondary:active {
+  color: var(--gray-dark) !important;
+  background-color: var(--light-gray) !important;
+  border-color: var(--light-gray) !important;
+}
+
+.node-content-wrapper,
+.tree-children {
+  position: relative;
+}
+
+.node-content-wrapper::before,
+.tree-children::after {
+  content: '';
+  position: absolute;
+}
+
+.node-content-wrapper::before {
+  height: 28px;
+  top: -13px;
+  width: 20px;
+  left: -26px;
+}
+
+.tree-node-level-1 > tree-node-wrapper > .node-wrapper > .node-content-wrapper::before {
+  display: none;
+}
+
+.tree-node-leaf > .node-wrapper > .node-content-wrapper::before {
+  width: 25px;
+}
+
+.tree-children::after {
+  height: 100%;
+  top: -15px;
+  left: 6px;
+}
+
+.toggle-children-placeholder {
+  width: 13px !important;
+}
+
+tree-node:last-child > .tree-node > .tree-children::after {
+  border-left: none;
+}
+
+.toggle-children-wrapper {
+  padding: 2px 3px 5px 0;
+}
+
+.toggle-children {
+  z-index: 1;
+  width: 11px !important;
+  height: 11px !important;
+}
+
+.toggle-children-wrapper-expanded .toggle-children {
+  top: 1px;
+  left: 1px;
+}
+
+.attribute-pane-title {
+  color: var(--primary);
+  max-width: 60%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap !important;
+  display: inline-block;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.mr-15-px {
+  margin-right: 15px;
+}
+
+.bg-color-blue {
+  background-color: var(--light-blue);
+}
+
+/* styling for switch that we are using in attribute pane for showing and hiding the attributes */
+/* ------------------------------------------------------------------------------------- */
+.attribute-pane-switch {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.label-for-switch {
+  cursor: pointer;
+  text-align: -9999px;
+  width: 40px;
+  height: 20px;
+  background: var(--active-gray);
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  border: 1px solid var(--primary);
+}
+
+.label-for-switch::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1px;
+  width: 18px;
+  height: 18px;
+  background: var(--primary);
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+#switch:checked + .label-for-switch {
+  background: var(--primary);
+}
+
+#switch:checked + .label-for-switch:after {
+  right: calc(18px - 1px);
+  transform: translateX(100%);
+  background: var(--active-gray);
+}
+
+.label-for-switch:active:after {
+  width: 18px;
+}
+
+.text-for-switch {
+  font-size: 11px;
+}
+/* ------------------------------------------------------------------------------------- */
+
+.toggle-children-wrapper-collapsed .toggle-children,
+.toggle-children-wrapper-expanded .toggle-children {
+  top: 2.4px;
+}
+.node-custom-content-wrapper {
+  padding: 2px 5px !important;
+}
+.node-content-wrapper{
+  padding: 0 !important;
+}
+
+/* Display definition lists in a tabular style */
+/* https://stackoverflow.com/questions/1687733/what-html-markups-to-use-for-displaying-label-value-data#1687759 */
+dt { float: left; clear: left; width: 6em; font-weight: bold; }
+.ml-2px{
+  margin-left: 2px;
+}
+.overflow-y-scroll{
+  overflow-y: scroll;
+}
+
+.alarm-color-critical-outline {
+  color: var(--white);
+  background-color: var(--danger) !important;
+}
+.alarm-color-cleared-outline {
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+
+.alarm-color-major-outline {
+  border: 1px solid var(--major);
+  color: var(--major);
+}
+
+.alarm-color-minor-outline {
+  border: 1px solid var(--minor);
+  color: var(--minor);
+}
+
+.alarm-color-warning-outline {
+  color: var(--intense-blue);
+  border: 1px solid var(--intense-blue);
+}
+
+.alarm-color-indeterminate-outline {
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
+}
+
+.leaflet-div-icon-hide {
+  background: none;
+  border: none;
+}
+
+.alarm-severity-counter {
+  background-color: white;
+  border-radius: 4px;
+  margin: 0 2px;
+  padding: 0 0.25rem !important;
+}
+
+.bc-icon {
+  color: var(--primary);
+}
+
+.hover-bg-gray:hover {
+  background-color: rgb(237, 237, 237);
+  width: 100% !important;
+}
+
+.pulse{
+  z-index: 10!important;
+  height: 180px;
+  width: 180px;
+  background: linear-gradient(
+  var(--danger),
+  #d97e87
+  );
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 50px;
+  color: #ffffff;
+}
+.pulse:before,
+.pulse:after{
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: var(--danger);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.7;
+}
+.pulse:before{
+  animation: pulse 2s ease-out infinite;
+}
+.pulse:after{
+  animation: pulse 2s 1s ease-out infinite;
+}
+@keyframes pulse{
+  100%{
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+tree-viewport{
+  overflow-x: auto !important;
+  display: flex !important;
+}
+.node-content-wrapper{
+  border: 1px solid rgba(0,0,0,0);
+}
+.node-content-wrapper-focused, .node-content-wrapper-focused:hover{
+  border: 1px solid var(--primary);
+}
+
+.backdropClass{
+  z-index: 1050 !important;
+}
+
+.table > :not(:first-child) {
+  border-top: none !important;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+    z-index: 998 !important;
+  }
+
+.btn-invisible:focus {
+  border: 2px solid black;
+  border-radius: 4px;
+  outline: 0;
+}
+
+/*override onap styles*/
+.btn-secondary:focus {
+  background-color: #5c636a !important;
+  border-color: #565e64 !important;
+}
+
+.close:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.close::before {
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: " ";
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M15.81,14.99l-6.99-7l6.99-7c0.24-0.24,0.2-0.63-0.04-0.83c-0.24-0.2-0.59-0.2-0.79,0l-6.99,7l-6.99-7 C0.75-0.08,0.36-0.04,0.16,0.2c-0.2,0.24-0.2,0.59,0,0.79l6.99,7l-6.99,7c-0.24,0.24-0.2,0.63,0.04,0.83c0.24,0.2,0.59,0.2,0.79,0 l6.99-7l6.99,7c0.24,0.24,0.59,0.24,0.83,0.04C16.04,15.66,16.08,15.26,15.81,14.99C15.85,15.03,15.81,15.03,15.81,14.99z' fill='%23262626'/%3E%3C/svg%3E");
+}

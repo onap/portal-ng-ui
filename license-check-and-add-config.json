@@ -1,0 +1,22 @@
+{
+    "ignore":["openapi","src/assets","server","Dockerfile","*.yml","*.json","*.md","**/*.conf.js",".*","*.sh","*.properties","version","development","*.json.template",".npm"],
+    "license": "LICENSE_HEADER",
+    "licenseFormats": {
+        "js|ts|css": {
+            "prepend": "/*",
+            "append": " */",
+            "eachLine": {
+                "prepend": " * "
+            }
+        },
+        "html": {
+            "prepend": "<!--",
+            "append": "  -->",
+            "eachLine": {
+                "prepend": "  ~ "
+            }
+        }
+    },
+    "trailingWhitespace": "TRIM",
+    "regexIdentifier": "##"
+}

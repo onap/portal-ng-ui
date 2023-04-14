@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+  xmlns:dc='http://purl.org/dc/elements/1.1/'
+  xmlns:cc='http://creativecommons.org/ns#'
+  xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+  xmlns='http://www.w3.org/2000/svg'
+  xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd'
+  xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'
+  width='512'
+  height='512'
+  viewBox='0 0 512 512'
+  version='1.1'
+  id='svg12'
+  sodipodi:docname='kibana.svg'
+  inkscape:version='1.0.1 (3bc2e813f5, 2020-09-07)'>
+  <metadata
+     id="metadata18">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs16" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2400"
+     inkscape:window-height="1271"
+     id="namedview14"
+     showgrid="false"
+     inkscape:zoom="0.50754247"
+     inkscape:cx="-761.90676"
+     inkscape:cy="175.8502"
+     inkscape:window-x="2391"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg12" />
+  <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+  <title
+     id="title2">kibana-logo-color-64px</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <g
+     id="kibana-logo-color-64px"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     transform="scale(8)">
+    <rect
+       id="bounding-box"
+       x="0"
+       y="0"
+       width="64"
+       height="64" />
+    <g
+       id="group"
+       transform="translate(11,4.9999)">
+      <path
+         d="M 0,20.25 V 48.581 L 20.137,25.392 C 14.149,22.13 7.299,20.25 0,20.25"
+         id="Fill-1"
+         fill="#343741" />
+      <path
+         d="m 0,0 v 20.25 c 7.299,0 14.149,1.88 20.137,5.142 L 42.188,0 Z"
+         id="Fill-3"
+         fill="#f04e98" />
+      <path
+         d="m 24.4434,28.0591 -20.668,23.801 -1.859,2.14 h 39.425 c -2.163,-10.658 -8.349,-19.851 -16.898,-25.941"
+         id="Fill-6"
+         fill="#00bfb3" />
+    </g>
+  </g>
+</svg>

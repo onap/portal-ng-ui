@@ -1,0 +1,351 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "required": "Required",
+    "buttons": {
+      "cancel": "Cancel",
+      "clear": "Clear",
+      "close": "Close",
+      "collapse": "Collapse",
+      "delete": "Delete",
+      "notPossibleDelete": "It is not possible to delete your own account.",
+      "edit": "Edit",
+      "expand": "Expand",
+      "filter": "Filter",
+      "info": "Info",
+      "next": "Next",
+      "previous": "Previous",
+      "refresh": "Refresh",
+      "rightClick": "Open the right-click context menu",
+      "save": "Save",
+      "search": "Search",
+      "set": "Set",
+      "reset": "Reset",
+      "submit": "Submit",
+      "openSupportLink": "Expand support link",
+      "closeSupportLink": "Collapse support link"
+    },
+    "dateFilter": {
+      "startDate": "Select start date",
+      "endDate": "Select end date"
+    },
+    "filters": {
+      "filterBy": "Filter by {{value}}",
+      "noResults": "No data available.",
+      "noResultsForCustomer": "No data available for customer: {{customerId}}",
+      "noOptions": "No action possible.",
+      "searchHint": "Enter Search Terms",
+      "showCategories": "Show menu to filter by categories",
+      "noFilterResults": "No match to the given filter criteria."
+    },
+    "no": "No",
+    "pagination": {
+      "itemsPerPage": "{{value}} items per page",
+      "totalCount": "Total Count: {{value}}",
+      "selectItemsPerPage": "Select items per page"
+    },
+    "yes": "Yes",
+    "sorting": {
+      "ascending": "Sorted Ascending",
+      "descending": "Sorted Descending",
+      "none": "No Sorting"
+    },
+    "select": {
+      "description": "Select number of items per page",
+      "itemsPerPage": "{{value}} items per page",
+      "openOptions": "Open Options",
+      "closeOptions": "Close Options",
+      "selectOption": "Select Option"
+    },
+    "hint": "Hint",
+    "warning": "Warning",
+    "messages": {
+      "badRequest": "Bad request: The server cannot process your request.",
+      "unauthorized": "You are not authorized. Please log in first.",
+      "forbidden": "You have no or limited permissions.",
+      "notFound": "Requested information not found.",
+      "conflict": "Your request has a conflict with resource.",
+      "internalServerError": "Internal Server Error: Please contact the support team.",
+      "badGateway": "Check your proxy settings.",
+      "serviceUnavailable": "Please, contact server administrators team.",
+      "checkRequest": "Check your requests.",
+      "actionUnsuccessful": "Action unsuccessful, try again later.",
+      "contactSupport": "Please, contact our support team.",
+      "timeout": "Resource is not reachable.",
+      "keycloakAccessTokenNotValid": "Your access token validity expired due to connection issues. Please try to reload a page and in case issue persists, contact support"
+    },
+    "systems": {
+      "AAI": "AAI",
+      "CDS": "CDS",
+      "KUBERNETES": "Kubernetes",
+      "KEYCLOAK": "Keycloak",
+      "PORTAL_SERVICE": "Portal Service",
+      "SDC": "SDC",
+      "SO": "SO",
+      "SO_CATALOG": "SO Catalog",
+      "PORTAL_HISTORY": "Portal History",
+      "PORTAL_PREFS": "Portal Preferences"
+    },
+    "block": {
+      "userAdministration": {
+        "create": "Error while creating user account!",
+        "edit": "Error, changing user account failed!",
+        "list": "System error, not able to display user accounts!",
+        "delete": "Error while trying to delete user account!",
+        "helpUserNameExists": "Please, try to create user with different username.",
+        "helpUserEmailExists": "Please, try to create user with different email address."
+      },
+      "defaultMessage": "A System error occurred!",
+      "logging": "Warning, internal logging failed! No further action required! ",
+      "dashboard": "System error while trying to load data for displaying tiles on the dashboard!",
+      "appStarter": "System error while trying to display app starter!",
+      "authorization": "Error during authorization!",
+      "loadPreferences": "System error while trying to load user preferences!",
+      "savePreferences": "System error while trying to save user preferences!",
+      "saveAction": "System error while trying to save user action!",
+      "loadAction": "System error while trying to load user actions!",
+      "timeout": "Timeout has occurred after {{value}} seconds!"
+    },
+    "alert": {
+      "contactSupport": {
+        "part1": "For help please contact our ",
+        "part2": " and provide all information including this ID:"
+      },
+      "errorReporter": "Error reported by \"{{system}}\" system:",
+      "support": "Support"
+    },
+    "noPermissions": {
+      "noPermissions": "You don't have enough permissions for viewing this page!",
+      "support": "If you think this is an error, please contact the support."
+    },
+    "form": {
+      "feedback": {
+        "emailWrongFormat": "Wrong email format",
+        "invalidCharacters": "Invalid character",
+        "invalidConfirmationPassword": "Password and Confirm Password are not matching",
+        "required": "Cannot be empty",
+        "whiteSpaceNotAllowed": "White and empty spaces are not allowed",
+        "specialCharactersNotAllowed": "Special characters are not allowed."
+      }
+    }
+  },
+  "appStarter": {
+    "groups": {
+      "admin": "Admin",
+      "developer": "Developer",
+      "operator": "Operator"
+    },
+    "title": "App Starter",
+    "tiles": {
+      "tooltips": {
+        "enum": {
+          "1": "SDC is the ONAP visual modeling and design tool. It creates internal metadata that describes assets used by all ONAP components, both at design time and run time.",
+          "2": "VID provides a well-structured organization of infrastructure deployment, instantiation and change-management operations used by Operations to derive orchestrations and change-management.",
+          "3": "ONAP Policy Framework lays out the architecture of the framework and shows the APIs provided to other components that interwork with the framework.",
+          "4": "The ONAP Service Orchestrator provides the highest level of service orchestration in the ONAP architecture.",
+          "5": "CLAMP is a platform for designing and managing control loops. It is used to design a closed loop, configure it with specific parameters for a particular network service, then deploying and undeploying it.",
+          "6": "Kibana Dashboard to visualize the events, triggered by control loops (used also in ONAP for Alarm Visualization).",
+          "7": "CDS Designer UI is a framework to automate the resolution of resources for instantiation and any config provisioning operation, such as day0, day1, or day2 configuration.",
+          "8": "CDT enables self-service onboarding of VNF's by creating templates and other artifacts. This may for instance be used in APPC's Configure command for applying a post-instantiation configuration.",
+          "9": "Holmes project provides alarm correlation and analysis for Telecom cloud infrastructure and services, including hosts, vims, VNFs and NSs.",
+          "10": "AAI is a component of ONAP runtime (Real-time views of Resources, Services, Products, Customer Subscriptions and their relationships).",
+          "11": "DCAE is the umbrella name for a number of components collectively fulfilling the role of Data Collection, Analytics, and Events generation for ONAP.  The architecture of DCAE targets flexible, plug-able, micros-service oriented, model based component deployment and service composition.  DCAE also support multi-site collection and analytics operations which are essential for large ONAP deployments.",
+          "12": "SDNC DG is to provide an execution environment for quickly written and highly customized service flows.",
+          "13": "The OpenDaylight Project is a collaborative open-source project hosted by The Linux Foundation. The project serves as a platform for software-defined networking (SDN) for open, centralized, network device monitoring."
+        }
+      }
+    }
+  },
+  "dashboard": {
+    "apps": {
+      "userLastAction": {
+        "filter": {
+          "label": "Filter the last actions by: ",
+          "type": {
+            "ALL": "All my activities",
+            "SEARCH": "My searches",
+            "ACTION": "My activities"
+          },
+          "interval": {
+            "1H": "Last 1 hour",
+            "4H": "Last 4 hours",
+            "1D": "Last 1 day",
+            "ALL": "All"
+          }
+        },
+        "actionType": {
+          "SEARCH": "Search",
+          "VIEW": "View",
+          "EDIT": "Edit",
+          "DEPLOY": "Deploy",
+          "DELETE": "Delete",
+          "CREATE": "Create",
+          "CLEAR": "Clear",
+          "ACK": "Acknowledge",
+          "UNACK": "Unacknowledge"
+        },
+        "entityType": {
+          "ALARM": "alarm",
+          "USERADMINISTRATION": "user",
+          "SERVICEMODEL": "service model",
+          "SERVICEINSTANCE": "service instance",
+          "TOPOLOGY": "topology"
+        },
+        "tooltip": {
+          "again": "again",
+          "statusOf": "status of",
+          "noAction": "No action for now.",
+          "repeatAction": "Repeat last action",
+          "viewAction": "View last action",
+          "deployment": "deployment"
+        },
+        "modal": {
+          "deploymentStatus": "Deployment Status",
+          "state": "State",
+          "progress": "Progress",
+          "flowStatus": "Flow Status",
+          "rollbackStatus": "Rollback Status",
+          "retryStatus": "Retry Status",
+          "taskInformation": "Task Information"
+        }
+      },
+      "USER_LAST_ACTION_TILE": "Last user actions"
+    },
+    "showSettings": "Configure which applications should be visible on dashboard",
+    "selectApplications": "Please select applications, that you would like to see in dashboard",
+    "tooltips": {
+      "settings": "Show dashboard settings"
+    }
+  },
+  "layout": {
+    "header": {
+      "header": "Header",
+      "skipToMainContentLink": "Skip to Main Content",
+      "button": {
+        "account": "Account settings",
+        "closeFullscreen": "Close Fullscreen",
+        "logout": "Logout",
+        "openFullscreen": "Open Fullscreen",
+        "useraccount": "My Account"
+      },
+      "info": {
+        "mail": "Email:",
+        "name": "Name:"
+      },
+      "logo": {
+        "onap": "ONAP Logo"
+      },
+      "sidebarToggler": "Toggle sidemenu",
+      "shortcuts": {
+        "details": "Details about keyboard shortcuts",
+        "home": "Home (top bar)",
+        "main": "Set focus to main content",
+        "search": "Set focus on search field if available on page",
+        "menu": "Set focus to main menu at the left",
+        "heading": "Keyboard Shortcuts",
+        "helpText": "Shortcut keys are supported by the portal, the mechanism differs across browsers:",
+        "helpBrowser1": "Hold down <b>ALT</b> and press key for <b>Google Chrome, Microsoft, Safari</b>",
+        "helpBrowser2": "Hold down <b>ALT + shift</b> and press the <b>key</b> for <b>Firefox</b>",
+        "helpBrowser3": "<b>MACINTOSH Safari:</b> hold down <b>CTRL</b> and press the <b>key</b>."
+      }
+    },
+    "main": {
+      "alerts": "Alerts",
+      "mainContent": "Main Content",
+      "breadcrumb": "Breadcrumb"
+    },
+    "sidebar": "Sidebar",
+    "menu": {
+      "mainMenu": "Main Menu",
+      "menuItems": "Menu Items",
+      "items": {
+        "home": "Home",
+        "appStarter": "App Starter",
+        "dashboard": "Dashboard",
+        "options": "Options",
+        "userAdministration": "User Administration",
+        "users": "Users",
+        "userSettings": "User Settings"
+      }
+    }
+  },
+  "modal": {
+    "error": {
+      "accessDenied": "Access denied!",
+      "details": "Details:"
+    }
+  },
+  "userAdministration": {
+    "buttons": {
+      "createUser": "Create User",
+      "editUser": "Edit User"
+    },
+    "fields": {
+      "access": "Access",
+      "actions": "Actions",
+      "assignedRoles": "Assigned Roles",
+      "attributes": "Attributes",
+      "confirmPassword": "Confirm Password",
+      "createdAt": "Created At",
+      "email": "Email",
+      "emailVerified": "Email Verified",
+      "enabled": "Enabled",
+      "firstName": "First Name",
+      "id": "ID",
+      "key": "Key",
+      "lastName": "Last Name",
+      "password": "Password",
+      "requiredActions": "Required Actions",
+      "temporaryPassword": "Temporary Password",
+      "userName": "Username",
+      "value": "Value"
+    },
+    "form": {
+      "headings": {
+        "setNewPassword": "Set New Password",
+        "setRoles": {
+          "assigned": "Assigned",
+          "available": "Available",
+          "title": "Set Roles"
+        },
+        "setUserData": "Set User Data"
+      },
+      "title": {
+        "changePassword": "Change Password",
+        "changePasswordTooltip": "To change your password, please log out and use the \"Forgot your password?\" link.",
+        "create": "Create User",
+        "edit": "Edit User",
+        "roles": "Roles"
+      }
+    },
+    "list": {
+      "modal": {
+        "delete": {
+          "title": "Delete User",
+          "text": "Are you sure, that you want to delete user: {{userName}} ?"
+        }
+      },
+      "tableCaption": "List of users",
+      "title": "User Administration"
+    },
+    "messages": {
+      "success": {
+        "created": "User successfully created.",
+        "deleted": "User successfully deleted.",
+        "setPassword": "Password was successfully changed.",
+        "updated": "User successfully updated."
+      },
+      "warnings": {
+        "userDeleted": {
+          "header": "User does not exist anymore",
+          "message": "Edit the user is not possible. User was already deleted."
+        }
+      }
+    }
+  },
+  "pageNotFound": {
+    "text": "The page that you are looking for could not be found.",
+    "button": "Back to Main page",
+    "imgAltText": "Image of wondering woman"
+  }
+}

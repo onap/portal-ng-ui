@@ -1,0 +1,106 @@
+<!--
+  ~ Copyright (c) 2022. Deutsche Telekom AG
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+
+<div class="d-flex justify-content-center">
+  <span>
+    <ngb-alert *ngFor="let alert of alerts" type="alert" class="{{ cssClass(alert) }}" [dismissible]="false">
+      <button
+        type="button"
+        class="close"
+        [attr.aria-label]="'common.buttons.close' | translate"
+        (click)="removeAlert(alert)"
+      ></button>
+      <div class="d-flex text-breaking">
+        <i
+          class="bi custom-margin"
+          [class.bi-info-circle-fill]="informativeAlerts.includes(alert.type)"
+          [class.bi-exclamation-triangle-fill]="!informativeAlerts.includes(alert.type)"
+          aria-hidden="true"
+        ></i>
+
+        <div *ngIf="alert.type === AlertType.Error">
+          <ng-container *ngIf="alert.id === 'keycloak'; else defaultErrorAlert">
+            <span>{{ alert.message }}</span>
+            <ng-container *ngTemplateOutlet="supportTpl"></ng-container>
+          </ng-container>
+        </div>
+
+        <div *ngIf="alert.type !== AlertType.Error">
+          <span class="text-justify">{{ alert.message }}</span>
+          <ng-container *ngIf="alert.id === 'onap_logging'">
+            <span>{{ 'common.alert.contactSupport.part1' | translate }}</span>
+            <a [href]="environment.supportUrlLink">{{ 'common.alert.support' | translate }}</a>
+          </ng-container>
+        </div>
+      </div>
+
+      <ng-template #defaultErrorAlert>
+        <span *ngIf="alert.urlTree">{{ alert.message }}</span>
+        <span *ngIf="!alert.errorDetail">{{ alert.message }}</span>
+        <div *ngIf="alert?.errorDetail?.downstreamSystem as downstreamSystem">
+          <span *ngIf="downstreamSystem">
+            {{ 'common.alert.errorReporter' | translate: { system: 'common.systems.' + downstreamSystem | translate } }}
+          </span>
+        </div>
+        <div *ngIf="alert.errorDetail?.detail as detail">
+          "{{ alert.errorDetail?.detail }}"
+          <div
+            *ngIf="
+              alert.errorDetail?.downstreamSystem === DownstreamSystem.KEYCLOAK &&
+              alert.errorDetail?.downstreamStatus === 409
+            "
+          >
+            <span *ngIf="detail.split(' ').pop() === 'username'">
+              {{ 'common.block.userAdministration.helpUserNameExists' | translate }}
+            </span>
+            <span *ngIf="detail.split(' ').pop() === 'email'">
+              {{ 'common.block.userAdministration.helpUserEmailExists' | translate }}
+            </span>
+          </div>
+        </div>
+        <ng-container *ngTemplateOutlet="supportTpl"></ng-container>
+      </ng-template>
+      <ng-template #supportTpl>
+        <div>
+          {{ 'common.alert.support' | translate }}
+          <button
+            class="btn btn-sm p-0"
+            (click)="collapse.toggle()"
+            [attr.aria-expanded]="!isCollapsed"
+            aria-controls="collapseSupportInfo"
+          >
+            <i *ngIf="isCollapsed" class="bi bi-chevron-right text-danger" style="font-size: 18px" aria-hidden="true" [attr.aria-label]="'common.buttons.openSupportLink' | translate"></i>
+            <i *ngIf="!isCollapsed" class="bi bi-chevron-down text-danger" style="font-size: 18px" aria-hidden="true" [attr.aria-label]="'common.buttons.closeSupportLink' | translate"></i>
+          </button>
+        </div>
+
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+          <span>{{ 'common.alert.contactSupport.part1' | translate }}</span
+          ><a [href]="environment.supportUrlLink" target="_blank">{{ 'common.alert.support' | translate }}</a>
+          <ng-container *ngIf="alert?.requestId">
+            <span>{{ 'common.alert.contactSupport.part2' | translate }}</span>
+            <div>
+              {{ alert?.requestId }}
+            </div>
+          </ng-container>
+        </div>
+      </ng-template>
+    </ngb-alert>
+  </span>
+</div>

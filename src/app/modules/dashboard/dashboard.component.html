@@ -1,0 +1,77 @@
+<!--
+  ~ Copyright (c) 2022. Deutsche Telekom AG
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+
+<app-breadcrumb>
+  <app-breadcrumb-item>
+    <span aria-current="page">{{ 'layout.menu.items.dashboard' | translate }}</span>
+  </app-breadcrumb-item>
+</app-breadcrumb>
+<ng-container *ngIf="tiles$ | async as apps">
+  <div class="w-100 d-flex justify-content-between">
+    <h2 class="qa_title">{{ 'layout.menu.items.dashboard' | translate }}</h2>
+    <ul>
+      <li
+        #settingsDrop="ngbDropdown"
+        [ngbTooltip]="'dashboard.tooltips.settings' | translate"
+        class="qa_alarm_auto_settings"
+        ngbDropdown
+      >
+        <button
+          [attr.aria-label]="'dashboard.showSettings' | translate"
+          class="btn btn-outline-secondary no-border qa_dashboard_show_and_hide_settings_btn"
+          id="dropdownColumnSettings"
+          ngbDropdownToggle
+        >
+          <i aria-hidden="true" class="bi bi-gear-fill text-muted"></i>
+        </button>
+        <div aria-labelledby="dropdownColumnSettings" ngbDropdownMenu style="min-width: 250px">
+          <p class="px-4 small text-muted mb-1">{{ 'dashboard.selectApplications' | translate }}</p>
+          <form class="px-4 py-3 d-flex flex-column align-items-start">
+            <div
+              [appHasPermissions]="'dashboard.tile.' + app.type"
+              *ngFor="let app of apps"
+              class="d-flex justify-content-center"
+            >
+              <ng-container *ngIf="'dashboard.tile.' + app.type | hasPermission | async">
+                <input
+                  type="checkbox"
+                  [(ngModel)]="app.displayed"
+                  (ngModelChange)="updateAction.next(app)"
+                  [ngModelOptions]="{ standalone: true }"
+                  [ngClass]="'qa_dashboard_show_app_' + app.type"
+                />
+                <p class="ml-2">{{ 'dashboard.apps.' + app.type | translate }}</p>
+              </ng-container>
+            </div>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <hr />
+  <div class="row" cdkDropList (cdkDropListDropped)="dropAction.next($event)">
+    <ng-container *ngFor="let app of apps | map: filterDisplayedTiles">
+      <ng-container *ngIf="'dashboard.tile.' + app.type | hasPermission | async">
+        <ng-container *ngIf="app.type === DashboardApplications.USER_LAST_ACTION_TILE">
+          <app-user-last-action-tile></app-user-last-action-tile>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-container>

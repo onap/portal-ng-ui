@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64.001" height="64">
+  <style>
+  </style>
+  <path fill="none" d="M0 0H64.001V64H0z" id="Asset"/>
+  <g id="Icons">
+    <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="32.0149" y1="37.2887" x2="32.0149" y2="62.0548">
+      <stop offset="0" stop-color="#ededed"/>
+      <stop offset="1" stop-color="#d0d0d0"/>
+    </linearGradient>
+    <path d="M58.015,44c0-1.1-0.9-2-2-2H8.015c-1.1,0-2,0.9-2,2v16.001c0,1.1,0.9,2,2,2h48.001c1.1,0,2-0.9,2-2V44z" fill="url(#SVGID_1_)"/>
+    <circle cx="49.002" cy="52.001" r="3" fill="#7ba84a"/>
+    <path d="M58.015,60.047c0,1.075-0.9,1.954-2,1.954H8.015c-1.1,0-2-0.88-2-1.955l0,0 C6.015,60.029,58.015,60.029,58.015,60.047L58.015,60.047z" opacity=".15"/>
+    <path d="M46.005,35h-10V6c0-2.209-1.791-4-4-4s-4,1.791-4,4v29h-10l14,14L46.005,35z" fill="#31c3f7"/>
+  </g>
+</svg>

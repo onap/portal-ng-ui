@@ -1,0 +1,113 @@
+/*
+ * Copyright (c) 2022. Deutsche Telekom AG
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+
+/* Sidebar container with nav menu */
+#sidebar-container {
+  margin-right: -1px;
+  flex: 0 0 230px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: #b2b2b2;
+}
+
+/* Menu item*/
+.nav a {
+  height: 50px;
+  color: black;
+}
+
+/* Li elements from sidemenu. Thanks to padding is :focus pseudo-class visible for keyboard users*/
+.nav li {
+  padding: 2px;
+}
+
+/* Separators */
+.sidebar-separator-title {
+  height: 2em;
+}
+
+/* Sidebar sizes when collapsed*/
+.sidebar-collapsed {
+  min-width: 60px !important;
+  max-width: 63px !important;
+  height: auto;
+}
+
+/* Sidebar sizes when expanded*/
+.sidebar-expanded {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100%;
+  display: block;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: #c5c5c5;
+}
+
+/* Hide list item and grouping item title if container sidebar is collapsed */
+.sidebar-collapsed a.nav-link span,
+.sidebar-collapsed li.sidebar-separator-title small {
+  display: none !important;
+}
+
+/* Hide grouping item icon if container sidebar is collapsed */
+.sidebar-expanded ul li.sidebar-separator-title i,
+.sidebar-expanded ul li.sidebar-separator-title img {
+  display: none !important;
+}
+
+/* Show grouping item icon if container sidebar is collapsed */
+.sidebar-collapsed ul li.sidebar-separator-title i,
+.sidebar-collapsed ul li.sidebar-separator-title img {
+  display: inline-block;
+}
+
+/* All list items */
+.nav-link {
+  border-style: none;
+  display: block !important;
+  padding: 0.75rem 1rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.active-menu-item {
+  background-color: var(--active-gray);
+  color: black;
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
+  border-left: 2px solid var(--primary) !important;
+}
+
+.nav.inner li {
+  border: none;
+}
+
+.portal-version-title,
+.portal-version-number {
+  font-size: 13px;
+}
+
+img {
+  width: 18px;
+  height: 19px;
+  vertical-align: -0.125em;
+}

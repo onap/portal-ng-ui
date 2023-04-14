@@ -1,0 +1,142 @@
+<!--
+  ~ Copyright (c) 2022. Deutsche Telekom AG
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+<nav id="brand-bar" class="navbar navbar-light navbar-expand pl-2">
+  <button
+    type="button"
+    id="sidebarCollapse"
+    class="sidebar-toggler"
+    (click)="toggleSidenav()"
+    [attr.aria-label]="'layout.header.sidebarToggler' | translate"
+  >
+    <i class="bi bi-list" aria-hidden="true"></i>
+  </button>
+
+  <!-- Logo as Home Button -->
+  <a class="ml-3" [routerLink]="['/']">
+    <img
+      class="brand-image pl-0"
+      id="img-logo"
+      src="assets/images/onap-logo.png"
+      alt="{{ 'layout.header.logo.onap' | translate }}"
+    />
+  </a>
+
+  <div class="d-flex ml-auto align-items-baseline">
+    <button
+      class="btn btn-invisible p-2 pointer"
+      [attr.accesskey]="ACCESS_KEY.SHORTCUT_0"
+      (click)="openCanvas(content)"
+      [attr.aria-label]="'Help'"
+      [ngbTooltip]="'Help'"
+    >
+      <i aria-hidden="true" class="bi bi-question-circle black"></i>
+    </button>
+    <button
+      *ngIf="!isFullScreen"
+      class="btn btn-invisible pointer p-2 qa_btn_open_fullscreen"
+      [attr.aria-label]="'layout.header.button.openFullscreen' | translate"
+      [ngbTooltip]="'Full screen'"
+      (click)="openFullscreen()"
+    >
+      <i aria-hidden="true" class="bi bi-arrows-fullscreen black"></i>
+    </button>
+    <button
+      *ngIf="isFullScreen"
+      class="btn btn-invisible pointer p-2 qa_btn_cls_fullscreen"
+      [attr.aria-label]="'layout.header.button.closeFullscreen' | translate"
+      [ngbTooltip]="'Exit full screen'"
+      (click)="closeFullscreen()"
+    >
+      <i aria-hidden="true" class="bi bi-fullscreen-exit black"></i>
+    </button>
+  </div>
+
+  <!-- Dropdown menu -->
+  <div ngbDropdown #userAccountDropdown="ngbDropdown" display="dynamic">
+    <button
+      ngbDropdownToggle
+      id="dropdownMenu"
+      class="btn btn-account px-3 tab-focus"
+      [attr.aria-label]="'layout.header.button.useraccount' | translate"
+      aria-haspopup="true"
+    >
+      <i class="bi bi-person-fill" aria-hidden="true"></i>
+      <i class="bi bi-caret-down-fill" aria-hidden="true"></i>
+    </button>
+    <div class="dropdown-menu-right px-4" ngbDropdownMenu aria-labelledby="dropdownMenu"
+         style="z-index: 9999; min-width: 380px">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <i aria-hidden="true" class="bi bi-person"></i>
+            {{ profile }}
+          </div>
+          <button
+            class="btn btn-sm btn-primary font-weight-bold"
+            (click)="userAccountDropdown.close(); logOut()"
+            [attr.aria-label]="'layout.header.button.logout' | translate"
+          >
+            {{ 'layout.header.button.logout' | translate }}
+          </button>
+        </div>
+        <hr />
+        <dl>
+          <dt>{{ 'layout.header.info.name' | translate }}</dt>
+          <dd>{{ profile }}</dd>
+          <dt>{{ 'layout.header.info.mail' | translate }}</dt>
+          <dd>{{ email }}</dd>
+        </dl>
+        <hr />
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-secondary"
+          placement="top"
+          container="body"
+          triggers="click:blur"
+          [ngbTooltip]="'userAdministration.form.title.changePasswordTooltip' | translate"
+        >
+          {{ 'userAdministration.form.title.changePassword' | translate }}
+        </button>
+      </div>
+  </div>
+</nav>
+
+<ng-template #content let-offcanvas>
+  <div class="offcanvas-header">
+    <div class="d-flex">
+      <h3 class="mb-0 mr-1">{{ 'layout.header.shortcuts.heading' | translate }}</h3>
+    </div>
+    <button
+      type="button"
+      class="align-self-center btn-close"
+      [attr.aria-label]="'common.buttons.close' | translate"
+      (click)="offcanvas.dismiss(content)"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <p class="border-bottom pb-2" *ngFor="let shortcut of shortcuts | keyvalue">
+      {{ shortcut.key }} - {{ shortcut.value }}
+    </p>
+    <div class="text-muted small">
+      <p>{{ 'layout.header.shortcuts.helpText' | translate }}</p>
+      <div [innerHTML]="'layout.header.shortcuts.helpBrowser1' | translate"></div>
+      <div [innerHTML]="'layout.header.shortcuts.helpBrowser2' | translate"></div>
+      <div [innerHTML]="'layout.header.shortcuts.helpBrowser3' | translate"></div>
+    </div>
+  </div>
+</ng-template>

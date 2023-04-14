@@ -1,0 +1,20 @@
+{
+  "/api": {
+    "target": "http://localhost:9080",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+  "/mock-api": {
+    "target": "http://localhost:8089",
+    "secure": false,
+    "pathRewrite": {
+      "^/mock-api": "/portal-bff"
+    }
+  },
+  "/auth": {
+    "target": "http://localhost:8080",
+    "secure": false
+  }
+}

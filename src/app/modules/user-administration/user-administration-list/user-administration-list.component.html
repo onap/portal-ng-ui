@@ -1,0 +1,159 @@
+<!--
+  ~ Copyright (c) 2022. Deutsche Telekom AG
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+
+<ng-container
+  *ngIf="
+    {
+      users: result$ | async,
+      page: page$ | async,
+      pageSize: pageSize$ | async
+    } as vm;
+    else loading
+  "
+>
+  <app-breadcrumb>
+    <app-breadcrumb-item>
+      <a [routerLink]="['/dashboard']">{{ 'layout.menu.items.home' | translate }}</a>
+    </app-breadcrumb-item>
+    <app-breadcrumb-item>
+      <span aria-current="page">{{ 'userAdministration.list.title' | translate }}</span>
+    </app-breadcrumb-item>
+  </app-breadcrumb>
+  <h2>{{ 'userAdministration.list.title' | translate }}</h2>
+  <hr />
+  <div class="d-flex justify-content-between">
+    <button
+      class="btn btn-primary qa_create_button ml-auto"
+      [appHasPermissions]="'users.administration.create'"
+      type="button"
+      [routerLink]="['../', 'create']"
+    >
+      {{ 'userAdministration.buttons.createUser' | translate }}
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="table-responsive">
+        <table class="table table-sm table-striped">
+          <caption>
+            {{
+              'userAdministration.list.tableCaption' | translate
+            }}
+          </caption>
+          <thead>
+            <tr>
+              <th class="qa_user_name_header" scope="col">{{ 'userAdministration.fields.userName' | translate }}</th>
+              <th class="qa_first_name_header" scope="col">{{ 'userAdministration.fields.firstName' | translate }}</th>
+              <th class="qa_last_name_header" scope="col">{{ 'userAdministration.fields.lastName' | translate }}</th>
+              <th class="qa_email_header" scope="col">{{ 'userAdministration.fields.email' | translate }}</th>
+              <th class="qa_assigned_roles_header" scope="col">
+                {{ 'userAdministration.fields.assignedRoles' | translate }}
+              </th>
+              <th class="qa_actions_header" scope="col" style="width: 11%">
+                {{ 'userAdministration.fields.actions' | translate }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="vm.users as users">
+              <tr *ngFor="let user of users.items">
+                <td>{{ user.username }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>
+                  <a [href]="'mailto:' + user.email">{{ user.email }}</a>
+                </td>
+                <td>
+                  <ng-container *ngFor="let role of user.realmRoles; let last = last">
+                    <span>{{ role }}<span *ngIf="!last">, </span> </span>
+                  </ng-container>
+                </td>
+                <td>
+                  <div class="d-flex" *ngIf="loggedUserId$ | async as userId">
+                    <ng-container *ngIf="userId === user.id; else elseBlock">
+                      <span
+                        class="d-inline-block"
+                        tabindex="0"
+                        placement="top"
+                        container="body"
+                        [ngbTooltip]="'common.buttons.notPossibleDelete' | translate"
+                      >
+                        <button
+                          class="btn btn-sm btn-outline-danger qa_delete_button mr-2"
+                          type="button"
+                          [appHasPermissions]="'users.administration.delete'"
+                          [attr.aria-label]="'common.buttons.delete' | translate"
+                          disabled
+                        >
+                          <i class="bi bi-trash" aria-hidden="true"></i>
+                        </button>
+                      </span>
+                    </ng-container>
+                    <ng-template #elseBlock>
+                      <button
+                        class="btn btn-sm btn-outline-danger qa_delete_button mr-2"
+                        type="button"
+                        placement="top"
+                        container="body"
+                        [appHasPermissions]="'users.administration.delete'"
+                        [ngbTooltip]="'common.buttons.delete' | translate"
+                        [attr.aria-label]="'common.buttons.delete' | translate"
+                        (click)="openModal(user.id, user.username)"
+                      >
+                        <i class="bi bi-trash" aria-hidden="true"></i>
+                      </button>
+                    </ng-template>
+
+                    <button
+                      class="btn btn-sm btn-outline-secondary qa_edit_button"
+                      type="button"
+                      placement="top"
+                      container="body"
+                      [appHasPermissions]="'users.administration.edit'"
+                      [ngbTooltip]="'common.buttons.edit' | translate"
+                      [routerLink]="['../', user.id, 'edit']"
+                      [attr.aria-label]="'common.buttons.edit' | translate"
+                    >
+                      <i class="bi bi-pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+      <app-pagination
+        *ngIf="vm.users && vm.users.totalCount > 10"
+        [collectionSize]="vm.users.totalCount || 0"
+        [page]="vm.page || 1"
+        [pageSize]="vm.pageSize || 10"
+        (pageChange)="changePage($event)"
+        (pageSizeChange)="changePageSize($event)"
+      >
+      </app-pagination>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <app-table-skeleton></app-table-skeleton>
+</ng-template>

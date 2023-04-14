@@ -1,0 +1,205 @@
+<!--
+  ~ Copyright (c) 2022. Deutsche Telekom AG
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+
+<app-breadcrumb>
+  <app-breadcrumb-item>
+    <a [routerLink]="['/dashboard']">{{ 'layout.menu.items.home' | translate }}</a>
+  </app-breadcrumb-item>
+  <app-breadcrumb-item>
+    <a [routerLink]="['/user-administration', 'list']">{{ 'userAdministration.list.title' | translate }}</a>
+  </app-breadcrumb-item>
+  <ng-container *ngIf="userId === null">
+    <app-breadcrumb-item>
+      <span aria-current="page">{{ 'userAdministration.form.title.create' | translate }}</span>
+    </app-breadcrumb-item>
+  </ng-container>
+  <ng-container *ngIf="user">
+    <app-breadcrumb-item>
+      <a [routerLink]="['/user-administration', user.id, 'detail']">{{ user.username }}</a>
+    </app-breadcrumb-item>
+    <app-breadcrumb-item>
+      <span aria-current="page">{{ 'userAdministration.form.title.edit' | translate }}</span>
+    </app-breadcrumb-item>
+  </ng-container>
+</app-breadcrumb>
+
+<h2 class="py-2 qa_title">
+  {{ (userId === null ? 'userAdministration.form.title.create' : 'userAdministration.form.title.edit') | translate }}
+</h2>
+<hr />
+
+<div class="row">
+  <!--  Set User Data-->
+  <div class="col-12 col-lg-6">
+    <h4 class="text-monospace border-bottom text-secondary pb-2">
+      {{ 'userAdministration.form.headings.setUserData' | translate }}
+    </h4>
+    <form class="mb-5" [formGroup]="keycloakUserForm" novalidate>
+      <div class="form-group row">
+        <label class="col-xl-3 col-form-label" for="id">{{ 'userAdministration.fields.id' | translate }}</label>
+        <div class="col-xl-9">
+          <input formControlName="id" class="form-control" id="id" readonly />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-3 col-form-label" for="username">{{
+          'userAdministration.fields.userName' | translate
+        }}</label>
+        <div class="col-xl-9">
+          <input
+            formControlName="username"
+            class="form-control"
+            id="username"
+            [attr.readonly]="this.userId"
+            [class.is-invalid]="isFormControlInvalid(userName)"
+            required
+            aria-required="true"
+          />
+          <div *ngIf="userName && userName?.errors?.required" class="invalid-feedback qa_required_user_name">
+            {{ 'common.required' | translate }}
+          </div>
+          <div *ngIf="userName && userName?.errors?.pattern" class="invalid-feedback qa_invalid_user_name">
+            {{ 'common.form.feedback.invalidCharacters' | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-3 col-form-label" for="email">{{ 'userAdministration.fields.email' | translate }}</label>
+        <div class="col-xl-9">
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="email"
+            [class.is-invalid]="isFormControlInvalid(email)"
+          />
+          <div *ngIf="email && email?.errors?.email" class="invalid-feedback qa_wrong_format_email">
+            {{ 'common.form.feedback.emailWrongFormat' | translate }}
+          </div>
+          <div *ngIf="email && email?.errors?.pattern" class="invalid-feedback qa_invalid_email">
+            {{ 'common.form.feedback.invalidCharacters' | translate }}
+          </div>
+          <div *ngIf="email && email?.errors?.required" class="invalid-feedback qa_required_email">
+            {{ 'common.form.feedback.required' | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-3 col-form-label" for="firstName">{{
+          'userAdministration.fields.firstName' | translate
+        }}</label>
+        <div class="col-xl-9">
+          <input
+            formControlName="firstName"
+            class="form-control"
+            id="firstName"
+            [class.is-invalid]="isFormControlInvalid(firstName)"
+          />
+          <div *ngIf="firstName && firstName?.errors?.pattern" class="invalid-feedback qa_invalid_first_name">
+            {{ 'common.form.feedback.invalidCharacters' | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-xl-3 col-form-label" for="lastName">{{
+          'userAdministration.fields.lastName' | translate
+        }}</label>
+        <div class="col-xl-9">
+          <input
+            formControlName="lastName"
+            class="form-control"
+            id="lastName"
+            [class.is-invalid]="isFormControlInvalid(lastName)"
+          />
+          <div *ngIf="lastName && lastName?.errors?.pattern" class="invalid-feedback qa_invalid_last_name">
+            {{ 'common.form.feedback.invalidCharacters' | translate }}
+          </div>
+        </div>
+      </div>
+    </form>
+    <!--      SET ROLES-->
+    <div class="mb-5" style="min-height: 150px">
+      <h4 class="text-monospace border-bottom text-secondary pb-2">
+        {{ 'userAdministration.form.headings.setRoles.title' | translate }}
+      </h4>
+
+      <div class="form-row">
+        <div class="col-xl-3 col-form-label">{{ 'userAdministration.form.headings.setRoles.title' | translate }}</div>
+        <div class="col-xl-9">
+          <div class="row" style="padding: 0 15px">
+            <div class="col-xl-5 p-3 border border-radius mb-md-2" style="min-height: 125px">
+              <h5 class="qa_available_roles">
+                {{ 'userAdministration.form.headings.setRoles.available' | translate }}
+              </h5>
+              <ng-container *ngFor="let checkbox of checkBoxes.available">
+                <ng-container *ngIf="checkbox.name.startsWith('onap_')">
+                  <div class="form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input qa_checkbox_available"
+                      [attr.aria-labelledby]="checkbox.name"
+                      [value]="checkbox.id"
+                      (change)="onCheckboxChange(checkbox.id, true)"
+                    />
+                    <label class="form-check-label" [attr.id]="checkbox.name">{{ checkbox.name }}</label>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+            <div class="col-xl-2"></div>
+            <div class="col-xl-5 p-3 border border-radius" style="min-height: 125px">
+              <h5 class="qa_assigned_roles">{{ 'userAdministration.form.headings.setRoles.assigned' | translate }}</h5>
+              <ng-container *ngFor="let checkbox of checkBoxes.assigned">
+                <ng-container *ngIf="checkbox.name.startsWith('onap_')">
+                  <div class="form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input qa_checkbox_assigned"
+                      [attr.aria-labelledby]="checkbox.name"
+                      [value]="checkbox.id"
+                      (change)="onCheckboxChange(checkbox.id, false)"
+                      [checked]="true"
+                    />
+                    <label class="form-check-label" [attr.id]="checkbox.name">{{ checkbox.name }}</label>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="float-right">
+      <ng-container *ngIf="userId === null">
+        <button class="btn btn-secondary qa_submit_cancel" [routerLink]="['../', 'list']">
+          {{ 'common.buttons.cancel' | translate }}
+        </button>
+      </ng-container>
+      <ng-container *ngIf="userId !== null">
+        <button class="btn btn-secondary qa_submit_cancel" [routerLink]="['../../list']">
+          {{ 'common.buttons.cancel' | translate }}
+        </button>
+      </ng-container>
+      <button type="submit" class="btn btn-primary qa_submit_button ml-2" (click)="onSubmit()">
+        {{ 'common.buttons.save' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

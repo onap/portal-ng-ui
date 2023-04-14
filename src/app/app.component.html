@@ -1,0 +1,52 @@
+<!--
+  ~ Copyright (c) 2022. Deutsche Telekom AG
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+<app-header
+  (collapse)="collapseChanged()"
+  class="sticky-top"
+></app-header>
+<div class="wrapper">
+  <aside class="h-100 pt-2" id="nav-sidebar" [attr.aria-label]="'layout.sidebar' | translate">
+    <app-sidemenu [isSidebarCollapsed]="isCollapsed"></app-sidemenu>
+  </aside>
+  <main
+    [attr.accesskey]='ACCESS_KEY.SHORTCUT_2'
+    id="main"
+    tabindex="-1"
+    class="container-fluid px-5 position-relative"
+    [attr.aria-label]="'layout.main.mainContent' | translate"
+  >
+    <ng-container *ngIf="loading$ | async">
+      <div
+        [style.left.px]="isCollapsed ? 60 : 250"
+        class="row justify-content-center align-items-center loading-spinner"
+      >
+        <div class="loading-text text-primary">{{ 'common.loading' | translate }}</div>
+        <div class="spinner-border text-primary large-spinner" role="status"></div>
+      </div>
+    </ng-container>
+    <div
+      class="position-absolute right-10 mt-3"
+      style="z-index: 999"
+      [attr.aria-label]="'layout.main.alerts' | translate"
+    >
+      <app-alert></app-alert>
+    </div>
+    <router-outlet class="p-2"></router-outlet>
+  </main>
+</div>

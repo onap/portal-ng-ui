@@ -1,0 +1,355 @@
+{
+  "common": {
+    "loading": "Lädt...",
+    "required": "Erforderlich",
+    "buttons": {
+      "cancel": "Abbrechen",
+      "clear": "Clear",
+      "close": "Schließen",
+      "collapse": "Einklappen",
+      "delete": "Löschen",
+      "notPossibleDelete": "Es ist nicht möglich, den eigenen Account zu löschen.",
+      "edit": "Bearbeiten",
+      "expand": "Ausklappen",
+      "filter": "Filtern",
+      "info": "Info",
+      "next": "Weiter",
+      "previous": "Zurück",
+      "refresh": "Refresh",
+      "rightClick": "Öffne das Kontextmenü",
+      "save": "Speichern",
+      "search": "Suchen",
+      "set": "Speichern",
+      "reset": "Reset",
+      "submit": "Senden",
+      "openSupportLink": "Support link ausklappen",
+      "closeSupportLink": "Support link einklappen"
+    },
+    "dateFilter": {
+      "startDate": "Startdatum auswählen",
+      "endDate": "Enddatum auswählen"
+    },
+    "filters": {
+      "filterBy": "Filtern nach {{value}}",
+      "noResults": "Keine Daten verfügbar.",
+      "noResultsForCustomer": "Keine Daten für den Kunden verfügbar: {{customerId}}",
+      "noOptions": "Keine Aktion möglich.",
+      "searchHint": "Suchbegriffe eingeben",
+      "showCategories": "Menü zum filtern nach Kategorien anzeigen",
+      "noFilterResults": "Keine Übereinstimmung mit den angegebenen Filterkriterien."
+    },
+    "no": "Nein",
+    "pagination": {
+      "itemsPerPage": "{{value}} Einträge pro Seite",
+      "totalCount": "Gesamtanzahl: {{value}}",
+      "selectItemsPerPage": "Wähle Anzahl der Elemente pro Seite"
+    },
+    "sorting": {
+      "ascending:": "Aufsteigend sortiert",
+      "descending": "Absteigend sortiert",
+      "none": "Keine Sortierung"
+    },
+    "select": {
+      "description": "Selektier die Anzahl der Items pro Seite",
+      "itemsPerPage": "{{value}} Einträge pro Seite",
+      "openOptions": "Optionen öffnen",
+      "closeOptions": "Optionen schließen",
+      "selectOption": "Option auswählen"
+    },
+    "hint": "Hinweis",
+    "warning": "Warnung",
+    "yes": "Ja",
+    "messages": {
+      "badRequest": "Bad request: Der Server kann ihre Anfrage nicht verarbeiten.",
+      "unauthorized": "Sie sind nicht authorisiert. Bitte loggen sie sich ein.",
+      "forbidden": "Sie haben keine oder nur unzureichende Berechtigungen.",
+      "notFound": "Die angeforderten Ressourcen konnten nicht gefunden werden.",
+      "conflict": "Ihre Anfrage steht im Konflikt zu einer anderen Anfrage.",
+      "internalServerError": "Internal Server Error: Bitte kontaktieren Sie den Support.",
+      "badGateway": "Überprüfen Sie ihre Proxy-Einstellungen.",
+      "serviceUnavailable": "Der Service ist zur Zeit nicht verfügbar. Bitte kontaktieren Sie die System-Administratoren.",
+      "checkRequest": "Überprüfen Sie den Request.",
+      "actionUnsuccessful": "Die Aktion konnte nicht durchgeführt werden, bitte probieren Sie es erneut.",
+      "contactSupport": "Bitte, kontaktieren Sie das Support Team.",
+      "timeout": "Ressource ist nicht erreichbar.",
+      "keycloakAccessTokenNotValid": "Die Gültigkeit Ihres Zugangstokens ist aufgrund von Verbindungsproblemen abgelaufen. Bitte laden sie erneut die Seite. Falls das Problem weiterhin besteht, wenden Sie sich an den Support."
+    },
+    "systems": {
+      "AAI": "AAI",
+      "CDS": "CDS",
+      "KUBERNETES": "Kubernetes",
+      "KEYCLOAK": "Keycloak",
+      "PORTAL_SERVICE": "Portal Service",
+      "SDC": "SDC",
+      "SO": "SO",
+      "SO_CATALOG": "SO Catalog",
+      "PORTAL_HISTORY": "Portal History",
+      "PORTAL_PREFS": "Portal Preferences"
+    },
+    "block": {
+     "userAdministration": {
+        "create": "Beim Anlegen des Benutzerkontos ist ein Fehler aufgetreten!",
+        "edit": "Beim Bearbeiten des Benutzerkontos ist ein Fehler aufgetreten!",
+        "list": "Die Benutzerlist kann wegen eines Fehlers nicht angezeigt werden!",
+        "delete": "Der Benutzer kann wegen eines Fehlers nicht gelöscht werden!",
+        "helpUserNameExists": "Versuchen Sie bitte den Benutzer mit einer anderen Benutzername anzulegen.",
+        "helpUserEmailExists": "Versuchen Sie bitte den Benutzer mit einer anderen E-mail Adresse anzulegen."
+      },
+     "defaultMessage": "Systemfehler aufgetreten!",
+      "logging": "Warnung, Logging ist fehlgeschlagen! Keine weitere Aktion notwendig! ",
+      "dashboard": "Systemfehler, Anzeigen des Dashboard nicht möglich!",
+      "appStarter": "Systemfehler, Anzeigen der Applikationen nicht möglich!",
+      "authorization": "Fehler bei der Autorisierung!",
+      "loadPreferences": "Beim Laden der Benutzereinstellungen ist ein Fehler aufgetreten!",
+      "savePreferences": "Beim Speichern der Benutzereinstellungen ist ein Fehler aufgetreten!",
+      "saveAction": "Beim Speichern der letzten Benutzeraktion ist ein Fehler aufgetreten!",
+      "loadAction": "Beim Laden der letzten Benutzeraktion ist ein Fehler aufgetreten!",
+      "timeout": "Timeout ist nach {{value}} Sekunden aufgetreten!"
+    },
+    "alert": {
+      "contactSupport": {
+        "part1": "Für Hilfe kontaktieren Sie bitte unseren ",
+        "part2": " und geben Sie alle Informationen einschließlich dieser ID an:"
+      },
+      "errorReporter": "Fehlermeldung von \"{{system}}\" System:",
+      "support": "Support"
+    },
+    "noPermissions": {
+      "noPermissions": "Sie haben nicht genügend Berechtigungen um diese Seite zu sehen!",
+      "support": "Wenn Sie glauben, dies ist ein Fehler, kontaktieren Sie bitte den Support."
+    },
+    "form": {
+      "feedback": {
+        "emailWrongFormat": "Falsches Email Format",
+        "invalidCharacters": "Ungültige Zeichen",
+        "invalidConfirmationPassword": "Passworte stimmen nicht überein",
+        "required": "Darf nicht leer sein",
+        "whiteSpaceNotAllowed": "Leerzeichen sind nicht erlaubt",
+        "specialCharactersNotAllowed": "Sonderzeichen sind nicht erlaubt."
+      }
+    }
+  },
+  "appStarter": {
+    "groups": {
+      "admin": "Admin",
+      "developer": "Developer",
+      "operator": "Operator"
+    },
+    "title": "App Starter",
+    "tiles": {
+      "tooltips": {
+        "enum": {
+          "1": "SDC ist das visuelle Modellierungs- und Designtool von ONAP. Es erstellt interne Metadaten, die Assets beschreiben, die von allen ONAP-Komponenten verwendet werden, sowohl zur Entwurfszeit als auch zur Laufzeit.",
+          "2": "VID bietet eine gut strukturierte Organisation von Infrastrukturbereitstellung, Instanziierung und Change Management, die von Operations verwendet werden, um Orchestrierungen und Change Management abzuleiten.",
+          "3": "Das ONAP Policy Framework legt die Architektur des Frameworks dar und zeigt die APIs, die anderen Komponenten bereitgestellt werden, die mit dem Framework zusammenarbeiten.",
+          "4": "Der ONAP Service Orchestrator bietet die höchste Ebene der Service-Orchestrierung in der ONAP-Architektur.",
+          "5": "CLAMP ist eine Plattform zum Entwerfen und Verwalten sogenannter Control Loops. Es wird verwendet, um geschlossene Schleifen (Closed Loops) zu entwerfen, diese mit spezifischen Parametern für einen bestimmten Netzwerkdienst zu konfigurieren und sie dann in Betrieb und außer Betrieb zu nehmen.",
+          "6": "Kibana Dashboard zur Visualisierung der von Control Loops ausgelösten Ereignisse (wird auch in ONAP für die Alarmvisualisierung verwendet).",
+          "7": "Die CDS Designer Benutzeroberfläche ist ein Framework zur Automatisierung der Auflösung von Ressourcen für die Instanziierung und aller Konfigurationsbereitstellung, wie z. B. die Konfiguration von Day0, Day1 oder Day2.",
+          "8": "CDT ermöglicht das Self-Service-Onboarding von VNFs durch das Erstellen von Templates und anderen Artefakten. Dies kann zum Beispiel für den Configure-Befehl im APPC verwendet werden um Konfigurationen nach der Instanziierung anzupassen.",
+          "9": "Das Holmes-Projekt bietet Alarmkorrelation und -analyse für Telekommunikations-Cloudinfrastruktur und -Dienste, einschließlich Hosts, Vims, VNFs und NSs.",
+          "10": "AAI ist eine Komponente der ONAP-Laufzeit (Echtzeitansichten von Ressourcen, Services, Produkten, Kundenabonnements und deren Beziehungen).",
+          "11": "DCAE ist der Obername für eine Reihe von Komponenten, die gemeinsam die Rolle der Datenerfassung, Analyse und Ereignisgenerierung für ONAP erfüllen. Die Architektur von DCAE zielt auf eine flexible, steckbare, Micros-Service-orientierte, modellbasierte Komponentenbereitstellung und Servicezusammensetzung ab. DCAE unterstützt auch Sammel- und Analysevorgänge an mehreren Standorten, die für große ONAP-Bereitstellungen unerlässlich sind.",
+          "12": "SDNC DG soll eine Ausführungsumgebung für schnell geschriebene und hochgradig angepasste Serviceabläufe bereitstellen.",
+          "13": "Das OpenDaylight Project ist ein kollaboratives Open-Source-Projekt, das von der Linux Foundation gehostet wird. Das Projekt dient als Plattform für Software-Defined Networking (SDN) zur offenen, zentralisierten Überwachung von Netzwerkgeräten."
+        }
+      }
+    }
+  },
+  "dashboard": {
+    "apps": {
+      "userLastAction": {
+        "filter": {
+          "label": "Letzte Aktivitäten filtern nach: ",
+          "type": {
+            "ALL": "Alle meine Aktivitäten",
+            "SEARCH": "Meine Suchen",
+            "ACTION": "Meine Handlungen"
+          },
+          "interval": {
+            "1H": "Letzte 1 Stunde",
+            "4H": "Letzten 4 Stunden",
+            "1D": "Letzten 1 Tage",
+            "ALL": "Alle"
+          }
+        },
+        "actionType": {
+          "SEARCH": "Suche",
+          "VIEW": "Ansehen",
+          "EDIT": "Bearbeiten",
+          "DEPLOY": "Deploy",
+          "DELETE": "Löschen",
+          "CREATE": "Erstellen",
+          "CLEAR": "Clear",
+          "ACK": "Acknowledge",
+          "UNACK": "Unacknowledge"
+        },
+        "entityType": {
+          "ALARM": "Alarm",
+          "USERADMINISTRATION": "Benutzeradministration",
+          "SERVICEMODEL": "Servicemodell",
+          "SERVICEINSTANCE": "Serviceinstanz",
+          "TOPOLOGY": "Topologie"
+        },
+        "tooltip": {
+          "again": "wieder",
+          "statusOf": "Status von",
+          "noAction": "Vorerst keine Aktion.",
+          "repeatAction": "Letzte Aktion wiederholen",
+          "viewAction": "Letzte Aktion anzeigen",
+          "deployment": "deployment"
+        },
+        "modal": {
+          "deploymentStatus": "Deployment Status",
+          "state": "State",
+          "progress": "Progress",
+          "flowStatus": "Flow Status",
+          "rollbackStatus": "Rollback Status",
+          "retryStatus": "Retry Status",
+          "taskInformation": "Task Information"
+        }
+      },
+      "KPI_GRAPH_TILE": "KPI Grafen",
+      "ALARM_COUNT_TILE": "Anzahl Alarme",
+      "USER_LAST_ACTION_TILE": "Letzte Benutzeraktionen"
+    },
+    "showSettings": "Konfigurieren Sie, welche Anwendungen im Dashboard sichtbar sein sollen",
+    "selectApplications": "Bitte wählen Sie Anwendungen aus, die Sie im Dashboard sehen möchten",
+    "tooltips": {
+      "settings": "Dashboard-Einstellungen anzeigen"
+    }
+  },
+  "layout": {
+    "header": {
+      "header": "Kopfleiste/Header",
+      "skipToMainContentLink": "Zum Hauptinhalt springen",
+      "button": {
+        "account": "Kontoeinstellungen",
+        "closeFullscreen": "Vollbildmodus schließen",
+        "logout": "Abmelden",
+        "openFullscreen": "Vollbildmodus öffnen",
+        "useraccount": "Mein Account"
+      },
+      "info": {
+        "mail": "Email:",
+        "name": "Name:"
+      },
+      "logo": {
+        "onap": "ONAP Logo"
+      },
+      "sidebarToggler": "Öffne/schliesse Seitenmenü",
+      "shortcuts": {
+        "details": "Informationen zu den Tastaturkürzeln",
+        "home": "Home (Kopfbereich)",
+        "main": "Setzt den Fokus auf den Inhaltsanteil der Seite",
+        "search": "Setz den Fokus auf das Suchfeld, wenn auf Seite vorhanden",
+        "menu": "Setzt Fokus auf das Hauptmenü links",
+        "heading": "Tastaturkurzbefehle",
+        "helpText": "Tastaturkurzbefehle werden vom Portal unterstützt. Die Mechanismen variieren zwischen den Browsern:",
+        "helpBrowser1": "<b>ALT</b> gedrückt halten und die <b>Taste</b> drücken für <b>Google Chrome, Microsoft, Safari</b>",
+        "helpBrowser2": "<b>ALT</b> und <b>Umschalten</b> gedrückt halten und die <b>Taste</b> drücken für <b>Firefox</b>",
+        "helpBroswer3": "<b>MACINTOSH Safari: CTRL</b> Taste gedrückt halten und die <b>Taste</b> drücken"
+      }
+    },
+    "main": {
+      "alerts": "Alarmmeldungen",
+      "mainContent": "Hauptinhalt",
+      "breadcrumb": "Breadcrumb/Brotkrumen"
+    },
+    "sidebar": "Seitenleiste",
+    "menu": {
+      "mainMenu": "Hauptmenü",
+      "menuItems": "Menü Items",
+      "items": {
+        "cellSiteMap": "Mobilfunk-Karte",
+        "home": "Home",
+        "appStarter": "App Starter",
+        "dashboard": "Dashboard",
+        "options": "Optionen",
+        "userAdministration": "Benutzerverwaltung",
+        "users": "Benutzer",
+        "userSettings": "Benutzereinstellungen"
+      }
+    }
+  },
+  "modal": {
+    "error": {
+      "accessDenied": "Keine Berechtigung!",
+      "details": "Details:"
+    }
+  },
+  "userAdministration": {
+    "buttons": {
+      "createUser": "Benutzer anlegen",
+      "editUser": "Benutzer bearbeiten"
+    },
+    "fields": {
+      "access": "Zugang",
+      "actions": "Aktionen",
+      "assignedRoles": "Zugewiesene Rollen",
+      "attributes": "Eigenschaften",
+      "confirmPassword": "Passwort bestätigen",
+      "createdAt": "Angelegt am",
+      "disableableCredentialTypes": "Berechtigungsnachweise deaktivieren",
+      "email": "Email",
+      "emailVerified": "Email geprüft",
+      "enabled": "Aktiviert",
+      "firstName": "Vorname",
+      "id": "ID",
+      "key": "Schlüssel",
+      "lastName": "Nachname",
+      "password": "Passwort",
+      "requiredActions": "Erforderliche Aktionen",
+      "temporaryPassword": "Temporäres Passwort",
+      "userName": "Benutzer",
+      "value": "Wert"
+    },
+    "form": {
+      "headings": {
+        "setNewPassword": "Neues Passwort setzen",
+        "setRoles": {
+          "assigned": "Zugewiesen",
+          "available": "Verfügbar",
+          "title": "Rollen zuweisen"
+        },
+        "setUserData": "Benutzerdaten einstellen"
+      },
+      "title": {
+        "changePassword": "Passwort ändern",
+        "changePasswordTooltip": "Um Ihr Passwort zu ändern, loggen Sie sich bitte aus und benutzen Sie den Link \"Passwort vergessen?\".",
+        "create": "Benutzer anlegen",
+        "edit": "Benutzer bearbeiten",
+        "roles": "Rollen"
+      }
+    },
+    "list": {
+      "modal": {
+        "delete": {
+          "title": "Lösche Benutzer",
+          "text": "Möchtest Du den Benutzer: {{userName}} wirklich löschen?"
+        }
+      },
+      "tableCaption": "Benutzertabelle",
+      "title": "Benutzerverwaltung"
+    },
+    "messages": {
+      "success": {
+        "created": "Benutzer erfolgreich angelegt.",
+        "deleted": "Benutzer erfolgreich gelöscht.",
+        "setPassword": "Password erfolgreich geändert.",
+        "updated": "Benutzer erfolgreich aktualisiert."
+      }
+    },
+    "warnings": {
+      "userDeleted": {
+        "header": "Benutzer existiert nicht mehr",
+        "message": "Eine Bearbeitung des Benutzers ist nicht möglich. Benutzer wurde bereits gelöscht."
+      }
+    }
+  },
+  "pageNotFound": {
+    "text": "Die gesuchte Seite konnte nicht gefunden werden.",
+    "button": "Zurück zur Hauptseite",
+    "imgAltText": "Bild einer fragenden Frau"
+  }
+}
