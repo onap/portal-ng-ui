@@ -1,6 +1,6 @@
 FROM node:14-bullseye-slim as builder
 # the JRE is required by the openapi-generator-cli
-RUN apt update && apt install -y openjdk-17-jre-headless
+RUN apt update && apt install -y openjdk-17-jre
 WORKDIR /usr/src/app
 
 COPY package*.json ./
