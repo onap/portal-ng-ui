@@ -35,7 +35,6 @@ export class SidemenuComponent {
   @Input() isSidebarCollapsed = false;
 
   public ACCESS_KEY = KeyboardShortcuts;
-  public keycloakEditProfile = environment.keycloakEditProfile;
   public isKpiDashboardSubMenuCollapsed = false;
 
   constructor() {
