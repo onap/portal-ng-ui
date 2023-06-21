@@ -21,18 +21,17 @@ export interface Environment {
   customStyleEnabled: boolean;
   backendServerUrl: string;
   hostname: string;
-  keycloakEditProfile: string;
   production: boolean;
   keycloak: KeycloakEnvironment;
   dateTimeFormat: string;
   loggingUrl: string;
   loggingEnabled: boolean
   supportUrlLink: string
-
 }
 
 export interface KeycloakEnvironment {
-  issuer: string;
+  hostname: string;
+  realm: string;
   redirectUri: string;
   clientId: string;
   responseType: string;

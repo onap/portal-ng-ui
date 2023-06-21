@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * Copyright (c) 2022. Deutsche Telekom AG
  *
@@ -27,9 +28,10 @@ export const environment: Environment = {
   production: true,
   keycloakEditProfile: `${window.location.origin}/auth/realms/ONAP/account`,
   keycloak: {
-    issuer: `${window.location.origin}/auth/realms/ONAP`, // Url of the Identity Provider
+    hostname: window["env"]["keycloak"]["hostname"] || `https://${window.location.host.replace('portal', 'keycloak')}`,
+    realm: window["env"]["keycloak"]["realm"] || 'ONAP',
     redirectUri: window.location.origin, // URL of the SPA to redirect the user to after login
-    clientId: 'portal-app', // The Frontend is registered with this id at the auth-server
+    clientId: window["env"]["keycloak"]["clientId"] || 'portal-app', // The Frontend is registered with this id at the auth-server
     responseType: 'code',
     scope: 'openid', // set the scope for the permissions the client should request
     requireHttps: false, // Don't require https
