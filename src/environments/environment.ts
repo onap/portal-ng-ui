@@ -29,11 +29,11 @@ import { Environment } from '../app/model/environment.model';
 export const environment: Environment = {
   customStyleEnabled: true,
   backendServerUrl: window.location.origin + '/api',
-  keycloakEditProfile: `${window.location.origin}/auth/realms/ONAP/account`,
   hostname: window.location.hostname,
   production: false,
   keycloak: {
-    issuer: `${window.location.origin}/auth/realms/ONAP`, // Url of the Identity Provider
+    hostname: window.location.origin, // Url of the Identity Provider
+    realm: 'ONAP',
     redirectUri: window.location.origin, // URL of the SPA to redirect the user to after login
     clientId: 'portal-app', // The Frontend is registered with this id at the auth-server
     responseType: 'code',

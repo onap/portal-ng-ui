@@ -22,7 +22,7 @@ import { environment } from '../../../environments/environment';
 
 export const authConfig: AuthConfig = {
   // Url of the Identity Provider
-  issuer: environment.keycloak.issuer,
+  issuer: `${environment.keycloak.hostname}/auth/realms/${environment.keycloak.realm}`,
 
   // URL of the SPA to redirect the user to after login
   redirectUri: environment.keycloak.redirectUri,

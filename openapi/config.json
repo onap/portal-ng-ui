@@ -1,6 +1,0 @@
-{
-  "ngVersion": "12.1.0",
-  "modelFileSuffix": ".model",
-  "fileNaming": "camelCase",
-  "enumPropertyNaming": "UPPERCASE"
-}

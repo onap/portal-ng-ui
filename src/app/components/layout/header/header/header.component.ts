@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   isOnapTheme = false;
   switchToMainContent: string = '';
   isFullScreen = false;
-  changePasswordUrl = `${environment.keycloakEditProfile}/password`;
+  changePasswordUrl = `${environment.keycloak.hostname}/auth/realms/${environment.keycloak.realm}/account/password`;
   shortcuts: Map<KeyboardShortcuts,string> = this.shortcutService.getShortcuts();
 
   public ACCESS_KEY = KeyboardShortcuts;

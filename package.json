@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
-    "openapi": "rm -rf ./openapi/output && bash ./openapi/openapi-generator-cli generate -i ./openapi/input/api.yaml -g typescript-angular -o ./openapi/output -c ./openapi/config.json",
+    "openapi": "rm -rf ./openapi/output && npx openapi-generator-cli generate  --generator-key v3.0 -i openapi/input/api.yaml",
     "ng": "./node-modules/.bin/ng",
     "prestart": "npm run openapi",
     "start": "ng serve -- --proxy-config staging.proxy.config.json --host 0.0.0.0 --port 80 --disable-host-check",
@@ -53,6 +53,7 @@
     "@angular-eslint/template-parser": "13.2.1",
     "@angular/cli": "13.3.7",
     "@angular/compiler-cli": "13.3.10",
+    "@openapitools/openapi-generator-cli": "^2.6.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "2.0.3",
     "@types/lodash": "^4.14.188",
