@@ -26,7 +26,6 @@ export const environment: Environment = {
   backendServerUrl: window.location.origin + '/api',
   hostname: window.location.hostname,
   production: true,
-  keycloakEditProfile: `${window.location.origin}/auth/realms/ONAP/account`,
   keycloak: {
     hostname: window["env"]["keycloak"]["hostname"] || `https://${window.location.host.replace('portal', 'keycloak')}`,
     realm: window["env"]["keycloak"]["realm"] || 'ONAP',

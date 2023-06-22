@@ -10,7 +10,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npm run build -- --configuration production
 
 FROM openresty/openresty:1.21.4.1-4-alpine
 RUN apk add gettext
