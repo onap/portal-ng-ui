@@ -1,6 +1,7 @@
-FROM node:14-bullseye-slim as builder
 # the JRE is required by the openapi-generator-cli
-RUN apt update && apt install -y openjdk-17-jre
+FROM eclipse-temurin:17-jre-alpine as builder
+RUN apk update && \
+    apk add nodejs npm
 WORKDIR /usr/src/app
 
 COPY package*.json ./
