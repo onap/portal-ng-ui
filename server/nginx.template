@@ -2,10 +2,8 @@
 log_format onap_logging '"$request_body"';
 
 lua_package_path '/usr/local/openresty/lualib/?.lua;;';
-
 # cache for discovery metadata documents
 lua_shared_dict discovery 1m;
-
 # cache for JWKs
 lua_shared_dict jwks 1m;
 
@@ -14,7 +12,7 @@ resolver ${CLUSTER_NAMESERVER_IP};
 
 error_log logs/error.log error;
 
-server { # simple reverse-proxy
+server {
     listen       ${NGINX_PORT};
 
     location / {
@@ -24,21 +22,25 @@ server { # simple reverse-proxy
     }
 
     location /api/ {
+        set                 $upstream           ${BFF_URL};
+        rewrite             /api/(.*) /$1 break;
         add_header          Access-Control-Allow-Origin *;
-        proxy_pass                             ${BFF_URL}/;
-        proxy_http_version                     1.1;
-        proxy_set_header    Host               $host;
-        proxy_set_header    X-Real-IP          $remote_addr;
-        proxy_set_header    X-Forwarded-For    $proxy_add_x_forwarded_for;
-        proxy_set_header    X-Forwarded-Host   $host;
-        proxy_set_header    X-Forwarded-Server $host;
-        proxy_set_header    X-Forwarded-Port   $server_port;
-        proxy_set_header    X-Forwarded-Proto  $scheme;
+        proxy_pass                              $upstream/$1$is_args$args;
+        proxy_set_header    Host                $host;
+        proxy_set_header    X-Real-IP           $remote_addr;
+        proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
+        proxy_set_header    X-Forwarded-Host    $host;
+        proxy_set_header    X-Forwarded-Server  $host;
+        proxy_set_header    X-Forwarded-Port    $server_port;
+        proxy_set_header    X-Forwarded-Proto   $scheme;
+        proxy_http_version 1.1;
     }
 
     location /auth/ {
+            set                 $upstream           ${KEYCLOAK_INTERNAL_URL};
+            rewrite             /auth/(.*) /$1 break;
             add_header          Access-Control-Allow-Origin *;
-            proxy_pass                             ${KEYCLOAK_INTERNAL_URL}/auth/;
+            proxy_pass                              $upstream/$1$is_args$args;
             proxy_http_version                     1.1;
             proxy_set_header    Host               $host;
             proxy_set_header    X-Real-IP          $remote_addr;
@@ -98,9 +100,7 @@ server { # simple reverse-proxy
 ##
 # Gzip Settings
 ##
-
 gzip on;
-
 gzip_vary on;
 gzip_proxied any;
 gzip_min_length 1100;
