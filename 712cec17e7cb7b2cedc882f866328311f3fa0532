@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2ec54c8_43973bb7",
+        "filename": "src/app/modules/dashboard/apps/user-last-action-tile/user-last-action-tile.component.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7849
+      },
+      "writtenOn": "2023-06-28T13:00:51Z",
+      "side": 1,
+      "message": "This rule is already defined in line 28",
+      "revId": "712cec17e7cb7b2cedc882f866328311f3fa0532",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da4a5774_e9d31a45",
+        "filename": "src/app/modules/dashboard/apps/user-last-action-tile/user-last-action-tile.component.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7849
+      },
+      "writtenOn": "2023-06-28T13:00:51Z",
+      "side": 1,
+      "message": "we are usually not using capital letters in class names, are we?",
+      "revId": "712cec17e7cb7b2cedc882f866328311f3fa0532",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7803adbf_3e3bea47",
+        "filename": "src/app/modules/dashboard/apps/user-last-action-tile/user-last-action-tile.component.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7849
+      },
+      "writtenOn": "2023-06-28T13:00:51Z",
+      "side": 1,
+      "message": "Is it `flex-wrap` or `no-flex-wrap` now? Or can they coexist?",
+      "revId": "712cec17e7cb7b2cedc882f866328311f3fa0532",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
