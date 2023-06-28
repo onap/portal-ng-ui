@@ -23,9 +23,9 @@
   </app-breadcrumb-item>
 </app-breadcrumb>
 <ng-container *ngIf="tiles$ | async as apps">
-  <div class="w-100 d-flex justify-content-between">
+  <div class="w-100 d-flex flex-wrap justify-content-between">
     <h2 class="qa_title">{{ 'layout.menu.items.dashboard' | translate }}</h2>
-    <ul>
+    <ul class="p-l-2px">
       <li
         #settingsDrop="ngbDropdown"
         [ngbTooltip]="'dashboard.tooltips.settings' | translate"

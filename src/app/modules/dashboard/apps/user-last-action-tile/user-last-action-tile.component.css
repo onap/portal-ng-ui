@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 img {
   height: 20px;
   width: 20px;
@@ -24,4 +23,26 @@ img {
 
 .bg-color-inherit {
   background-color: inherit;
+}
+
+.m-l-24px {
+  margin-left: 24px;
+}
+
+@media (max-width: 570px) {
+  select {
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 1225px) {
+  .no-flex-wrap {
+    flex-wrap: nowrap !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .flex-wrap {
+    flex-wrap: wrap !important;
+  }
 }

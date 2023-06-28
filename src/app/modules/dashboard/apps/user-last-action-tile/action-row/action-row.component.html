@@ -18,11 +18,11 @@
 
 
 <ng-container *ngIf="action">
-  <div class="row py-2 border-bottom">
-    <div class="col-3">
+  <div class="row py-2 border-bottom d-flex flex-wrap">
+    <div class="col-lg-3 col-md-2">
       <div class="d-flex justify-content-between">
         <span
-          class="qa_action_created_at"
+          class="qa_action_created_at mr-2"
           container="body"
           [ngbTooltip]="action.actionCreatedAt | date: FULL_DATE_FORMAT"
           >{{
@@ -98,7 +98,7 @@
         </ng-container>
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-lg-9 col-md-7">
       <ng-content></ng-content>
     </div>
   </div>

@@ -32,3 +32,29 @@ li {
   padding-left: initial;
   margin-top: initial;
 }
+
+
+@media (max-width: 605px) {
+  h2 {
+    font-size: 31px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 28px !important;
+  }
+}
+
+@media (max-width: 586px) {
+  h2 {
+    font-size: 25px !important;
+  }
+}
+
+@media (max-width: 570px) {
+  .p-l-2px {
+    padding-left: 2px !important;
+  }
+}
+
