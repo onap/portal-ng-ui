@@ -18,10 +18,10 @@
 
 <ng-template #template>
   <ng-container *ngIf="actions$ | async as actions">
-    <div class="col-xl-4 col-lg-6 col-sm-12 my-2 qa_USER_LAST_ACTION_TILE" cdkDrag>
-      <div class="shadow card" style="height: 334.867px">
+    <div class="col-xl-5 col-lg-7 col-sm-12 my-2 qa_USER_LAST_ACTION_TILE" cdkDrag>
+      <div class="shadow card tile-height">
         <div class="card-header pl-3">
-          <div class="d-flex" *ngIf="actionFilterType$ | async as selectedFilter">
+          <div class="d-flex flex-wrap no-flex-wrap" *ngIf="actionFilterType$ | async as selectedFilter">
             <div class="d-flex align-items-center">
               <i
                 class="bi bi-arrows-move text-primary draggable text-primary pr-2"
@@ -43,7 +43,7 @@
                 </option>
               </select>
             </div>
-            <div class="d-flex" *ngIf="actionIntervalType$ | async as selectedInterval">
+            <div class="d-flex m-l-24px" *ngIf="actionIntervalType$ | async as selectedInterval">
               <label class="d-none" for="intervalSelect"
                 >{{ 'dashboard.apps.userLastAction.filter.label' | translate
                 }}{{ 'dashboard.apps.userLastAction.filter.interval.' + selectedInterval | translate }}</label
