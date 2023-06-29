@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "de17c7da_3174215c",
+        "filename": "src/app/modules/dashboard/apps/user-last-action-tile/user-last-action-tile.component.css",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 7849
+      },
+      "writtenOn": "2023-06-29T06:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ec54c8_43973bb7",
+      "revId": "712cec17e7cb7b2cedc882f866328311f3fa0532",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da4a5774_e9d31a45",
         "filename": "src/app/modules/dashboard/apps/user-last-action-tile/user-last-action-tile.component.html",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "db3cc13c_ab4115c8",
+        "filename": "src/app/modules/dashboard/apps/user-last-action-tile/user-last-action-tile.component.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 7849
+      },
+      "writtenOn": "2023-06-29T06:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da4a5774_e9d31a45",
+      "revId": "712cec17e7cb7b2cedc882f866328311f3fa0532",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7803adbf_3e3bea47",
         "filename": "src/app/modules/dashboard/apps/user-last-action-tile/user-last-action-tile.component.html",
         "patchSetId": 1
@@ -50,6 +86,42 @@
       "revId": "712cec17e7cb7b2cedc882f866328311f3fa0532",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1348f562_92f2ea8b",
+        "filename": "src/app/modules/dashboard/apps/user-last-action-tile/user-last-action-tile.component.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7849
+      },
+      "writtenOn": "2023-06-29T06:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7803adbf_3e3bea47",
+      "revId": "712cec17e7cb7b2cedc882f866328311f3fa0532",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeafa6f2_ddff229a",
+        "filename": "src/app/modules/dashboard/apps/user-last-action-tile/user-last-action-tile.component.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 7849
+      },
+      "writtenOn": "2023-06-29T06:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7803adbf_3e3bea47",
+      "revId": "712cec17e7cb7b2cedc882f866328311f3fa0532",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
