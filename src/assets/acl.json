@@ -1,5 +1,5 @@
 {
-  "onap_admin": [
+  "portal_admin": [
     "users.administration.list",
     "users.administration.detail",
     "users.administration.create",
@@ -19,7 +19,7 @@
     "dashboard.tile.USER_LAST_ACTION_TILE",
     "treeview"
   ],
-  "onap_operator": [
+  "portal_operator": [
     "cellSite.map",
     "serviceInstance.list",
     "serviceInstance.delete",
@@ -34,7 +34,7 @@
     "dashboard.tile.USER_LAST_ACTION_TILE",
     "treeview"
   ],
-  "onap_designer": [
+  "portal_designer": [
     "kpi",
     "kpi.graphs",
     "kpi.grafana",
