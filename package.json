@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
-    "openapi": "openapi-generator-cli generate --generator-key v3.0",
+    "openapi": "npx openapi-generator-cli generate --generator-key v3.0",
     "ng": "./node-modules/.bin/ng",
     "prestart": "npm run openapi",
     "start": "ng serve -- --proxy-config staging.proxy.config.json --host 0.0.0.0 --port 80 --disable-host-check",
