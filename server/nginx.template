@@ -1,16 +1,5 @@
-# Log format for onap logging
-log_format onap_logging '"$request_body"';
-
-lua_package_path '/usr/local/openresty/lualib/?.lua;;';
-# cache for discovery metadata documents
-lua_shared_dict discovery 1m;
-# cache for JWKs
-lua_shared_dict jwks 1m;
-
 # if run in local docker container add this resolver for the DNS to connect to Keycloak
 resolver ${CLUSTER_NAMESERVER_IP};
-
-error_log logs/error.log error;
 
 server {
     listen       ${NGINX_PORT};
@@ -49,51 +38,6 @@ server {
             proxy_set_header    X-Forwarded-Server $host;
             proxy_set_header    X-Forwarded-Port   $server_port;
             proxy_set_header    X-Forwarded-Proto  $scheme;
-    }
-
-    location = /onap_logging {
-        access_by_lua '
-                  local openidc = require("resty.openidc");
-                  -- uncomment for logging next line
-                  -- openidc.set_logging(nil, { DEBUG = ngx.DEBUG });
-                  local opts = {
-                   discovery = "${KEYCLOAK_INTERNAL_URL}/auth/realms/${KEYCLOAK_REALM}/.well-known/openid-configuration",
-
-                   -- the signature algorithm that you expect has been used;
-                   -- can be a single string or a table.
-                   -- You should set this for security reasons in order to
-                   -- avoid accepting a token claiming to be signed by HMAC
-                   -- using a public RSA key.
-                   -- token_signing_alg_values_expected = { "HS256" },
-
-                   -- if you want to accept unsigned tokens (using the
-                   -- "none" signature algorithm) then set this to true.
-                   accept_none_alg = false,
-
-                   -- if you want to reject tokens signed using an algorithm
-                   -- not supported by lua-resty-jwt set this to false. If
-                   -- you leave it unset, the token signature will not be
-                   -- verified at all.
-                   accept_unsupported_alg = false
-                 }
-                 -- call introspect for OAuth 2.0 Bearer Access Token validation
-                 local res, err = require("resty.openidc").bearer_jwt_verify(opts)
-
-                 if err then
-                   ngx.status = 403
-                   ngx.say(err)
-                   ngx.exit(ngx.HTTP_FORBIDDEN)
-                 end
-
-               ';
-            access_log /dev/stdout onap_logging;
-            proxy_pass http://portal-ui/onap_logging_proxy;
-            proxy_http_version 1.1;
-    }
-
-    location = /onap_logging_proxy {
-          access_log off;
-          return 200 'Message logged';
     }
 }
 
