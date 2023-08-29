@@ -11,9 +11,9 @@
       "redirectUrl": "https://sdc-ui-HOSTNAME/sdc1/portal",
       "groups": [],
       "roles": [
-        "ONAP_ADMIN",
-        "ONAP_OPERATOR",
-        "ONAP_DESIGNER"
+        "PORTAL_ADMIN",
+        "PORTAL_OPERATOR",
+        "PORTAL_DESIGNER"
       ]
     },
     {
@@ -27,7 +27,7 @@
       "redirectUrl": "https://policy-ui-HOSTNAME/",
       "groups": [],
       "roles": [
-        "ONAP_ADMIN"
+        "PORTAL_ADMIN"
       ]
     },
     {
@@ -41,7 +41,7 @@
       "redirectUrl": "https://so-monitoring-ui-HOSTNAME/",
       "groups": [],
       "roles": [
-        "ONAP_OPERATOR"
+        "PORTAL_OPERATOR"
       ]
     },
     {
@@ -55,9 +55,9 @@
       "redirectUrl": "https://cds-ui-HOSTNAME/",
       "groups": [],
       "roles": [
-        "ONAP_ADMIN",
-        "ONAP_OPERATOR",
-        "ONAP_DESIGNER"
+        "PORTAL_ADMIN",
+        "PORTAL_OPERATOR",
+        "PORTAL_DESIGNER"
       ]
     },
     {
@@ -71,9 +71,9 @@
       "redirectUrl": "https://holmes-ui-HOSTNAME/iui/holmes/default.html",
       "groups": [],
       "roles": [
-        "ONAP_ADMIN",
-        "ONAP_OPERATOR",
-        "ONAP_DESIGNER"
+        "PORTAL_ADMIN",
+        "PORTAL_OPERATOR",
+        "PORTAL_DESIGNER"
       ]
     },
     {
@@ -87,9 +87,9 @@
       "redirectUrl": "https://aai-ui-HOSTNAME/services/aai/webapp/index.html#/browse",
       "groups": [],
       "roles": [
-        "ONAP_ADMIN",
-        "ONAP_OPERATOR",
-        "ONAP_DESIGNER"
+        "PORTAL_ADMIN",
+        "PORTAL_OPERATOR",
+        "PORTAL_DESIGNER"
       ]
     },
     {
@@ -103,9 +103,9 @@
       "redirectUrl": "https://dcaemod-ui-HOSTNAME/nifi/",
       "groups": [],
       "roles": [
-        "ONAP_ADMIN",
-        "ONAP_OPERATOR",
-        "ONAP_DESIGNER"
+        "PORTAL_ADMIN",
+        "PORTAL_OPERATOR",
+        "PORTAL_DESIGNER"
       ]
     },
     {
@@ -119,9 +119,9 @@
       "redirectUrl": "https://sdncdg-ui-HOSTNAME/",
       "groups": [],
       "roles": [
-        "ONAP_ADMIN",
-        "ONAP_OPERATOR",
-        "ONAP_DESIGNER"
+        "PORTAL_ADMIN",
+        "PORTAL_OPERATOR",
+        "PORTAL_DESIGNER"
       ]
     },
     {
@@ -135,9 +135,9 @@
       "redirectUrl": "https://sdncodl-ui-HOSTNAME//odlux/index.html",
       "groups": [],
       "roles": [
-        "ONAP_ADMIN",
-        "ONAP_OPERATOR",
-        "ONAP_DESIGNER"
+        "PORTAL_ADMIN",
+        "PORTAL_OPERATOR",
+        "PORTAL_DESIGNER"
       ]
     },
     {
@@ -151,9 +151,9 @@
       "redirectUrl": "https://nonrtric-controlpanel-HOSTNAME/",
       "groups": [],
       "roles": [
-        "ONAP_ADMIN",
-        "ONAP_OPERATOR",
-        "ONAP_DESIGNER"
+        "PORTAL_ADMIN",
+        "PORTAL_OPERATOR",
+        "PORTAL_DESIGNER"
       ]
     }
   ]
