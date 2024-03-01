@@ -22,6 +22,7 @@
 
 set -eu
 
+export CLUSTER_NAMESERVER_IP=$(grep 'nameserver' /etc/resolv.conf | awk '{print $2}') # dynamically retrieve nameserver on startup
 envsubst '${BFF_URL} ${NGINX_PORT} ${KEYCLOAK_URL} ${KEYCLOAK_REALM} ${KEYCLOAK_INTERNAL_URL} ${CLUSTER_NAMESERVER_IP}' < ./nginx.template > /etc/nginx/conf.d/default.conf
 
 # dynamically set Angular environment config upon container startup

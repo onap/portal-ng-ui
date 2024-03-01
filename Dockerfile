@@ -12,9 +12,11 @@ COPY . .
 
 RUN npm run build -- --configuration production
 
-FROM openresty/openresty:1.21.4.1-4-alpine
-RUN apk add gettext
-COPY server/resty /usr/local/openresty/lualib/resty/
+FROM nginxinc/nginx-unprivileged:alpine-slim
+USER root
+RUN apk add gettext # required for envsubst in docker_entrypoint.sh
+USER nginx
+
 COPY server/nginx* ./
 COPY docker_entrypoint.sh .
 COPY --from=builder /usr/src/app/dist/frontend /usr/share/nginx/html
