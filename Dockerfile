@@ -17,9 +17,9 @@ USER root
 RUN apk add gettext # required for envsubst in docker_entrypoint.sh
 USER nginx
 
-COPY server/nginx* ./
-COPY docker_entrypoint.sh .
-COPY --from=builder /usr/src/app/dist/frontend /usr/share/nginx/html
+COPY --chown=nginx:nginx server/nginx* ./
+COPY --chown=nginx:nginx docker_entrypoint.sh .
+COPY --from=builder --chown=nginx:nginx /usr/src/app/dist/frontend /usr/share/nginx/html
 ENTRYPOINT ["/docker_entrypoint.sh"]
 EXPOSE ${NGINX_PORT}
 CMD ["nginx", "-g", "daemon off;"]
