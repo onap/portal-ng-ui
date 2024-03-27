@@ -42,5 +42,5 @@ export const environment: Environment = {
   dateTimeFormat: 'dd/MM/yyyy  HH:mm:ss',
   loggingUrl: window.location.origin + '/onap_logging',
   supportUrlLink: 'https://wiki.onap.org/',
-  loggingEnabled: true
+  loggingEnabled: window["env"]["loggingEnabled"] || false,
 };

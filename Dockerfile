@@ -14,7 +14,7 @@ RUN npm run build -- --configuration production
 
 FROM nginxinc/nginx-unprivileged:alpine-slim
 USER root
-RUN apk add gettext # required for envsubst in docker_entrypoint.sh
+RUN apk add --no-cache gettext # required for envsubst in docker_entrypoint.sh
 USER nginx
 
 COPY --chown=nginx:nginx server/nginx* ./
