@@ -10,7 +10,7 @@
     "target": "http://localhost:8089",
     "secure": false,
     "pathRewrite": {
-      "^/mock-api": "/portal-bff"
+      "^/mock-api": "/bff"
     }
   },
   "/auth": {

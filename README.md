@@ -15,7 +15,7 @@ npm start
 ```
 
 ### Developing against local containers
-We are providing a docker-compose file that can be used to spin up the portal-ng and it's dependencies (like Keycloak or the portal-bff) on your machine.
+We are providing a docker-compose file that can be used to spin up the portal-ng and it's dependencies (like Keycloak or the bff) on your machine.
 
 To do that, execute the `run.sh` in the development folder:
 ```shell
@@ -62,7 +62,7 @@ In the configuration of nginx (the `nginx.template`) we have a few environment v
 
 ```bash
 export NGINX_PORT=80
-export BFF_URL=http://portal-bff:9080/
+export BFF_URL=http://bff:9080/
 export WIREMOCK_URL=http://wiremock:8080/
 ```
 
@@ -75,7 +75,7 @@ docker build -t portal-ng .
 ### Run the docker image
 
 ```bash
-docker run -e "NGINX_PORT=80" -e "BFF_URL=http:portal-bff:9080/" -e "WIREMOCK_URL=http://wiremock:8080/" -p 8080:80 portal-ng
+docker run -e "NGINX_PORT=80" -e "BFF_URL=http:bff:9080/" -e "WIREMOCK_URL=http://wiremock:8080/" -p 8080:80 portal-ng
 ```
 
 Note that this will not work on its own, because the referenced containers (`BFF` and `WIREMOCK`) are most likely not available in your local environment. You would have to run them as well, or pass in other urls (like `example.com`) to get the container running locally. Obviously this does not get you very far though.
