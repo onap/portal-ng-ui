@@ -13,13 +13,11 @@ COPY . .
 RUN npm run build -- --configuration production
 
 FROM nginxinc/nginx-unprivileged:alpine-slim
-USER root
-RUN apk add --no-cache gettext # required for envsubst in docker_entrypoint.sh
 USER nginx
 
-COPY --chown=nginx:nginx server/nginx* ./
-COPY --chown=nginx:nginx docker_entrypoint.sh .
 COPY --from=builder --chown=nginx:nginx /usr/src/app/dist/frontend /usr/share/nginx/html
-ENTRYPOINT ["/docker_entrypoint.sh"]
+
+# Overwrite existing entrypoint from base image
+ENTRYPOINT []
 EXPOSE ${NGINX_PORT}
 CMD ["nginx", "-g", "daemon off;"]
