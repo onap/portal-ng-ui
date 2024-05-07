@@ -1,0 +1,7 @@
+distribution_type: container
+container_release_tag: 0.1.0
+project: portal-ng/ui
+ref: 6cb27526d896d93198cde75fc2af914155087441
+containers:
+    - name: portal-ng/ui
+      version: latest
