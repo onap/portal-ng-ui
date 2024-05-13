@@ -1,0 +1,181 @@
+###
+GET http://localhost:9411
+
+###
+GET http://localhost:9080
+
+###
+POST http://localhost:9411/api/v2/spans
+
+[
+  {
+    "traceId": "cd71c43ec69835147a3876883185bb05",
+    "name": "GET",
+    "id": "45be6178843d9aa8",
+    "kind": "CLIENT",
+    "timestamp": 1695200396928000,
+    "duration": 535000,
+    "localEndpoint": {
+      "serviceName": "ui"
+    },
+    "tags": {
+      "http.method": "GET",
+      "http.url": "assets/i18n/en.json?t=1695200396910",
+      "http.host": "localhost",
+      "http.scheme": "http",
+      "http.target": "/dashboard",
+      "http.user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
+      "http.status_code": "200",
+      "service.name": "ui",
+      "telemetry.sdk.language": "webjs",
+      "telemetry.sdk.name": "opentelemetry",
+      "telemetry.sdk.version": "1.13.0"
+    },
+    "annotations": [
+      {
+        "timestamp": 1695200397463000,
+        "value": "response"
+      }
+    ]
+  },
+  {
+    "traceId": "57ea27cb439f00e62fac258637b7961c",
+    "name": "GET",
+    "id": "bf17bdf17bad31be",
+    "kind": "CLIENT",
+    "timestamp": 1695200396956000,
+    "duration": 545000,
+    "localEndpoint": {
+      "serviceName": "ui"
+    },
+    "tags": {
+      "http.method": "GET",
+      "http.url": "http://localhost/auth/realms/ONAP/.well-known/openid-configuration",
+      "http.host": "localhost",
+      "http.scheme": "http",
+      "http.target": "/auth/realms/ONAP/.well-known/openid-configuration",
+      "http.user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
+      "http.status_code": "200",
+      "service.name": "ui",
+      "telemetry.sdk.language": "webjs",
+      "telemetry.sdk.name": "opentelemetry",
+      "telemetry.sdk.version": "1.13.0"
+    },
+    "annotations": [
+      {
+        "timestamp": 1695200397494000,
+        "value": "response"
+      }
+    ]
+  },
+  {
+    "traceId": "e0948edcdbe35ade666ebbcad222aec4",
+    "name": "GET",
+    "id": "a50aff15910159e5",
+    "kind": "CLIENT",
+    "timestamp": 1695200397494000,
+    "duration": 198000,
+    "localEndpoint": {
+      "serviceName": "ui"
+    },
+    "tags": {
+      "http.method": "GET",
+      "http.url": "http://localhost/auth/realms/ONAP/protocol/openid-connect/certs",
+      "http.host": "localhost",
+      "http.scheme": "http",
+      "http.target": "/auth/realms/ONAP/protocol/openid-connect/certs",
+      "http.user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
+      "http.status_code": "200",
+      "service.name": "ui",
+      "telemetry.sdk.language": "webjs",
+      "telemetry.sdk.name": "opentelemetry",
+      "telemetry.sdk.version": "1.13.0"
+    },
+    "annotations": [
+      {
+        "timestamp": 1695200397692000,
+        "value": "response"
+      }
+    ]
+  },
+  {
+    "traceId": "7e17366555e8e170d70e874837a4791f",
+    "name": "GET",
+    "id": "6162b2b9198d002b",
+    "kind": "CLIENT",
+    "timestamp": 1695200397775000,
+    "duration": 480000,
+    "localEndpoint": {
+      "serviceName": "ui"
+    },
+    "tags": {
+      "http.method": "GET",
+      "http.url": "http://localhost/auth/realms/ONAP/protocol/openid-connect/userinfo",
+      "http.host": "localhost",
+      "http.scheme": "http",
+      "http.target": "/auth/realms/ONAP/protocol/openid-connect/userinfo",
+      "http.user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
+      "http.status_code": "200",
+      "service.name": "ui",
+      "telemetry.sdk.language": "webjs",
+      "telemetry.sdk.name": "opentelemetry",
+      "telemetry.sdk.version": "1.13.0"
+    },
+    "annotations": [
+      {
+        "timestamp": 1695200398253000,
+        "value": "response"
+      }
+    ]
+  },
+  {
+    "traceId": "462bb3c500351c40d2c7b84d8c79e122",
+    "name": "GET",
+    "id": "4e6df6797dbd602f",
+    "kind": "CLIENT",
+    "timestamp": 1695200398350000,
+    "duration": 530000,
+    "localEndpoint": {
+      "serviceName": "ui"
+    },
+    "tags": {
+      "http.method": "GET",
+      "http.url": "http://localhost/api/actions/2a1044c8-c897-4651-a9d5-260b9ae203bd?page=1&pageSize=1000&showLastHours=1",
+      "http.host": "localhost",
+      "http.scheme": "http",
+      "http.target": "/api/actions/2a1044c8-c897-4651-a9d5-260b9ae203bd?page=1&pageSize=1000&showLastHours=1",
+      "http.user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
+      "http.status_code": "502",
+      "otel.status_code": "ERROR",
+      "service.name": "ui",
+      "telemetry.sdk.language": "webjs",
+      "telemetry.sdk.name": "opentelemetry",
+      "telemetry.sdk.version": "1.13.0"
+    }
+  },
+  {
+    "traceId": "545594683a4d624e6b7313861fe5508e",
+    "name": "GET",
+    "id": "9cb1f59350a5cb52",
+    "kind": "CLIENT",
+    "timestamp": 1695200398266000,
+    "duration": 729000,
+    "localEndpoint": {
+      "serviceName": "ui"
+    },
+    "tags": {
+      "http.method": "GET",
+      "http.url": "http://localhost/api/preferences",
+      "http.host": "localhost",
+      "http.scheme": "http",
+      "http.target": "/api/preferences",
+      "http.user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
+      "http.status_code": "500",
+      "otel.status_code": "ERROR",
+      "service.name": "ui",
+      "telemetry.sdk.language": "webjs",
+      "telemetry.sdk.name": "opentelemetry",
+      "telemetry.sdk.version": "1.13.0"
+    }
+  }
+]
