@@ -35,7 +35,7 @@ import { urlTileApi } from '../services/tileservice/tiles.service';
 export class CachingInterceptor implements HttpInterceptor {
   private cachedUrls: Array<string> = [
     urlTileApi,
-    window.location.origin + '/keycloak/auth/realms/ONAP/protocol/openid-connect/userinfo',
+    window.location.origin + '/keycloak/realms/ONAP/protocol/openid-connect/userinfo',
   ];
 
   // cache is the cache service that supports get() and put()
