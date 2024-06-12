@@ -1,0 +1,8 @@
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Thomas Kulik <thomas.kulik@telekom.de>
+Submitted-by: Thomas Kulik <thomas.kulik@telekom.de>
+Submitted-at: Wed, 12 Jun 2024 10:55:48 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/portal-ng/ui/+/138155
+Project: portal-ng/ui
+Branch: refs/heads/master
