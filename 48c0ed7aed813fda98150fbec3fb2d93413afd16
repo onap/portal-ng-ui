@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Fiete Ostkamp <fiete.ostkamp@telekom.de>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Submitted-by: Thomas Kulik <thomas.kulik@telekom.de>
+Submitted-at: Mon, 17 Jun 2024 10:09:02 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/portal-ng/ui/+/138241
+Project: portal-ng/ui
+Branch: refs/heads/master
