@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2615151_b923ea40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2024-07-03T21:12:07Z",
+      "side": 1,
+      "message": "We need to use reusable workflows.. we have a generic sonar available that they can use\nhttps://github.com/lfit/releng-reusable-workflows/blob/main/.github/workflows/composed-generic-sonar-cloud.yaml",
+      "revId": "cd5a1ab225d4455e634aeea7bba07b591e330899",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
