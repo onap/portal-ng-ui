@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c71665_db553d1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2024-07-11T16:53:31Z",
+      "side": 1,
+      "message": "You will need to rename this file to gerrit-merge.yaml since this is what the dispatcher is looking for. \nAlso, you can remove these \n  push:\n    branches: [ \"master\" ]\n  pull_request:\n    branches: [ \"master\" ]",
+      "revId": "2523c25e5a7e08a0ecd4b44a609a26f849728200",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
