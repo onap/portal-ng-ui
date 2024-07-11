@@ -1,7 +1,8 @@
 # the JRE is required by the openapi-generator-cli
-FROM eclipse-temurin:17-jre-alpine as builder
+# FROM eclipse-temurin:17-jre-alpine as builder
+FROM node:16-alpine AS builder
 RUN apk update && \
-    apk add nodejs npm
+    apk add openjdk17
 WORKDIR /usr/src/app
 
 COPY package*.json ./
