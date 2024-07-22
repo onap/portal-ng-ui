@@ -5,7 +5,7 @@
 .. DO NOT CHANGE THIS LABEL FOR RELEASE NOTES - EVEN THOUGH IT GIVES A WARNING
 .. _release_notes:
 
-Portal-ng Release Notes
+Portal-NG Release Notes
 #######################
 
 .. contents::
