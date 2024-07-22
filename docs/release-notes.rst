@@ -44,8 +44,8 @@ Features
 --------
 The Portal-NG is the successor of the Portal project, which has been
 discontinued. It offers a dashboard with the last user-actions in the portal,
-an app-starter that references the other ui's available in ONAP and
-a user management that allows creating and editing users and their roles.
+an app-starter that references the other ui's available in ONAP and a user
+management that allows creating and editing users and their roles.
 
 .. _newdelhi_deliverable:
 
