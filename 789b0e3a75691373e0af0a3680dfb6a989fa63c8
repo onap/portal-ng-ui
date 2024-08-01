@@ -1,0 +1,9 @@
+Code-Review+2: Fiete Ostkamp <fiete.ostkamp@telekom.de>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: Thomas Kulik <thomas.kulik@telekom.de>
+Code-Review+2: Thomas Kulik <thomas.kulik@telekom.de>
+Submitted-by: Fiete Ostkamp <fiete.ostkamp@telekom.de>
+Submitted-at: Thu, 01 Aug 2024 07:53:34 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/portal-ng/ui/+/138190
+Project: portal-ng/ui
+Branch: refs/heads/newdelhi
