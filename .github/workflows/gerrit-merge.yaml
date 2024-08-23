@@ -84,6 +84,8 @@ jobs:
       GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
       GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
       JDK_VERSION: "17"
+      ENV_VARS: "{}"
+      ENV_SECRETS: "{}"
       SONAR_ARGS: >
         -Dsonar.organization=onap
         -Dsonar.projectKey=onap_portal-ng-ui
