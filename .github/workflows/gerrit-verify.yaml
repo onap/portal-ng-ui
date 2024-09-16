@@ -67,7 +67,7 @@ jobs:
 #        run: sleep 10s
 
   generic-verify-clm:
-    needs: prepare
+    # needs: prepare
     # yamllint disable-line rule:line-length
     uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/composed-generic-nexus-iq.yaml@master
     with:
