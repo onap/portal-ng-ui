@@ -69,7 +69,7 @@ jobs:
   generic-verify-clm:
     needs: prepare
     # yamllint disable-line rule:line-length
-    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/composed-generic-nexus-iq.yaml@main
+    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/composed-generic-nexus-iq.yaml@master
     with:
       GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
       GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
