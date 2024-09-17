@@ -34,6 +34,7 @@ jobs:
 
       - name: "Checkout repository if source is GitHub"
         if: inputs.location == 'github'
+        uses: actions/checkout@v4
 
       - name: "Build Node.js project"
         uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/node-build@master
