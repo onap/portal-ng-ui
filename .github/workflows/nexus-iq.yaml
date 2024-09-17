@@ -20,17 +20,17 @@ on:
 jobs:
 
   node-verify-clm:
+    name: "Scan Node.js project with Nexus IQ"
     runs-on: ubuntu-latest
     steps:
 
-      # Build Node.js project
-      - uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/node-build@master
+      - name: "Build Node.js project"
+        uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/node-build@master
         with:
           node-version: ${{ inputs.node-version }}
           build-tool: ${{ inputs.build-tool }}
 
       - name: Nexus IQ Policy Evaluation
-        needs:
         # Somebody has set continue-on-error in the RelEng Reusable Workflows Repository
         # continue-on-error: true
         # Why?!?!?
@@ -38,21 +38,19 @@ jobs:
         # See: https://github.com/lfit/releng-reusable-workflows/blob/main/.github/workflows/composed-gradle-nexus-iq.yaml
         # yamllint disable-line rule:line-length
         # See: https://github.com/lfit/releng-reusable-workflows/blob/main/.github/workflows/composed-maven-nexus-iq.yaml
-        # This has multiple issues:
+        # This has an issue with the shebang directive:
         # uses: sonatype-nexus-community/iq-github-action@main
         # See: https://github.com/onap/portal-ng-ui/actions/runs/10527123076/job/29169584344
         # e.g. /entrypoint.sh: 18: [[: not found
         uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/iq-github-action@master
-        env:
-          stage: 'build'
         with:
           serverUrl: ${{ vars.NEXUS_IQ_SERVER }}
           username: ${{ vars.NEXUS_IQ_USERNAME }}
           password: ${{ secrets.NEXUS_IQ_PASSWORD }}
-          #applicationId: ${{ github.repository_owner }}-${{ github.event.repository.name }}
           # Temporarily force to ONAP because testing in ModeSevenIndustrialSolutions
           applicationId: onap-${{ github.event.repository.name }}
+          # applicationId: ${{ github.repository_owner }}-${{ github.event.repository.name }}
           stage: 'build'
-          # target: ''
           writePolicyEvaluationJson: 'policy-eval-results.json'
+          # target: ''
           # debug: true
