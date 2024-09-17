@@ -38,6 +38,8 @@ runs:
 
     # Build project with preferred tooling
     - run: 'npm install --production'
+      shell: bash
       if: inputs.node-version == 'npm'
     - run: 'yarn install --prod'
+      shell: bash
       if: inputs.node-version == 'yarn'
