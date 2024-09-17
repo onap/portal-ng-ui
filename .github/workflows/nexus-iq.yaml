@@ -18,6 +18,12 @@ on:
         required: false
         type: number
         default: 20
+      LOCATION:
+        description: 'Location of source repository'
+        required: false
+        type: string
+        # Origin could [potentially be: [gerrit|github|gitlab]
+        default: "github"
 
 jobs:
 
@@ -25,6 +31,9 @@ jobs:
     name: "Scan Node.js project with Nexus IQ"
     runs-on: ubuntu-latest
     steps:
+
+      - name: "Checkout repository if source is GitHub"
+        if: inputs.location == 'github'
 
       - name: "Build Node.js project"
         uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/node-build@master
