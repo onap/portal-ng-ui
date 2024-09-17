@@ -45,8 +45,9 @@ jobs:
           username: ${{ vars.NEXUS_IQ_USERNAME }}
           password: ${{ secrets.NEXUS_IQ_PASSWORD }}
           applicationId: ${{ github.event.repository.name }}
-          stage: ${{ env.NEXUS_STAGE }}
-          target: ${{ env.NEXUS_TARGET }}
+          stage: "build"
+          target: "/"
+          writePolicyEvaluationJson: "policy-eval-results.json"
 
 #  vote:
 #    if: ${{ always() }}
