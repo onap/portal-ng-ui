@@ -50,7 +50,7 @@ on:
 
       ### Specific to this workflow
       SOURCE-ORIGIN:
-        description: 'Gerrit refspec of change'
+        description: 'Code repository/origin [gerrit|other]'
         required: false
         type: string
         default: 'gerrit'
@@ -82,6 +82,7 @@ jobs:
 
   node-verify-clm:
     runs-on: ubuntu-latest
+    needs: [prepare]
     steps:
       # Below needs to be swapped for GERRIT change/checkout for VERIFY jobs (NOT merge)
       - uses: actions/checkout@v4
