@@ -26,20 +26,18 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
 
-    # Install Yarn, show tooling versions
-    - run: 'npm install --global yarn'
-      shell: bash
-    - run: 'node -v'
-      shell: bash
-    - run: 'npm -v'
-      shell: bash
-    - run: 'yarn -v'
-      shell: bash
-
     # Build project with preferred tooling
-    - run: 'npm install --production'
-      shell: bash
-      if: inputs.node-version == 'npm'
-    - run: 'yarn install --prod'
-      shell: bash
-      if: inputs.node-version == 'yarn'
+    - shell: bash
+      if: inputs.build-tool == 'yarn'
+      run:
+        # Build project using NPM
+        echo "Building project using NPM"
+        echo "npm install --production"
+        npm install --production
+    - shell: bash
+      if: inputs.build-tool == 'npm'
+      run:
+        # Build project using Yarn
+        echo "Building project using Yarn"
+        echo "yarn install --prod"
+        yarn install --prod
