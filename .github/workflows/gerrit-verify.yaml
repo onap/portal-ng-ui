@@ -113,8 +113,11 @@ jobs:
         # See: https://github.com/lfit/releng-reusable-workflows/blob/main/.github/workflows/composed-gradle-nexus-iq.yaml
         # yamllint disable-line rule:line-length
         # See: https://github.com/lfit/releng-reusable-workflows/blob/main/.github/workflows/composed-maven-nexus-iq.yaml
-        # uses: ModeSevenIndustrialSolutions/iq-github-action@main
-        uses: sonatype-nexus-community/iq-github-action@main
+        # This has multiple issues:
+        # uses: sonatype-nexus-community/iq-github-action@main
+        # See: https://github.com/onap/portal-ng-ui/actions/runs/10527123076/job/29169584344
+        # e.g. /entrypoint.sh: 18: [[: not found
+        uses: ModeSevenIndustrialSolutions/iq-github-action@main
         env:
           stage: 'build'
         with:
@@ -127,6 +130,7 @@ jobs:
           stage: 'build'
           target: '/'
           writePolicyEvaluationJson: 'policy-eval-results.json'
+          debug: true
 
   #vote:
   #  if: inputs.source-origin == 'gerrit'
