@@ -32,10 +32,15 @@ cleanup() {
 }
 trap cleanup EXIT
 
+echo "GITHUB_WORKSPACE set to: $GITHUB_WORKSPACE"
+
+echo "Arguments to entrypoint.sh:"
+echo "$@"
+
 debug "Preparing the Sonatype Lifecycle GitHub Action..."
 
-EVALUATE_OPTS="-s $1 -a $2:$3 -i $4 -t $5"
-TARGET="$GITHUB_WORKSPACE/$6"
+EVALUATE_OPTS="-s $1 -a $2:$3 -i $4 -t $5 $GITHUB_WORKSPACE/$6"
+echo "EVALUATE_OPTS: $EVALUATE_OPTS"
 
 # If Debug Enabled, pass the flag to IQ CLI
 if [[ $DEBUG_ENABLED == 1 ]]; then
@@ -50,12 +55,9 @@ if [ ! -z "$9" ]; then
     EVALUATE_OPTS="${EVALUATE_OPTS} -U ${9}"
 fi
 
-# Handle $10 for -r flag
-if [[ "true" == "${10}" ]]; then
-    EVALUATE_OPTS="${EVALUATE_OPTS} -r $GITHUB_WORKSPACE/sonatype-lifecycle-policy-eval.json"
-fi
-
 debug "EVALUATE_OPTS will be: ${EVALUATE_OPTS}"
 debug "Target will be: ${TARGET}"
 
+echo "Running Nexus IQ Scanning CLI with:"
+echo "/sonatype/evaluate $EVALUATE_OPTS $TARGET"
 /sonatype/evaluate $EVALUATE_OPTS $TARGET
