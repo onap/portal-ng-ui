@@ -39,7 +39,7 @@ jobs:
         continue-on-error: true
         uses: ModeSevenIndustrialSolutions/iq-github-action@main
         with:
-          serverUrl: ${{ env.NEXUS_IQ_SERVER }}
+          serverUrl: ${{ vars.NEXUS_IQ_SERVER }}
           username: ${{ vars.NEXUS_IQ_USERNAME }}
           password: ${{ secrets.NEXUS_IQ_PASSWORD }}
           applicationId: ${{ github.event.repository.name }}
