@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: 2024 The Linux Foundation <https://linuxfoundation.org>
 
-name: 'gerrit-verify.yaml [PRODUCTION WORKFLOW]'
+name: 'gerrit-verify.yaml [PRODUCTION]'
 
 # yamllint disable-line rule:truthy
 on:
@@ -76,6 +76,8 @@ jobs:
     with:
       node-version: 20
       build-tool: npm
+    secrets:
+      NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
 
   #vote:
   #  if: inputs.source-origin == 'gerrit'

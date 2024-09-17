@@ -24,6 +24,10 @@ on:
         type: string
         # Origin could [potentially be: [gerrit|github|gitlab]
         default: "github"
+    secrets:
+      NEXUS_IQ_PASSWORD:
+        description: "Nexus IQ Password"
+        required: true
 
 jobs:
 
