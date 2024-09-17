@@ -3,8 +3,8 @@
 # SPDX-FileCopyrightText: 2024 The Linux Foundation <https://linuxfoundation.org>
 
 name: '🧱 Build Node.js Project'
-author: 'The Linux Foundation <https://linuxfoundation.org>'
-description: 'Build a Node.js project'
+# author: 'The Linux Foundation <https://linuxfoundation.org>'
+# description: 'Build a Node.js project'
 
 inputs:
   BUILD-TOOL:
@@ -17,7 +17,8 @@ inputs:
     default: 20
 
 runs:
-  uses: 'composite'
+  using: 'composite'
+
   steps:
     # Setup/install Node.js tooling
     - name: 'Setup Node.js'
