@@ -56,8 +56,10 @@ concurrency:
 
 env:
   NEXUS_IQ_SERVER: https://nexus-iq.wl.linuxfoundation.org
+  NEXUS_IQ_USERNAME: "onap-nexus-clm"
   NEXUS_STAGE: build
-  NEXUS_TARGET: ""
+  NEXUS_TARGET: "."
+  APPLICATION_ID: "portal-ng-ui"
 
 jobs:
   run-generic-clm:
