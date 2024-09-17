@@ -44,7 +44,7 @@ jobs:
           serverUrl: ${{ vars.NEXUS_IQ_SERVER }}
           username: ${{ vars.NEXUS_IQ_USERNAME }}
           password: ${{ secrets.NEXUS_IQ_PASSWORD }}
-          applicationId: ${{ github.event.repository.name }}
+          applicationId: ${{ github.repository_owner }}-${{ github.event.repository.name }}
           stage: "build"
           target: "/"
           writePolicyEvaluationJson: "policy-eval-results.json"
