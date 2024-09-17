@@ -32,8 +32,9 @@ runs:
       run: |
         # Build project using NPM
         echo "Building project using NPM"
-        echo "npm install --production"
-        npm install --production
+        echo "npm install --omit=dev"
+        #npm install --production
+        npm install --omit=dev
     - shell: bash
       if: inputs.build-tool == 'npm'
       run: |
