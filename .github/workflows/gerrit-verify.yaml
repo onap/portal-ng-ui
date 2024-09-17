@@ -100,7 +100,7 @@ jobs:
       #    secrets: ${{ inputs.env-secrets }}
 
       # Build Node.js project
-      - uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/node-build@main
+      - uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/node-build@master
         with:
           node-version: 20
           build-tool: yarn
