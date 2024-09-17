@@ -3,14 +3,12 @@
 # SPDX-FileCopyrightText: 2024 The Linux Foundation <https://linuxfoundation.org>
 
 name: '🧱 Build Node.js Project'
-# author: 'The Linux Foundation <https://linuxfoundation.org>'
-# description: 'Build a Node.js project'
 
 inputs:
   BUILD-TOOL:
     description: 'Used to build Node.js project [npm|yarn]'
     required: false
-    default: 'npm'
+    default: 'yarn'
   NODE-VERSION:
     description: 'Node.js version to use for build'
     required: false
@@ -28,15 +26,14 @@ runs:
 
     # Build project with preferred tooling
     - shell: bash
-      if: inputs.build-tool == 'yarn'
+      if: inputs.build-tool == 'npm'
       run: |
         # Build project using NPM
         echo "Building project using NPM"
         echo "npm install --omit=dev"
-        #npm install --production
         npm install --omit=dev
     - shell: bash
-      if: inputs.build-tool == 'npm'
+      if: inputs.build-tool == 'yarn'
       run: |
         # Build project using Yarn
         echo "Building project using Yarn"
