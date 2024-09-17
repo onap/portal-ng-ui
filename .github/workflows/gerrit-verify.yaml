@@ -117,7 +117,7 @@ jobs:
         # uses: sonatype-nexus-community/iq-github-action@main
         # See: https://github.com/onap/portal-ng-ui/actions/runs/10527123076/job/29169584344
         # e.g. /entrypoint.sh: 18: [[: not found
-        uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/action/iq-github-action@master
+        uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/iq-github-action@master
         env:
           stage: 'build'
         with:
