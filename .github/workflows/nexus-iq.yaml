@@ -16,7 +16,7 @@ on:
       NODE-VERSION:
         description: 'Node.js version to use for build'
         required: false
-        type: integer
+        type: number
         default: 20
 
 jobs:
