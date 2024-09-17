@@ -3,15 +3,14 @@
 # SPDX-FileCopyrightText: 2024 The Linux Foundation <https://linuxfoundation.org>
 
 name: Nexus IQ Scan on Verify
-author: 'The Linux Foundation <https://linuxfoundation.org>'
-description: 'Scan a Node.js project and send results to Nexus IQ'
 
 # yamllint disable-line rule:truthy
 on:
-  workflow_dispatch:
   # ToDo: convert to a reusable workflow later
-  # workflow_call:
+  workflow_dispatch:
+    # workflow_call:
     inputs:
+      ### Required when interacting with Gerrit
       GERRIT_BRANCH:
         description: 'Branch that change is against'
         required: true
@@ -49,24 +48,26 @@ on:
         required: true
         type: string
 
+      ### Specific to this workflow
+      SOURCE-ORIGIN:
+        description: 'Gerrit refspec of change'
+        required: false
+        type: string
+        default: 'gerrit'
+
 concurrency:
   # yamllint disable-line rule:line-length
   group: composed-node-verify-clm${{ github.workflow }}-${{ github.event.inputs.GERRIT_CHANGE_ID || github.run_id }}
   cancel-in-progress: true
-
-env:
-  # Source of repository could be Gerrit, GitHub, GitLab, etc
-  source: 'gerrit'
-  job-type: 'merge'
 
 jobs:
   prepare:
     runs-on: ubuntu-latest
     steps:
       - name: Clear votes
-        if: env.source == 'gerrit' && env.job-type == 'verify'
+        if: inputs.source-origin == 'gerrit'
         # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a  # v0.6
+        uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a # v0.6
         with:
           username: ${{ vars.GERRIT_SSH_USER }}
           host: ${{ vars.GERRIT_SERVER }}
@@ -84,19 +85,18 @@ jobs:
     steps:
       # Below needs to be swapped for GERRIT change/checkout for VERIFY jobs (NOT merge)
       - uses: actions/checkout@v4
-        if: env.type == 'merge' || env.source != 'gerrit'
-
+        if: inputs.source-origin != 'gerrit'
       # Prevents the need to pass GERRIT requirements into subsequently called actions/workflows
-      - name: Export env variables
-        id: export-env-variables
-        uses: infovista-opensource/vars-to-env-action@1.0.0
-        with:
-          secrets: ${{ inputs.env-vars }}
-      - name: Export env secrets
-        id: export-env-secrets
-        uses: infovista-opensource/vars-to-env-action@1.0.0
-        with:
-          secrets: ${{ inputs.env-secrets }}
+      #- name: Export env variables
+      #  id: export-env-variables
+      #  uses: infovista-opensource/vars-to-env-action@1.0.0
+      #  with:
+      #    secrets: ${{ inputs.env-vars }}
+      #- name: Export env secrets
+      #  id: export-env-secrets
+      #  uses: infovista-opensource/vars-to-env-action@1.0.0
+      #  with:
+      #    secrets: ${{ inputs.env-secrets }}
 
       # Build Node.js project
       - uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/node-build@main
@@ -108,10 +108,12 @@ jobs:
         # Somebody has set continue-on-error in the RelEng Reusable Workflows Repository
         # continue-on-error: true
         # Why?!?!?
+        # yamllint disable-line rule:line-length
         # See: https://github.com/lfit/releng-reusable-workflows/blob/main/.github/workflows/composed-gradle-nexus-iq.yaml
+        # yamllint disable-line rule:line-length
         # See: https://github.com/lfit/releng-reusable-workflows/blob/main/.github/workflows/composed-maven-nexus-iq.yaml
         # uses: ModeSevenIndustrialSolutions/iq-github-action@main
-        uses: sonatype-nexus-community/iq-github-action
+        uses: sonatype-nexus-community/iq-github-action@main
         env:
           stage: 'build'
         with:
@@ -126,17 +128,17 @@ jobs:
           writePolicyEvaluationJson: 'policy-eval-results.json'
 
   vote:
-    if: env.source == 'gerrit' && env.job-type == 'verify'
+    if: inputs.source-origin == 'gerrit'
     needs: [prepare, node-verify-clm]
     runs-on: ubuntu-latest
     # yamllint enable rule:line-length
     steps:
-      - name: "Get conclusion"
+      - name: 'Get conclusion'
         # yamllint disable-line rule:line-length
-        uses: technote-space/workflow-conclusion-action@45ce8e0eb155657ab8ccf346ade734257fd196a5  # v3.0.3
-      - name: "Set vote"
+        uses: technote-space/workflow-conclusion-action@45ce8e0eb155657ab8ccf346ade734257fd196a5 # v3.0.3
+      - name: 'Set vote'
         # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a  # v0.6
+        uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a # v0.6
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
