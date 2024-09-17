@@ -61,28 +61,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clear votes
-        if: inputs.source-origin == 'gerrit'
-        # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a # v0.6
-        with:
-          username: ${{ vars.GERRIT_SSH_USER }}
-          host: ${{ vars.GERRIT_SERVER }}
-          key: ${{ secrets.GERRIT_SSH_PRIVKEY }}
-          known_hosts: ${{ vars.GERRIT_KNOWN_HOSTS }}
-          gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
-          gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
-          vote-type: clear
-          comment-only: true
-      - name: Allow replication to GitHub
-        run: sleep 10s
+  #prepare:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Clear votes
+  #      if: inputs.source-origin == 'gerrit'
+  #      # yamllint disable-line rule:line-length
+  #      uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a # v0.6
+  #      with:
+  #        username: ${{ vars.GERRIT_SSH_USER }}
+  #        host: ${{ vars.GERRIT_SERVER }}
+  #        key: ${{ secrets.GERRIT_SSH_PRIVKEY }}
+  #        known_hosts: ${{ vars.GERRIT_KNOWN_HOSTS }}
+  #        gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+  #        gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+  #        vote-type: clear
+  #        comment-only: true
+  #    - name: Allow replication to GitHub
+  #      run: sleep 10s
 
   node-verify-clm:
     runs-on: ubuntu-latest
-    needs: [prepare]
+    #needs: [prepare]
     steps:
       # Below needs to be swapped for GERRIT change/checkout for VERIFY jobs (NOT merge)
       - uses: actions/checkout@v4
@@ -128,24 +128,24 @@ jobs:
           target: '/'
           writePolicyEvaluationJson: 'policy-eval-results.json'
 
-  vote:
-    if: inputs.source-origin == 'gerrit'
-    needs: [prepare, node-verify-clm]
-    runs-on: ubuntu-latest
-    # yamllint enable rule:line-length
-    steps:
-      - name: 'Get conclusion'
-        # yamllint disable-line rule:line-length
-        uses: technote-space/workflow-conclusion-action@45ce8e0eb155657ab8ccf346ade734257fd196a5 # v3.0.3
-      - name: 'Set vote'
-        # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a # v0.6
-        with:
-          host: ${{ vars.GERRIT_SERVER }}
-          username: ${{ vars.GERRIT_SSH_USER }}
-          key: ${{ secrets.GERRIT_SSH_PRIVKEY }}
-          known_hosts: ${{ vars.GERRIT_KNOWN_HOSTS }}
-          gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
-          gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
-          vote-type: ${{ env.WORKFLOW_CONCLUSION }}
-          comment-only: true
+  #vote:
+  #  if: inputs.source-origin == 'gerrit'
+  #  needs: [prepare, node-verify-clm]
+  #  runs-on: ubuntu-latest
+  #  # yamllint enable rule:line-length
+  #  steps:
+  #    - name: 'Get conclusion'
+  #      # yamllint disable-line rule:line-length
+  #      uses: technote-space/workflow-conclusion-action@45ce8e0eb155657ab8ccf346ade734257fd196a5 # v3.0.3
+  #    - name: 'Set vote'
+  #      # yamllint disable-line rule:line-length
+  #      uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a # v0.6
+  #      with:
+  #        host: ${{ vars.GERRIT_SERVER }}
+  #        username: ${{ vars.GERRIT_SSH_USER }}
+  #        key: ${{ secrets.GERRIT_SSH_PRIVKEY }}
+  #        known_hosts: ${{ vars.GERRIT_KNOWN_HOSTS }}
+  #        gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+  #        gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+  #        vote-type: ${{ env.WORKFLOW_CONCLUSION }}
+  #        comment-only: true
