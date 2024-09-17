@@ -72,7 +72,7 @@ jobs:
 
   node-verify-clm:
     #needs: [prepare]
-    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/nexus-iq.yaml@master
+    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-nexus-iq.yaml@master
     with:
       node-version: 20
       build-tool: npm
