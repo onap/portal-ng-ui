@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clear votes
-        if: ${{ vars.REPO_ORIGIN }} != 'github'
+        if: vars.REPO_ORIGIN != 'github'
         # yamllint disable-line rule:line-length
         uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a # v0.6
         with:
@@ -76,7 +76,7 @@ jobs:
   # Only runs when master repository is in Gerrit
   gerrit-node-verify-clm:
     uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-nexus-iq.yaml@master
-    if: ${{ vars.REPO_ORIGIN }} != 'github'
+    if: vars.REPO_ORIGIN != 'github'
     needs: [prepare]
     with:
       node-version: 20
@@ -87,7 +87,7 @@ jobs:
   # Only runs when master repository is in Gerrit
   github-node-verify-clm:
     uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-nexus-iq.yaml@master
-    if: ${{ vars.REPO_ORIGIN }} == 'github'
+    if: vars.REPO_ORIGIN == 'github'
     with:
       node-version: 20
       build-tool: npm
@@ -95,7 +95,7 @@ jobs:
       NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
 
   vote:
-    if: ${{ vars.REPO_ORIGIN }} != 'github'
+    if: vars.REPO_ORIGIN != 'github'
     needs: [prepare, gerrit-node-verify-clm]
     runs-on: ubuntu-latest
     # yamllint enable rule:line-length
