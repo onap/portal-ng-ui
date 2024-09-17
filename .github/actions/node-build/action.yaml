@@ -24,7 +24,7 @@ runs:
     - name: 'Setup Node.js'
       uses: actions/setup-node@v4
       with:
-        node-version: inputs.node-version
+        node-version: ${{ inputs.node-version }}
 
     # Install Yarn, show tooling versions
     - run: 'npm install --global yarn'
