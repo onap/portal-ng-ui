@@ -10,11 +10,7 @@
       "imageAltText": "SDC image",
       "redirectUrl": "https://sdc-ui-HOSTNAME/sdc1/portal",
       "groups": [],
-      "roles": [
-        "PORTAL_ADMIN",
-        "PORTAL_OPERATOR",
-        "PORTAL_DESIGNER"
-      ]
+      "roles": ["PORTAL_ADMIN", "PORTAL_OPERATOR", "PORTAL_DESIGNER"]
     },
     {
       "id": 3,
@@ -26,9 +22,7 @@
       "imageAltText": "Policy image",
       "redirectUrl": "https://policy-ui-HOSTNAME/",
       "groups": [],
-      "roles": [
-        "PORTAL_ADMIN"
-      ]
+      "roles": ["PORTAL_ADMIN"]
     },
     {
       "id": 4,
@@ -40,9 +34,7 @@
       "imageAltText": "SO-Monitoring image",
       "redirectUrl": "https://so-monitoring-ui-HOSTNAME/",
       "groups": [],
-      "roles": [
-        "PORTAL_OPERATOR"
-      ]
+      "roles": ["PORTAL_OPERATOR"]
     },
     {
       "id": 7,
@@ -54,11 +46,7 @@
       "imageAltText": "CDS image",
       "redirectUrl": "https://cds-ui-HOSTNAME/",
       "groups": [],
-      "roles": [
-        "PORTAL_ADMIN",
-        "PORTAL_OPERATOR",
-        "PORTAL_DESIGNER"
-      ]
+      "roles": ["PORTAL_ADMIN", "PORTAL_OPERATOR", "PORTAL_DESIGNER"]
     },
     {
       "id": 9,
@@ -70,11 +58,7 @@
       "imageAltText": "Holmes image",
       "redirectUrl": "https://holmes-ui-HOSTNAME/iui/holmes/default.html",
       "groups": [],
-      "roles": [
-        "PORTAL_ADMIN",
-        "PORTAL_OPERATOR",
-        "PORTAL_DESIGNER"
-      ]
+      "roles": ["PORTAL_ADMIN", "PORTAL_OPERATOR", "PORTAL_DESIGNER"]
     },
     {
       "id": 10,
@@ -86,11 +70,7 @@
       "imageAltText": "A&AI Browser image",
       "redirectUrl": "https://aai-ui-HOSTNAME/services/aai/webapp/index.html#/browse",
       "groups": [],
-      "roles": [
-        "PORTAL_ADMIN",
-        "PORTAL_OPERATOR",
-        "PORTAL_DESIGNER"
-      ]
+      "roles": ["PORTAL_ADMIN", "PORTAL_OPERATOR", "PORTAL_DESIGNER"]
     },
     {
       "id": 11,
@@ -102,11 +82,7 @@
       "imageAltText": "DCAE MOD image",
       "redirectUrl": "https://dcaemod-ui-HOSTNAME/nifi/",
       "groups": [],
-      "roles": [
-        "PORTAL_ADMIN",
-        "PORTAL_OPERATOR",
-        "PORTAL_DESIGNER"
-      ]
+      "roles": ["PORTAL_ADMIN", "PORTAL_OPERATOR", "PORTAL_DESIGNER"]
     },
     {
       "id": 12,
@@ -118,11 +94,7 @@
       "imageAltText": "SDN-C DG image",
       "redirectUrl": "https://sdncdg-ui-HOSTNAME/",
       "groups": [],
-      "roles": [
-        "PORTAL_ADMIN",
-        "PORTAL_OPERATOR",
-        "PORTAL_DESIGNER"
-      ]
+      "roles": ["PORTAL_ADMIN", "PORTAL_OPERATOR", "PORTAL_DESIGNER"]
     },
     {
       "id": 13,
@@ -134,11 +106,7 @@
       "imageAltText": "SDN-C ODL image",
       "redirectUrl": "https://sdncodl-ui-HOSTNAME//odlux/index.html",
       "groups": [],
-      "roles": [
-        "PORTAL_ADMIN",
-        "PORTAL_OPERATOR",
-        "PORTAL_DESIGNER"
-      ]
+      "roles": ["PORTAL_ADMIN", "PORTAL_OPERATOR", "PORTAL_DESIGNER"]
     },
     {
       "id": 14,
@@ -150,11 +118,7 @@
       "imageAltText": "Non-RT RIC image",
       "redirectUrl": "https://nonrtric-controlpanel-HOSTNAME/",
       "groups": [],
-      "roles": [
-        "PORTAL_ADMIN",
-        "PORTAL_OPERATOR",
-        "PORTAL_DESIGNER"
-      ]
+      "roles": ["PORTAL_ADMIN", "PORTAL_OPERATOR", "PORTAL_DESIGNER"]
     }
   ]
 }

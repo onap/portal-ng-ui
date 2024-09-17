@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 export interface Environment {
   customStyleEnabled: boolean;
   backendServerUrl: string;
@@ -25,8 +24,8 @@ export interface Environment {
   keycloak: KeycloakEnvironment;
   dateTimeFormat: string;
   loggingUrl: string;
-  loggingEnabled: boolean
-  supportUrlLink: string
+  loggingEnabled: boolean;
+  supportUrlLink: string;
 }
 
 export interface KeycloakEnvironment {

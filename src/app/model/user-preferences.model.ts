@@ -16,8 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
-
 import { DashboardApplications } from './dashboard.model';
 import { ActionFilter, ActionInterval } from './user-last-action.model';
 
@@ -26,10 +24,9 @@ export const STATE_KEYS = {
   APPS: 'apps',
   TILES: 'availableTiles',
   USER_ACTIONS: 'lastUserAction',
-  FILTER_TYPE:'filterType',
-  INTERVAL: 'interval'
+  FILTER_TYPE: 'filterType',
+  INTERVAL: 'interval',
 };
-
 
 export interface DashboardModel {
   apps: DashboardAppsModel;

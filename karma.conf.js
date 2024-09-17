@@ -1,5 +1,3 @@
-
-
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
@@ -31,9 +29,9 @@ module.exports = function (config) {
       overrideTestDescription: true,
       testPaths: ['./src'],
       testFilePattern: '.spec.ts',
-      useBrowserName: false
+      useBrowserName: false,
     },
-    reporters: ['progress', 'coverage','spec', 'kjhtml', 'sonarqubeUnit'],
+    reporters: ['progress', 'coverage', 'spec', 'kjhtml', 'sonarqubeUnit'],
     port: 4200,
     colors: true,
     logLevel: config.LOG_INFO,

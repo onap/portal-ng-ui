@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -46,7 +45,8 @@ export class HasPermissionsGuard implements CanActivate {
         // filter out the keys (the onap_ roles) that the user does not have
         const intersectionOfRoles = Object.keys(this.acl).filter(role => userProfile?.roles.includes(role));
         return this.hasPermissions(next.data.permission, intersectionOfRoles);
-      }));
+      }),
+    );
   }
 
   /**

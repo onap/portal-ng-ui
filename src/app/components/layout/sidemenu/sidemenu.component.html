@@ -16,7 +16,6 @@
   ~ SPDX-License-Identifier: Apache-2.0
   -->
 
-
 <nav
   [class.sidebar-collapsed]="isSidebarCollapsed"
   id="sidebar-container"
@@ -25,7 +24,13 @@
 >
   <ul class="nav flex-column flex-nowrap" [attr.aria-label]="'layout.menu.menuItems' | translate">
     <li class="nav-item">
-      <a #test [attr.accesskey]='ACCESS_KEY.SHORTCUT_6' class="nav-link" routerLinkActive="active-menu-item" [routerLink]="['/dashboard']">
+      <a
+        #test
+        [attr.accesskey]="ACCESS_KEY.SHORTCUT_6"
+        class="nav-link"
+        routerLinkActive="active-menu-item"
+        [routerLink]="['/dashboard']"
+      >
         <i class="bi bi-house-door mr-4" aria-hidden="true"></i>
         <span class="d-sm-inline qa_menu_home">{{ 'layout.menu.items.dashboard' | translate }}</span></a
       >
@@ -46,6 +51,8 @@
   </ul>
   <div [ngClass]="isSidebarCollapsed ? 'flex-column' : 'flex-row'" class="d-flex justify-content-center text-center">
     <h5 class="portal-version-title mr-1" id="portal-version">Portal Version:</h5>
-    <span class="portal-version-number" aria-labelledby="portal-version" (click)='test.blur()'>{{versionNumber}}</span>
+    <span class="portal-version-number" aria-labelledby="portal-version" (click)="test.blur()">{{
+      versionNumber
+    }}</span>
   </div>
 </nav>

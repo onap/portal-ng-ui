@@ -16,13 +16,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Injectable } from '@angular/core';
 import { AuthConfig, NullValidationHandler, OAuthService } from 'angular-oauth2-oidc';
 
 @Injectable()
 export class AuthConfigService {
-  constructor(private readonly oauthService: OAuthService, private readonly authConfig: AuthConfig) {}
+  constructor(
+    private readonly oauthService: OAuthService,
+    private readonly authConfig: AuthConfig,
+  ) {}
 
   async initAuth(): Promise<any> {
     return new Promise<void>((resolveFn, rejectFn) => {
@@ -30,18 +32,21 @@ export class AuthConfigService {
       this.oauthService.configure(this.authConfig);
       this.oauthService.tokenValidationHandler = new NullValidationHandler();
 
-      this.oauthService.loadDiscoveryDocumentAndLogin().then(isLoggedIn => {
-        if (isLoggedIn) {
-          this.oauthService.setupAutomaticSilentRefresh();
-          resolveFn();
-        } else {
-          this.oauthService.initImplicitFlow();
-          rejectFn();
-        }
-      }).catch(() => {
-        //@ts-ignore
-        window.location.href = './keycloak-error.html'
-      });
+      this.oauthService
+        .loadDiscoveryDocumentAndLogin()
+        .then(isLoggedIn => {
+          if (isLoggedIn) {
+            this.oauthService.setupAutomaticSilentRefresh();
+            resolveFn();
+          } else {
+            this.oauthService.initImplicitFlow();
+            rejectFn();
+          }
+        })
+        .catch(() => {
+          //@ts-ignore
+          window.location.href = './keycloak-error.html';
+        });
     });
   }
 }

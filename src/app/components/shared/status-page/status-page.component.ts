@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 

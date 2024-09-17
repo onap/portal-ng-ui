@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 export class WhiteSpaceValidator {

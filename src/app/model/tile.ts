@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 export interface TilesListResponse {
   items: Tile[];
 }
@@ -43,5 +42,3 @@ export enum Role {
   PORTAL_DESIGNER = 'PORTAL_DESIGNER',
   PORTAL_ADMIN = 'PORTAL_ADMIN',
 }
-
-

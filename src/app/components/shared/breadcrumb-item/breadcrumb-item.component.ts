@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({

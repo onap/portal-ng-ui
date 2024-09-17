@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Inject, Pipe, PipeTransform } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ACL_CONFIG, AclConfig } from '../modules/auth/injection-tokens';
@@ -41,18 +40,17 @@ export class HasPermissionPipe implements PipeTransform {
   ) {}
 
   transform(value: string): Observable<boolean | void> {
-    return this.authService
-      .loadCachedUserProfile()
-      .pipe(
-        take(1),
-        map((userProfile) => {
-          const intersectionOfRoles = Object.keys(this.acl).filter(role => userProfile?.roles.includes(role));
-          for (const role of intersectionOfRoles) {
-            if (this.acl[role].includes(value)) {
-              return true;
-            }
+    return this.authService.loadCachedUserProfile().pipe(
+      take(1),
+      map(userProfile => {
+        const intersectionOfRoles = Object.keys(this.acl).filter(role => userProfile?.roles.includes(role));
+        for (const role of intersectionOfRoles) {
+          if (this.acl[role].includes(value)) {
+            return true;
           }
-          return false;
-        }))
+        }
+        return false;
+      }),
+    );
   }
 }

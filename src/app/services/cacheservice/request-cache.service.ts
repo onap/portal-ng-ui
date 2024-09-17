@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -43,7 +42,6 @@ export class RequestCacheService implements RequestCache {
     }
 
     const isExpired = cachedResponse.lastRead < Date.now() - maxAge;
-
 
     return isExpired ? undefined : cachedResponse.response;
   }

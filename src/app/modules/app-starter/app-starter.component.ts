@@ -16,9 +16,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component, OnInit } from '@angular/core';
-import {  map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { from, Observable, of } from 'rxjs';
 import { Tile } from 'src/app/model/tile';
@@ -34,12 +33,12 @@ export class AppStarterComponent implements OnInit {
 
   private readonly hostname = environment.hostname.replace('portal-ui-', '');
 
-  public readonly tiles$: Observable<Tile[]> = from(fetch('/assets/tiles/tiles.json?t=' + Date.now()).then(rsp => rsp.json()))
-      .pipe(
-          map(tiles => (tiles.items as Tile[])),
-          map(tiles => tiles.map(tile => ({ ...tile, redirectUrl: tile.redirectUrl.replace(/HOSTNAME/i, this.hostname) }))),
-      );
-
+  public readonly tiles$: Observable<Tile[]> = from(
+    fetch('/assets/tiles/tiles.json?t=' + Date.now()).then(rsp => rsp.json()),
+  ).pipe(
+    map(tiles => tiles.items as Tile[]),
+    map(tiles => tiles.map(tile => ({ ...tile, redirectUrl: tile.redirectUrl.replace(/HOSTNAME/i, this.hostname) }))),
+  );
 
   ngOnInit(): void {}
 }

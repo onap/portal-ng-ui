@@ -22,4 +22,3 @@
 
 [ ! -d "./node_modules" ] && npm install
 npm start -- --proxy-config local.proxy.config.json --port 80 --host 0.0.0.0 --disable-host-check
-

@@ -17,9 +17,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Environment } from '../app/model/environment.model';
-
 
 export const environment: Environment = {
   customStyleEnabled: true,
@@ -27,10 +25,10 @@ export const environment: Environment = {
   hostname: window.location.hostname,
   production: true,
   keycloak: {
-    hostname: window["env"]["keycloak"]["hostname"] || `https://${window.location.host.replace('portal', 'keycloak')}`,
-    realm: window["env"]["keycloak"]["realm"] || 'ONAP',
+    hostname: window['env']['keycloak']['hostname'] || `https://${window.location.host.replace('portal', 'keycloak')}`,
+    realm: window['env']['keycloak']['realm'] || 'ONAP',
     redirectUri: window.location.origin, // URL of the SPA to redirect the user to after login
-    clientId: window["env"]["keycloak"]["clientId"] || 'portal-app', // The Frontend is registered with this id at the auth-server
+    clientId: window['env']['keycloak']['clientId'] || 'portal-app', // The Frontend is registered with this id at the auth-server
     responseType: 'code',
     scope: 'openid', // set the scope for the permissions the client should request
     requireHttps: false, // Don't require https
@@ -42,5 +40,5 @@ export const environment: Environment = {
   dateTimeFormat: 'dd/MM/yyyy  HH:mm:ss',
   loggingUrl: window.location.origin + '/onap_logging',
   supportUrlLink: 'https://wiki.onap.org/',
-  loggingEnabled: window["env"]["loggingEnabled"] || false,
+  loggingEnabled: window['env']['loggingEnabled'] || false,
 };

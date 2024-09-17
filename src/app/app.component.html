@@ -16,16 +16,13 @@
   ~ SPDX-License-Identifier: Apache-2.0
   -->
 
-<app-header
-  (collapse)="collapseChanged()"
-  class="sticky-top"
-></app-header>
+<app-header (collapse)="collapseChanged()" class="sticky-top"></app-header>
 <div class="wrapper">
   <aside class="h-100 pt-2" id="nav-sidebar" [attr.aria-label]="'layout.sidebar' | translate">
     <app-sidemenu [isSidebarCollapsed]="isCollapsed"></app-sidemenu>
   </aside>
   <main
-    [attr.accesskey]='ACCESS_KEY.SHORTCUT_2'
+    [attr.accesskey]="ACCESS_KEY.SHORTCUT_2"
     id="main"
     tabindex="-1"
     class="container-fluid px-5 position-relative"

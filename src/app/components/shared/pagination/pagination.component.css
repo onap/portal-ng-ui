@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 ngb-pagination::ng-deep li .page-link:focus {
   box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
   border-color: #00a0de;

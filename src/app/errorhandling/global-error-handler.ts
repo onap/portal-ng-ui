@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AlertService } from '../modules/alerting';
@@ -27,7 +26,10 @@ import { AlertService } from '../modules/alerting';
 // See: https://pusher.com/tutorials/error-handling-angular-part-1
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
-  constructor(private injector: Injector, private alertService: AlertService) {}
+  constructor(
+    private injector: Injector,
+    private alertService: AlertService,
+  ) {}
 
   handleError(error: Error | HttpErrorResponse) {
     this.alertService.error(error.message);

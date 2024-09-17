@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Injectable } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from './modal-content';
@@ -25,14 +24,17 @@ import { ModalContentComponent } from './modal-content';
   providedIn: 'root',
 })
 export class ModalService {
-  constructor(private modalService: NgbModal, private modalConfig: NgbModalConfig) {
+  constructor(
+    private modalService: NgbModal,
+    private modalConfig: NgbModalConfig,
+  ) {
     // customize default values of modals used by this component tree
     modalConfig.backdrop = 'static';
     modalConfig.keyboard = false;
   }
 
   open(message: string) {
-    const modalRef = this.modalService.open(ModalContentComponent,{backdropClass:'backdropClass'});
+    const modalRef = this.modalService.open(ModalContentComponent, { backdropClass: 'backdropClass' });
     modalRef.componentInstance.message = message;
   }
 }

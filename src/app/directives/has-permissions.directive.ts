@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Directive, ElementRef, Inject, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ACL_CONFIG, AclConfig } from '../modules/auth/injection-tokens';
@@ -26,7 +25,7 @@ import { UnsubscribeService } from '../services/unsubscribe/unsubscribe.service'
 
 @Directive({
   selector: '[appHasPermissions]',
-  providers: [UnsubscribeService]
+  providers: [UnsubscribeService],
 })
 export class HasPermissionsDirective {
   @Input() appHasPermissions = '';
@@ -35,7 +34,7 @@ export class HasPermissionsDirective {
     readonly httpClient: HttpClient,
     readonly authService: AuthService,
     @Inject(ACL_CONFIG) readonly acl: AclConfig,
-    private unsubscribeService: UnsubscribeService
+    private unsubscribeService: UnsubscribeService,
   ) {
     // for unknown reasons this must be wrapped in set timeout, otherwise appHasPermissions is sometimes empty string
     setTimeout(() => {
@@ -51,7 +50,7 @@ export class HasPermissionsDirective {
               return;
             }
           }
-        })
+        });
     }, 0);
   }
 }

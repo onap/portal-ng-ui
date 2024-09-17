@@ -1,0 +1,39 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2024 The Linux Foundation <https://linuxfoundation.org>
+
+name: '🧱 Build Node.js Project'
+author: 'The Linux Foundation <https://linuxfoundation.org>'
+description: 'Build a Node.js project'
+
+inputs:
+  BUILD-TOOL:
+    description: "Used to build Node.js project [npm|yarn]"
+    required: false
+    default: "npm"
+  NODE-VERSION:
+    description: "Node.js version to use for build"
+    required: false
+    default: 20
+
+runs:
+  uses: "composite"
+  steps:
+
+    # Setup/install Node.js tooling
+    - name: "Setup Node.js"
+      uses: actions/setup-node@v4
+      with:
+        node-version: inputs.node-version
+
+    # Install Yarn, show tooling versions
+    - run: "npm install --global yarn"
+    - run: "node -v"
+    - run: "npm -v"
+    - run: "yarn -v"
+
+    # Build project with preferred tooling
+    - run: "npm install --production"
+      if: inputs.node-version == 'npm'
+    - run: "yarn install --prod"
+      if: inputs.node-version == 'yarn'

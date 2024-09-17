@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
@@ -32,28 +31,14 @@ import { LoadingIndicatorService } from './services/loading-indicator.service';
 
 describe('AppComponent', () => {
   let component: AppComponent;
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          AppComponent,
-          AppStarterComponent,
-          SidemenuComponent,
-          HeaderComponent,
-          HasPermissionsDirective,
-        ],
-        imports: [RouterTestingModule, HttpClientTestingModule, AlertModule, TranslateModule],
-        providers: [
-          AppComponent,
-          UrlHelperService,
-          OAuthService,
-          OAuthLogger,
-          LoadingIndicatorService
-        ],
-      }).compileComponents();
-      component = TestBed.inject(AppComponent);
-    }),
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent, AppStarterComponent, SidemenuComponent, HeaderComponent, HasPermissionsDirective],
+      imports: [RouterTestingModule, HttpClientTestingModule, AlertModule, TranslateModule],
+      providers: [AppComponent, UrlHelperService, OAuthService, OAuthLogger, LoadingIndicatorService],
+    }).compileComponents();
+    component = TestBed.inject(AppComponent);
+  }));
   it('should create the app', () => {
     expect(component).toBeTruthy();
   });

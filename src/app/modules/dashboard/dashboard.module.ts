@@ -19,9 +19,7 @@
 import { NgModule } from '@angular/core';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../../shared.module';
-import {
-  EntityUserAdministrationRowComponent,
-} from './apps/user-last-action-tile/entity-user-administration-row/entity-user-administration-row.component';
+import { EntityUserAdministrationRowComponent } from './apps/user-last-action-tile/entity-user-administration-row/entity-user-administration-row.component';
 import { ActionButtonComponent } from './apps/user-last-action-tile/action-button/action-button.component';
 import { ActionRowComponent } from './apps/user-last-action-tile/action-row/action-row.component';
 import { UserLastActionTileComponent } from './apps/user-last-action-tile/user-last-action-tile.component';

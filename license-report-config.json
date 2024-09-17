@@ -1,12 +1,12 @@
 {
-"fields": [
-"name",
-"licensePeriod",
-"licenseType",
-"link",
-"remoteVersion",
-"installedVersion",
-"definedVersion",
-"author"
-]
+  "fields": [
+    "name",
+    "licensePeriod",
+    "licenseType",
+    "link",
+    "remoteVersion",
+    "installedVersion",
+    "definedVersion",
+    "author"
+  ]
 }

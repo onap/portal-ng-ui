@@ -16,12 +16,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'map',
-  pure: false
+  pure: false,
 })
 /*
   MapPipe allows us to run a function in a template
@@ -36,13 +35,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     Important note: as you can see from implementation, elements array will be passed to your function as a first argument
 */
 export class MapPipe implements PipeTransform {
-
-  transform<T, R>(
-    thisArg: T,
-    project: (t:T, ...others: any[]) => R,
-    ...args: any[]
-  ): R {
+  transform<T, R>(thisArg: T, project: (t: T, ...others: any[]) => R, ...args: any[]): R {
     return project(thisArg, ...args);
   }
-
 }

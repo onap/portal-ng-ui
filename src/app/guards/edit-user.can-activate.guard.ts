@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -27,7 +26,11 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root',
 })
 export class EditUserCanActivateGuard implements CanActivate {
-  constructor(private usersService: UsersService, private router: Router, private translateService: TranslateService) {}
+  constructor(
+    private usersService: UsersService,
+    private router: Router,
+    private translateService: TranslateService,
+  ) {}
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const userId = route.paramMap.get('userId');
     if (userId) {

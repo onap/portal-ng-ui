@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 // https://dev.to/coly010/unit-testing-angular-services-1anm
 import { Alert, AlertType } from './alert.model';
 import { TestBed } from '@angular/core/testing';

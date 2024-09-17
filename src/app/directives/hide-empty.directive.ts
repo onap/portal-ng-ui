@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { AfterViewChecked, Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 //This directive we are using in switch functionality at attribute pane. We can hide attributes without value or show all the attributes.
@@ -46,7 +45,7 @@ export class HideEmptyDetailRowDirective implements OnChanges, AfterViewChecked 
       const detailRows = ref.nativeElement.querySelectorAll('app-detail-row');
       detailRows.forEach((item: any) => {
         const span = item.querySelector('span');
-        if(!span){
+        if (!span) {
           return;
         }
         if (span.textContent === '' || span.textContent === '-') {

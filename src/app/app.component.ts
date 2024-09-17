@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component, Inject } from '@angular/core';
 import { AlertService } from './modules/alerting';
 import { environment } from '../environments/environment';
@@ -33,18 +32,16 @@ export class AppComponent {
   title = 'frontend';
   isCustomStyleEnabled = environment.customStyleEnabled;
   readonly loading$ = this.loadingIndicator.isVisible();
-  public isCollapsed = false
+  public isCollapsed = false;
   public ACCESS_KEY = KeyboardShortcuts;
 
   constructor(
     protected alertService: AlertService,
     private loadingIndicator: LoadingIndicatorService,
     @Inject(DOCUMENT) private document: Document,
-  ) {
-  }
+  ) {}
 
   collapseChanged() {
     this.isCollapsed = !this.isCollapsed;
-
   }
 }

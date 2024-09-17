@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Pipe, PipeTransform } from '@angular/core';
 
 export type TypeGuard<A, B extends A> = (a: A) => a is B;

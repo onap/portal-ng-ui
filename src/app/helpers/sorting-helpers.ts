@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Sort, SortDirection } from '../components/shared/sort/sort.component';
 import { Router } from '@angular/router';
 

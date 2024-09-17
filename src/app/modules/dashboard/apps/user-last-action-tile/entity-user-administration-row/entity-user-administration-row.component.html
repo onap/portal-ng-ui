@@ -16,8 +16,7 @@
   ~ SPDX-License-Identifier: Apache-2.0
   -->
 
-
-<div class="d-flex justify-content-between" *ngIf='action'>
+<div class="d-flex justify-content-between" *ngIf="action">
   <span class="d-inline-block text-truncate w-100"
     >{{ 'dashboard.apps.userLastAction.actionType.' + action.type | translate }}
     {{ 'dashboard.apps.userLastAction.entityType.' + action.entity | translate | colon }}

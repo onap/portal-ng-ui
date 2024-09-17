@@ -1,8 +1,8 @@
+six
 sphinx>=4.2.0  # BSD
 sphinx-rtd-theme>=1.0.0  # MIT
 sphinxcontrib-blockdiag  # BSD
-sphinxcontrib-seqdiag # BSD
-sphinxcontrib-swaggerdoc
-sphinxcontrib-spelling
 sphinxcontrib-plantuml
-six
+sphinxcontrib-seqdiag # BSD
+sphinxcontrib-spelling
+sphinxcontrib-swaggerdoc

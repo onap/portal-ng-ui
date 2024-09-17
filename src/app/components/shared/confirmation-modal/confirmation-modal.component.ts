@@ -16,17 +16,19 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-confirmation-modal',
-  templateUrl: './confirmation-modal.component.html'
+  templateUrl: './confirmation-modal.component.html',
 })
 export class ConfirmationModalComponent {
-  constructor(public activeModal: NgbActiveModal, private readonly translateService: TranslateService) {}
+  constructor(
+    public activeModal: NgbActiveModal,
+    private readonly translateService: TranslateService,
+  ) {}
 
   @Input() showOkBtn = true;
   @Input() showCancelBtn = true;

@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 export enum DashboardApplications {
   USER_LAST_ACTION_TILE = 'USER_LAST_ACTION_TILE',
 }

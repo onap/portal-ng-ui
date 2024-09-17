@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 /* https://www.w3schools.com/css/css3_variables.asp */
 :root {
   --alert-transparency: 0.9;
@@ -30,14 +29,12 @@
   --major: #fad4b8;
   --minor: #fecb00;
   --intense-blue: #00a0de;
-
 }
 
 /* ########################################
  *           Colors
  * ########################################
  */
-
 
 .blue {
   color: var(--blue);
@@ -474,17 +471,22 @@ tree-node:last-child > .tree-node > .tree-children::after {
 .node-custom-content-wrapper {
   padding: 2px 5px !important;
 }
-.node-content-wrapper{
+.node-content-wrapper {
   padding: 0 !important;
 }
 
 /* Display definition lists in a tabular style */
 /* https://stackoverflow.com/questions/1687733/what-html-markups-to-use-for-displaying-label-value-data#1687759 */
-dt { float: left; clear: left; width: 6em; font-weight: bold; }
-.ml-2px{
+dt {
+  float: left;
+  clear: left;
+  width: 6em;
+  font-weight: bold;
+}
+.ml-2px {
   margin-left: 2px;
 }
-.overflow-y-scroll{
+.overflow-y-scroll {
   overflow-y: scroll;
 }
 
@@ -538,14 +540,11 @@ dt { float: left; clear: left; width: 6em; font-weight: bold; }
   width: 100% !important;
 }
 
-.pulse{
-  z-index: 10!important;
+.pulse {
+  z-index: 10 !important;
   height: 180px;
   width: 180px;
-  background: linear-gradient(
-  var(--danger),
-  #d97e87
-  );
+  background: linear-gradient(var(--danger), #d97e87);
   position: absolute;
   margin: auto;
   left: 0;
@@ -559,8 +558,8 @@ dt { float: left; clear: left; width: 6em; font-weight: bold; }
   color: #ffffff;
 }
 .pulse:before,
-.pulse:after{
-  content: "";
+.pulse:after {
+  content: '';
   position: absolute;
   height: 100%;
   width: 100%;
@@ -569,30 +568,31 @@ dt { float: left; clear: left; width: 6em; font-weight: bold; }
   z-index: -1;
   opacity: 0.7;
 }
-.pulse:before{
+.pulse:before {
   animation: pulse 2s ease-out infinite;
 }
-.pulse:after{
+.pulse:after {
   animation: pulse 2s 1s ease-out infinite;
 }
-@keyframes pulse{
-  100%{
+@keyframes pulse {
+  100% {
     transform: scale(2.5);
     opacity: 0;
   }
 }
-tree-viewport{
+tree-viewport {
   overflow-x: auto !important;
   display: flex !important;
 }
-.node-content-wrapper{
-  border: 1px solid rgba(0,0,0,0);
+.node-content-wrapper {
+  border: 1px solid rgba(0, 0, 0, 0);
 }
-.node-content-wrapper-focused, .node-content-wrapper-focused:hover{
+.node-content-wrapper-focused,
+.node-content-wrapper-focused:hover {
   border: 1px solid var(--primary);
 }
 
-.backdropClass{
+.backdropClass {
   z-index: 1050 !important;
 }
 
@@ -602,8 +602,8 @@ tree-viewport{
 
 .leaflet-top,
 .leaflet-bottom {
-    z-index: 998 !important;
-  }
+  z-index: 998 !important;
+}
 
 .btn-invisible:focus {
   border: 2px solid black;
@@ -625,7 +625,7 @@ tree-viewport{
   display: block;
   width: 16px;
   height: 16px;
-  content: " ";
+  content: ' ';
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M15.81,14.99l-6.99-7l6.99-7c0.24-0.24,0.2-0.63-0.04-0.83c-0.24-0.2-0.59-0.2-0.79,0l-6.99,7l-6.99-7 C0.75-0.08,0.36-0.04,0.16,0.2c-0.2,0.24-0.2,0.59,0,0.79l6.99,7l-6.99,7c-0.24,0.24-0.2,0.63,0.04,0.83c0.24,0.2,0.59,0.2,0.79,0 l6.99-7l6.99,7c0.24,0.24,0.59,0.24,0.83,0.04C16.04,15.66,16.08,15.26,15.81,14.99C15.85,15.03,15.81,15.03,15.81,14.99z' fill='%23262626'/%3E%3C/svg%3E");
 }
 
@@ -633,8 +633,7 @@ tree-viewport{
   height: 408.867px;
 }
 
-hr, .breadcrumb {
+hr,
+.breadcrumb {
   min-width: 164px;
 }
-
-

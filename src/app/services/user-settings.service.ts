@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { distinctUntilChanged, map, pluck, switchMap, take } from 'rxjs/operators';
 import { PreferencesResponse, PreferencesService } from '../../../openapi/output';
 import {
@@ -24,7 +23,8 @@ import {
   DashboardModel,
   DashboardTileSettings,
   defaultUserSettings,
-  LastUserActionSettings, STATE_KEYS,
+  LastUserActionSettings,
+  STATE_KEYS,
   UpdateUserPreferenceModel,
   UserPreferencesModel,
 } from '../model/user-preferences.model';

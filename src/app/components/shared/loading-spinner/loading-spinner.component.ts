@@ -22,5 +22,4 @@ import { Component } from '@angular/core';
   selector: 'app-loading-spinner',
   templateUrl: './loading-spinner.component.html',
 })
-export class LoadingSpinnerComponent  {
-}
+export class LoadingSpinnerComponent {}

@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { AuthConfig } from 'angular-oauth2-oidc';
 import { environment } from '../../../environments/environment';
 

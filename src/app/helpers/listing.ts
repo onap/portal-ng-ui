@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Router } from '@angular/router';
 import { filterBuilder, FilterOperator } from 'src/app/helpers/filter-helpers';
 
@@ -81,7 +80,12 @@ export function changeFilter(router: Router, value: string | undefined): void {
  * @param path path for new router link
  * @param params other queryParams
  */
-export function changeFiltersInRouter(router: Router, filters: Map<string, Filter>, params?: { [key: string]: any },  path?: any[]): void {
+export function changeFiltersInRouter(
+  router: Router,
+  filters: Map<string, Filter>,
+  params?: { [key: string]: any },
+  path?: any[],
+): void {
   const composedFilter = filters.size > 0 ? filterBuilder(filters) : undefined;
   router.navigate(path ?? [], {
     queryParams: { filter: composedFilter, ...params, page: 1 },

@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatusPageComponent } from './status-page.component';
@@ -27,9 +26,8 @@ describe('StatusPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatusPageComponent ]
-    })
-    .compileComponents();
+      declarations: [StatusPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

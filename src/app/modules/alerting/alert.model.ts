@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Inject, Injectable } from '@angular/core';
 import { Problem } from '../../../../openapi/output';
 
@@ -30,14 +29,12 @@ export class Alert {
   fade?: boolean;
   errorDetail?: Problem;
   requestId?: string;
-  urlTree?: string[]
+  urlTree?: string[];
 
   constructor(@Inject(Alert) init?: Partial<Alert>) {
     Object.assign(this, init);
   }
 }
-
-
 
 export enum AlertType {
   Success,

@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 export * from './alert.module';
 export * from './alert.service';
 export * from './alert.model';

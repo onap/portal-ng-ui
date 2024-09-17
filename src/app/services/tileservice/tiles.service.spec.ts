@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { Tile } from '../../model/tile';
 import { TilesService } from './tiles.service';
@@ -217,25 +216,22 @@ describe('TilesService', () => {
     /**
      * testing method getTileByID() in case the backend responds with 404 Not Found and the tile does not exist
      */
-    it(
-      'getTileById(): should handle 404 error',
-      waitForAsync(() => {
-        errmsg = '404 error';
-        // Make an HTTP Get Request
-        service.getTileById(mockTile.id).then(
-          () => fail('should have failed with the 404 error'),
-          (err: HttpErrorResponse) => {
-            expect(err.status).toEqual(404);
-            expect(err.error).toEqual(errmsg);
-          },
-        );
+    it('getTileById(): should handle 404 error', waitForAsync(() => {
+      errmsg = '404 error';
+      // Make an HTTP Get Request
+      service.getTileById(mockTile.id).then(
+        () => fail('should have failed with the 404 error'),
+        (err: HttpErrorResponse) => {
+          expect(err.status).toEqual(404);
+          expect(err.error).toEqual(errmsg);
+        },
+      );
 
-        const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
-        expect(req.request.method).toEqual('GET');
+      const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
+      expect(req.request.method).toEqual('GET');
 
-        req.flush(errmsg, { status: 404, statusText: 'Not Found' });
-      }),
-    );
+      req.flush(errmsg, { status: 404, statusText: 'Not Found' });
+    }));
   });
   /**
    * Tests for update an existing tile
@@ -261,70 +257,61 @@ describe('TilesService', () => {
     /**
      * testing method updateTiles() in case the backend responds with 404 Not Found and the tile does not exist
      */
-    it(
-      'updateTiles(): should handle 404 error',
-      waitForAsync(() => {
-        errmsg = '404 error';
-        // Make an HTTP Get Request
-        service.updateTiles(mockTile).then(
-          () => fail('should have failed with the 404 error'),
-          (err: HttpErrorResponse) => {
-            expect(err.status).toEqual(404);
-            expect(err.error).toEqual(errmsg);
-          },
-        );
+    it('updateTiles(): should handle 404 error', waitForAsync(() => {
+      errmsg = '404 error';
+      // Make an HTTP Get Request
+      service.updateTiles(mockTile).then(
+        () => fail('should have failed with the 404 error'),
+        (err: HttpErrorResponse) => {
+          expect(err.status).toEqual(404);
+          expect(err.error).toEqual(errmsg);
+        },
+      );
 
-        const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
-        expect(req.request.method).toEqual('PUT');
+      const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
+      expect(req.request.method).toEqual('PUT');
 
-        req.flush(errmsg, { status: 404, statusText: 'Not Found' });
-      }),
-    );
+      req.flush(errmsg, { status: 404, statusText: 'Not Found' });
+    }));
 
     /**
      * testing method updateTiles() in case the backend responds with 401 Unauthorized
      */
-    it(
-      'updateTiles(): should handle 401 error',
-      waitForAsync(() => {
-        errmsg = '401 error';
-        // Make an HTTP Get Request
-        service.updateTiles(mockTile).then(
-          () => fail('should have failed with the 401 error'),
-          (err: HttpErrorResponse) => {
-            expect(err.status).toEqual(401);
-            expect(err.error).toEqual(errmsg);
-          },
-        );
+    it('updateTiles(): should handle 401 error', waitForAsync(() => {
+      errmsg = '401 error';
+      // Make an HTTP Get Request
+      service.updateTiles(mockTile).then(
+        () => fail('should have failed with the 401 error'),
+        (err: HttpErrorResponse) => {
+          expect(err.status).toEqual(401);
+          expect(err.error).toEqual(errmsg);
+        },
+      );
 
-        const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
-        expect(req.request.method).toEqual('PUT');
+      const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
+      expect(req.request.method).toEqual('PUT');
 
-        req.flush(errmsg, { status: 401, statusText: 'Not Found' });
-      }),
-    );
+      req.flush(errmsg, { status: 401, statusText: 'Not Found' });
+    }));
 
     /**
      * testing method updateTiles() in case the backend responds with 403 Forbidden
      */
-    it(
-      'updateTiles(): should handle 403 error',
-      waitForAsync(() => {
-        errmsg = '403 error';
-        // Make an HTTP Get Request
-        service.updateTiles(mockTile).then(
-          () => fail('should have failed with the 404 error'),
-          (err: HttpErrorResponse) => {
-            expect(err.status).toEqual(403);
-          },
-        );
+    it('updateTiles(): should handle 403 error', waitForAsync(() => {
+      errmsg = '403 error';
+      // Make an HTTP Get Request
+      service.updateTiles(mockTile).then(
+        () => fail('should have failed with the 404 error'),
+        (err: HttpErrorResponse) => {
+          expect(err.status).toEqual(403);
+        },
+      );
 
-        const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
-        expect(req.request.method).toEqual('PUT');
+      const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
+      expect(req.request.method).toEqual('PUT');
 
-        req.flush(errmsg, { status: 403, statusText: 'Not Found' });
-      }),
-    );
+      req.flush(errmsg, { status: 403, statusText: 'Not Found' });
+    }));
   });
   /*
    *  Test save a new tile
@@ -333,69 +320,60 @@ describe('TilesService', () => {
     /*
      * testing saveTiles() to save a new tile
      */
-    it(
-      'should save a tile correctly (mocked http post request)',
-      waitForAsync(() => {
-        service.saveTiles(mockTile).then(response => {
-          expect(response.id).toBe(1);
-          expect(response.title).toBe('NewTile1');
-          expect(response.redirectUrl).toBe('www.onap.org');
-          expect(response.imageAltText).toBe('Onap Image');
-          expect(response.imageUrl).toBe('https://www.onap.org/wp-content/uploads/sites/20/2017/02/logo_onap_2017.png');
-          expect(response.description).toBe('New Tile for frontend test');
-          expect(response.headers).toBe('This is a header');
-        });
-        /*
-         * Checking that there ist just one request and check the type of request
-         * 'flush'/ respond with mock data, run then-block in line 64 and check the except commands
-         */
-        const req = httpmock.expectOne(backendServerUrlTest);
-        expect(req.request.method).toEqual('POST');
-        req.flush(mockTile);
-      }),
-    );
+    it('should save a tile correctly (mocked http post request)', waitForAsync(() => {
+      service.saveTiles(mockTile).then(response => {
+        expect(response.id).toBe(1);
+        expect(response.title).toBe('NewTile1');
+        expect(response.redirectUrl).toBe('www.onap.org');
+        expect(response.imageAltText).toBe('Onap Image');
+        expect(response.imageUrl).toBe('https://www.onap.org/wp-content/uploads/sites/20/2017/02/logo_onap_2017.png');
+        expect(response.description).toBe('New Tile for frontend test');
+        expect(response.headers).toBe('This is a header');
+      });
+      /*
+       * Checking that there ist just one request and check the type of request
+       * 'flush'/ respond with mock data, run then-block in line 64 and check the except commands
+       */
+      const req = httpmock.expectOne(backendServerUrlTest);
+      expect(req.request.method).toEqual('POST');
+      req.flush(mockTile);
+    }));
     /**
      * testing method saveTiles() in case the backend answers with an 401 responds
      */
-    it(
-      'saveTiles(): should handle 401 error',
-      waitForAsync(() => {
-        errmsg = '401 error';
-        // Make an HTTP Get Request
-        service.saveTiles(mockTile).then(
-          () => fail('should have failed with the 401 error'),
-          (err: HttpErrorResponse) => {
-            expect(err.status).toEqual(401);
-            expect(err.error).toEqual(errmsg);
-          },
-        );
+    it('saveTiles(): should handle 401 error', waitForAsync(() => {
+      errmsg = '401 error';
+      // Make an HTTP Get Request
+      service.saveTiles(mockTile).then(
+        () => fail('should have failed with the 401 error'),
+        (err: HttpErrorResponse) => {
+          expect(err.status).toEqual(401);
+          expect(err.error).toEqual(errmsg);
+        },
+      );
 
-        const req = httpmock.expectOne(backendServerUrlTest);
-        expect(req.request.method).toEqual('POST');
+      const req = httpmock.expectOne(backendServerUrlTest);
+      expect(req.request.method).toEqual('POST');
 
-        req.flush(errmsg, { status: 401, statusText: 'Not Found' });
-      }),
-    );
+      req.flush(errmsg, { status: 401, statusText: 'Not Found' });
+    }));
 
-    it(
-      'saveTiles(): should handle 403 error',
-      waitForAsync(() => {
-        errmsg = '403 error';
-        // Make an HTTP Get Request
-        service.saveTiles(mockTile).then(
-          () => fail('should have failed with the 401 error'),
-          (err: HttpErrorResponse) => {
-            expect(err.status).toEqual(403);
-            expect(err.error).toEqual(errmsg);
-          },
-        );
+    it('saveTiles(): should handle 403 error', waitForAsync(() => {
+      errmsg = '403 error';
+      // Make an HTTP Get Request
+      service.saveTiles(mockTile).then(
+        () => fail('should have failed with the 401 error'),
+        (err: HttpErrorResponse) => {
+          expect(err.status).toEqual(403);
+          expect(err.error).toEqual(errmsg);
+        },
+      );
 
-        const req = httpmock.expectOne(backendServerUrlTest);
-        expect(req.request.method).toEqual('POST');
+      const req = httpmock.expectOne(backendServerUrlTest);
+      expect(req.request.method).toEqual('POST');
 
-        req.flush(errmsg, { status: 403, statusText: 'Forbidden' });
-      }),
-    );
+      req.flush(errmsg, { status: 403, statusText: 'Forbidden' });
+    }));
   });
   /**
    * testing delete a tile
@@ -404,85 +382,73 @@ describe('TilesService', () => {
     /**
      * testing method deleteTile()
      */
-    it(
-      'should delete a tile correctly (mocked http delete request)',
-      waitForAsync(() => {
-        service.deleteTile(mockTile).then(response => {
-          expect(response).toBeDefined();
-        });
-        const req = httpmock.expectOne(environment.backendServerUrl + '/tiles/' + mockTile.id);
-        expect(req.request.method).toEqual('DELETE');
-        req.flush({});
-      }),
-    );
+    it('should delete a tile correctly (mocked http delete request)', waitForAsync(() => {
+      service.deleteTile(mockTile).then(response => {
+        expect(response).toBeDefined();
+      });
+      const req = httpmock.expectOne(environment.backendServerUrl + '/tiles/' + mockTile.id);
+      expect(req.request.method).toEqual('DELETE');
+      req.flush({});
+    }));
 
     /**
      * testing method deleteTiles() in case the backend responds with 404 Not Found and the tile does not exist
      */
-    it(
-      'deleteTiles(): should handle 404 error',
-      waitForAsync(() => {
-        errmsg = '404 error';
-        // Make an HTTP Get Request
-        service.deleteTile(mockTile).then(
-          () => fail('should have failed with the 404 error'),
-          (err: HttpErrorResponse) => {
-            expect(err.status).toEqual(404);
-            expect(err.error).toEqual(errmsg);
-          },
-        );
+    it('deleteTiles(): should handle 404 error', waitForAsync(() => {
+      errmsg = '404 error';
+      // Make an HTTP Get Request
+      service.deleteTile(mockTile).then(
+        () => fail('should have failed with the 404 error'),
+        (err: HttpErrorResponse) => {
+          expect(err.status).toEqual(404);
+          expect(err.error).toEqual(errmsg);
+        },
+      );
 
-        const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
-        expect(req.request.method).toEqual('DELETE');
+      const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
+      expect(req.request.method).toEqual('DELETE');
 
-        req.flush(errmsg, { status: 404, statusText: 'Not Found' });
-      }),
-    );
+      req.flush(errmsg, { status: 404, statusText: 'Not Found' });
+    }));
 
     /**
      * testing method deleteTiles() in case the backend responds with 401 Unauthorized
      */
-    it(
-      'deleteTiles(): should handle 401 error',
-      waitForAsync(() => {
-        errmsg = '401 error';
-        // Make an HTTP Get Request
-        service.deleteTile(mockTile).then(
-          () => fail('should have failed with the 401 error'),
-          (err: HttpErrorResponse) => {
-            expect(err.status).toEqual(401);
-            expect(err.error).toEqual(errmsg);
-          },
-        );
+    it('deleteTiles(): should handle 401 error', waitForAsync(() => {
+      errmsg = '401 error';
+      // Make an HTTP Get Request
+      service.deleteTile(mockTile).then(
+        () => fail('should have failed with the 401 error'),
+        (err: HttpErrorResponse) => {
+          expect(err.status).toEqual(401);
+          expect(err.error).toEqual(errmsg);
+        },
+      );
 
-        const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
-        expect(req.request.method).toEqual('DELETE');
+      const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
+      expect(req.request.method).toEqual('DELETE');
 
-        req.flush(errmsg, { status: 401, statusText: 'Unauthorized' });
-      }),
-    );
+      req.flush(errmsg, { status: 401, statusText: 'Unauthorized' });
+    }));
 
     /**
      * testing method deleteTiles() in case the backend responds with 403 Forbidden
      */
-    it(
-      'deleteTiles(): should handle 403 error',
-      waitForAsync(() => {
-        errmsg = '403 error';
-        // Make an HTTP Get Request
-        service.deleteTile(mockTile).then(
-          () => fail('should have failed with the 404 error'),
-          (err: HttpErrorResponse) => {
-            expect(err.status).toEqual(403);
-            expect(err.error).toEqual(errmsg);
-          },
-        );
+    it('deleteTiles(): should handle 403 error', waitForAsync(() => {
+      errmsg = '403 error';
+      // Make an HTTP Get Request
+      service.deleteTile(mockTile).then(
+        () => fail('should have failed with the 404 error'),
+        (err: HttpErrorResponse) => {
+          expect(err.status).toEqual(403);
+          expect(err.error).toEqual(errmsg);
+        },
+      );
 
-        const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
-        expect(req.request.method).toEqual('DELETE');
+      const req = httpmock.expectOne(backendServerUrlTest + '/' + mockTile.id);
+      expect(req.request.method).toEqual('DELETE');
 
-        req.flush(errmsg, { status: 403, statusText: 'Forbidden' });
-      }),
-    );
+      req.flush(errmsg, { status: 403, statusText: 'Forbidden' });
+    }));
   });
 });

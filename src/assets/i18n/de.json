@@ -87,7 +87,7 @@
       "PORTAL_PREFS": "Portal Preferences"
     },
     "block": {
-     "userAdministration": {
+      "userAdministration": {
         "create": "Beim Anlegen des Benutzerkontos ist ein Fehler aufgetreten!",
         "edit": "Beim Bearbeiten des Benutzerkontos ist ein Fehler aufgetreten!",
         "list": "Die Benutzerlist kann wegen eines Fehlers nicht angezeigt werden!",
@@ -95,7 +95,7 @@
         "helpUserNameExists": "Versuchen Sie bitte den Benutzer mit einer anderen Benutzername anzulegen.",
         "helpUserEmailExists": "Versuchen Sie bitte den Benutzer mit einer anderen E-mail Adresse anzulegen."
       },
-     "defaultMessage": "Systemfehler aufgetreten!",
+      "defaultMessage": "Systemfehler aufgetreten!",
       "logging": "Warnung, Logging ist fehlgeschlagen! Keine weitere Aktion notwendig! ",
       "dashboard": "Systemfehler, Anzeigen des Dashboard nicht möglich!",
       "appStarter": "Systemfehler, Anzeigen der Applikationen nicht möglich!",

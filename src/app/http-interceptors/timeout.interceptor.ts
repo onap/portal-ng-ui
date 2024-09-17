@@ -16,14 +16,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError, TimeoutError } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
 import { AlertService } from '../modules/alerting';
@@ -34,18 +28,19 @@ export const DEFAULT_TIMEOUT = 60000;
 
 @Injectable()
 export class TimeoutInterceptor implements HttpInterceptor {
-
-  constructor(private alertService: AlertService, private translateService: TranslateService) {}
-  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>>{
-
+  constructor(
+    private alertService: AlertService,
+    private translateService: TranslateService,
+  ) {}
+  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(req).pipe(
       timeout(DEFAULT_TIMEOUT),
       catchError(err => {
         if (err instanceof TimeoutError) {
-          this.alertService.error(this.translateService.instant('common.messages.timeout'))
+          this.alertService.error(this.translateService.instant('common.messages.timeout'));
         }
         return throwError(err);
-      })
+      }),
     );
   }
 }

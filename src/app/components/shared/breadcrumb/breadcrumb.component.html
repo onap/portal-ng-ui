@@ -16,11 +16,10 @@
   ~ SPDX-License-Identifier: Apache-2.0
   -->
 
-
 <nav [attr.aria-label]="'layout.main.breadcrumb' | translate">
   <ol class="breadcrumb">
     <li *ngFor="let item of items; index as i" class="breadcrumb-item">
-      <ng-container *ngTemplateOutlet="item.template" accessKey='3'></ng-container>
+      <ng-container *ngTemplateOutlet="item.template" accessKey="3"></ng-container>
     </li>
   </ol>
 </nav>

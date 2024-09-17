@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { FormArray, FormGroup } from '@angular/forms';
 
 export function isNotUndefined<T>(val: T | undefined): val is T {
@@ -46,8 +45,8 @@ export function isNullOrUndefinedOrEmptyString(val: any): boolean {
   return val === null || val === undefined || val === '';
 }
 
-export function isEmptyArray(array: any[]):boolean {
-  return !array.length
+export function isEmptyArray(array: any[]): boolean {
+  return !array.length;
 }
 
 export function getRandomNumber(min: number, max: number) {

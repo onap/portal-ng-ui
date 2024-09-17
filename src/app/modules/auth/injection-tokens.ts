@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { InjectionToken } from '@angular/core';
 
 export interface AclConfig {

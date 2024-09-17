@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import {
   Component,
   Output,
@@ -39,7 +38,7 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-@Output() collapse = new EventEmitter<void>()
+  @Output() collapse = new EventEmitter<void>();
 
   /**
    *
@@ -49,7 +48,7 @@ export class HeaderComponent implements OnInit {
   switchToMainContent: string = '';
   isFullScreen = false;
   changePasswordUrl = `${environment.keycloak.hostname}/realms/${environment.keycloak.realm}/account/password`;
-  shortcuts: Map<KeyboardShortcuts,string> = this.shortcutService.getShortcuts();
+  shortcuts: Map<KeyboardShortcuts, string> = this.shortcutService.getShortcuts();
 
   public ACCESS_KEY = KeyboardShortcuts;
   @ViewChild('myNavElement') myNavElement!: ElementRef;
@@ -58,7 +57,7 @@ export class HeaderComponent implements OnInit {
     private readonly fullscreenService: FullscreenService,
     private readonly oauthService: OAuthService,
     private offcanvasService: NgbOffcanvas,
-    private shortcutService: ShortcutService
+    private shortcutService: ShortcutService,
   ) {}
   ngOnInit(): void {
     this.checkScreenMode();
@@ -100,7 +99,6 @@ export class HeaderComponent implements OnInit {
   public toggleSidenav() {
     this.collapse.emit();
   }
-
 
   public openCanvas(content: TemplateRef<any>) {
     const isCanvasOpened = this.offcanvasService.hasOpenOffcanvas();

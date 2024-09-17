@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { NgModule } from '@angular/core';
 import { UserAdministrationListComponent } from './user-administration-list/user-administration-list.component';
 import { UserAdministrationFormComponent } from './user-administration-form/user-administration-form.component';

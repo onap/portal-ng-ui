@@ -16,14 +16,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-table-skeleton',
   templateUrl: './table-skeleton.component.html',
   styleUrls: ['./table-skeleton.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableSkeletonComponent {
-}
+export class TableSkeletonComponent {}

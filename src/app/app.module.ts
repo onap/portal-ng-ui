@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -88,7 +87,7 @@ export function changeConfig() {
     DashboardModule,
     SharedModule,
     AppStarterModule,
-   ],
+  ],
   // { provide: ErrorHandler, useClass: SentryErrorHandler },
   providers: [
     { provide: RequestCache, useClass: RequestCacheService },

@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 export enum ActionFilter {
   ALL = 'ALL',
   SEARCH = 'SEARCH',
@@ -71,5 +70,4 @@ export interface ActionModel {
   entityParams: EntityTypeModel;
 }
 
-export type EntityTypeModel =
-  | EntityUserHistoryActionModel
+export type EntityTypeModel = EntityUserHistoryActionModel;

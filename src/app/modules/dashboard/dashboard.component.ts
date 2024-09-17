@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { UserSettingsService } from '../../services/user-settings.service';
@@ -37,7 +36,10 @@ export class DashboardComponent implements OnInit {
   public dropAction = new Subject<CdkDragDrop<string[]>>();
   public updateAction = new Subject<DashboardTileSettings>();
 
-  constructor(private unsubscribeService: UnsubscribeService, private userSettingsService: UserSettingsService) {}
+  constructor(
+    private unsubscribeService: UnsubscribeService,
+    private userSettingsService: UserSettingsService,
+  ) {}
 
   public tiles$: Observable<DashboardTileSettings[]> = this.userSettingsService
     .selectDashboardAvailableTiles()

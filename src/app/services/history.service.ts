@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Injectable } from '@angular/core';
 import {
   ActionType,
@@ -32,7 +31,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HistoryService {
-  constructor(private readonly actionService: ActionsService, private readonly oauthService: OAuthService) {}
+  constructor(
+    private readonly actionService: ActionsService,
+    private readonly oauthService: OAuthService,
+  ) {}
 
   public getUserActions(interval: number | undefined): Observable<ActionsListResponse> {
     const userId = Object(this.oauthService.getIdentityClaims()).sub;
@@ -54,7 +56,7 @@ export class HistoryService {
   private createAction(action: {
     type: ActionType;
     entity: EntityType;
-    entityParams: { [key: string]: string | undefined};
+    entityParams: { [key: string]: string | undefined };
   }): Observable<ActionsResponse> {
     const userId = Object(this.oauthService.getIdentityClaims()).sub;
     const actionCreatedAt = new Date().toISOString();

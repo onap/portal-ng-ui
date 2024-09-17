@@ -1,9 +1,11 @@
 # portal-ng
 
 ## Getting started
+
 The portal-ng ui can either be developed against a remote cluster or it's dependencies can be run locally on your machine.
 
 ### Developing against a remote cluster
+
 To develop against a remote cluster, the webpack proxy needs to be configured to forward requests to the remote cluster urls.
 For that we are providing a `staging.proxy.config.json.template` file that needs to be adjusted with your cluster hostnames and then saved as `staging.proxy.config.json`.
 After that, you can either use `npm start` or the `staging.sh` to launch the portal-ng in development mode:
@@ -17,6 +19,7 @@ npm start
 ```
 
 ### Developing against local containers
+
 We are providing a docker-compose file that can be used to spin up the portal-ng and it's dependencies (like Keycloak or the bff) on your machine.
 
 To do that, execute the `run.sh` in the development folder:
@@ -32,14 +35,15 @@ development/stop.sh
 ```
 
 ### Access the ui
+
 Example requests against the portal backend service can be run in your preferred IDE with the `request.http` file from the development folder.
 
 You can access the portal-ng UI via browser with different default user accounts. Note that these accounts have different roles and differ accordingly
 in what they are allowed to see in the portal.
 
-URL: http://localhost
+URL: <http://localhost>
 
-``` yaml
+```yaml
 username: onap-admin
 password: password
 
@@ -52,14 +56,15 @@ password: password
 
 You can access the Keycloak UI via browser.
 
-URL: http://localhost:8080
+URL: <http://localhost:8080>
 
-``` yaml
+```yaml
 username: admin
 password: password
 ```
 
 ## Docker
+
 ### Build the docker image
 
 Run `npm run build -- --prod --base-href=/portal-ui/` to get a production build of the project, this will be used in the `docker build`.

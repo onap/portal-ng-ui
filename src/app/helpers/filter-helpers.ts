@@ -31,7 +31,7 @@ export enum FilterOperator {
   NOT_EQUAL = ' != ',
   LIKE_REGEX = ' like_regex ',
   OR = ' || ',
-  EQUAL_IN = ' IN '
+  EQUAL_IN = ' IN ',
 }
 
 /**
@@ -82,10 +82,15 @@ export function createJsonPathFilter(filter: Filter, returnsString = false): Fil
  * @param forApi
  * @returns a concatenated string
  */
-export function createFilter(parameter: string, operator: FilterOperator, value: string | string[], forApi= false): string {
+export function createFilter(
+  parameter: string,
+  operator: FilterOperator,
+  value: string | string[],
+  forApi = false,
+): string {
   if (forApi && operator === FilterOperator.EQUAL_IN) {
     const valueArray = Array.isArray(value) ? value : value.split(',');
-    return addParentheses(createOrCondition(composeFilterFromArray(valueArray,parameter,FilterOperator.EQUAL)));
+    return addParentheses(createOrCondition(composeFilterFromArray(valueArray, parameter, FilterOperator.EQUAL)));
   }
   return `${parameter}${operator}${value}`;
 }
@@ -97,8 +102,7 @@ export function createFilter(parameter: string, operator: FilterOperator, value:
  * @returns a string[]
  */
 function composeFilterFromArray(value: string[], parameter: string, operator: FilterOperator): string[] {
-  return value
-    .reduce((acc: string[], curr) => [...acc, `${parameter}${operator}${curr}`], [])
+  return value.reduce((acc: string[], curr) => [...acc, `${parameter}${operator}${curr}`], []);
 }
 /**
  * Join array of string  using '||' operator
@@ -106,7 +110,7 @@ function composeFilterFromArray(value: string[], parameter: string, operator: Fi
  * @returns a string
  */
 function createOrCondition(value: string[]) {
-  return value.join(FilterOperator.OR)
+  return value.join(FilterOperator.OR);
 }
 /**
  * Wraps a string in parentheses `"string"` -> `("string")`
@@ -114,7 +118,7 @@ function createOrCondition(value: string[]) {
  * @returns a string wrapped in quotes
  */
 function addParentheses(value: string) {
-  return ` ( ${value} ) `
+  return ` ( ${value} ) `;
 }
 /**
  * Wraps a string in quotes `"string"` -> `"'string'"`
@@ -238,19 +242,13 @@ function splitFilterByOperator(filters: string[]): Map<string, Filter> {
  * @param forApi
  * @returns a string containing all filter expressions or undefined if size of the Filter Map is 0
  */
-export function filterBuilder(filters: Map<string, Filter>, forApi=false): string | undefined {
+export function filterBuilder(filters: Map<string, Filter>, forApi = false): string | undefined {
   if (filters.size === 0) {
     return undefined;
   }
   const filtersString: string[] = [];
   for (const [, filter] of filters.entries()) {
-    filtersString.push(
-      createFilter(
-        filter.parameter,
-        filter.operator,
-        filter.value.toString(),
-      forApi),
-    );
+    filtersString.push(createFilter(filter.parameter, filter.operator, filter.value.toString(), forApi));
   }
   return composeFilter(filtersString);
 }

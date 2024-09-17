@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -36,6 +35,5 @@ export class LoadingIndicatorInterceptor implements HttpInterceptor {
 
     this.loadingIndicator.show();
     return next.handle(req).pipe(finalize(() => this.loadingIndicator.hide()));
-
   }
 }

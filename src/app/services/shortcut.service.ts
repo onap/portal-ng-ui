@@ -28,11 +28,9 @@ export enum KeyboardShortcuts {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class ShortcutService {
-
   private shortcuts = new Map<KeyboardShortcuts, string>([
     [KeyboardShortcuts.SHORTCUT_0, this.translateService.instant('layout.header.shortcuts.details')],
     [KeyboardShortcuts.SHORTCUT_1, this.translateService.instant('layout.header.shortcuts.home')],
@@ -41,9 +39,9 @@ export class ShortcutService {
     [KeyboardShortcuts.SHORTCUT_6, this.translateService.instant('layout.header.shortcuts.menu')],
   ]);
 
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService) {}
 
-  public getShortcuts(): Map<KeyboardShortcuts,string> {
+  public getShortcuts(): Map<KeyboardShortcuts, string> {
     return this.shortcuts;
   }
 }

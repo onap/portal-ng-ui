@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Injectable } from '@angular/core';
 import { OAuthService, UserInfo } from 'angular-oauth2-oidc';
 import { catchError, filter, map } from 'rxjs/operators';
@@ -33,15 +32,25 @@ import { BehaviorSubject, EMPTY, Observable, of } from 'rxjs';
 })
 export class AuthService {
   userProfile$ = new BehaviorSubject<UserInfo | undefined>(undefined);
-  constructor(private readonly oauthService: OAuthService, private router: Router, private alertService: AlertService, private translateService: TranslateService) {
+  constructor(
+    private readonly oauthService: OAuthService,
+    private router: Router,
+    private alertService: AlertService,
+    private translateService: TranslateService,
+  ) {
     //renew cache every page reload
-    router.events.pipe(
-      filter((e): e is NavigationStart => e instanceof NavigationStart)
-    ).subscribe(() => {
+    router.events.pipe(filter((e): e is NavigationStart => e instanceof NavigationStart)).subscribe(() => {
       try {
-        return this.loadUserProfile().then(userInfo => this.userProfile$.next(userInfo)).catch(e => {throw e})
-      }catch (e) {
-        this.alertService.error(this.translateService.instant('common.messages.keycloakAccessTokenNotValid'), {id: "keycloak", keepAfterRouteChange: true})
+        return this.loadUserProfile()
+          .then(userInfo => this.userProfile$.next(userInfo))
+          .catch(e => {
+            throw e;
+          });
+      } catch (e) {
+        this.alertService.error(this.translateService.instant('common.messages.keycloakAccessTokenNotValid'), {
+          id: 'keycloak',
+          keepAfterRouteChange: true,
+        });
         return Promise.resolve(null);
       }
     });
@@ -73,8 +82,9 @@ export class AuthService {
       filter(userProfile => userProfile !== undefined),
       catchError(err => {
         console.error(err);
-        return EMPTY
-      }));
+        return EMPTY;
+      }),
+    );
   }
 
   /**
@@ -84,11 +94,11 @@ export class AuthService {
     return this.oauthService.hasValidAccessToken();
   }
   /*
-  * Private method = should not be used outside of this class, because it triggers additional request for userprofile
-  * */
-  private loadUserProfile():Promise<UserInfo> {
+   * Private method = should not be used outside of this class, because it triggers additional request for userprofile
+   * */
+  private loadUserProfile(): Promise<UserInfo> {
     // in version 12.2 loadUserProfile() Promise returns data of type object instead of UserInfo
     //@ts-ignore
-    return this.oauthService.loadUserProfile().then(userInfo => userInfo.info as UserInfo)
+    return this.oauthService.loadUserProfile().then(userInfo => userInfo.info as UserInfo);
   }
 }

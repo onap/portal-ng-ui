@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component, ContentChildren, QueryList } from '@angular/core';
 import { BreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
 

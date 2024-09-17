@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Injectable, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 

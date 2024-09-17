@@ -16,11 +16,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 export const VALIDATION_PATTERN = "[\\w,/!=§#@€:µ.+?' \\-\\u00C0-\\u017F]*";
 export const NON_WHITE_SPACE_PATTERN = new RegExp('\\S');
 
- //Info from team Euler --> predefined regexp in SO service instance name is:
+//Info from team Euler --> predefined regexp in SO service instance name is:
 // public static final String VALID_INSTANCE_NAME_FORMAT = "^[a-zA-Z][a-zA-Z0-9._-]*$";
 // thanks to that we will avoid the error during model deployment
-export const VALID_INSTANCE_NAME_FORMAT_PATTERN = "^[a-zA-Z][a-zA-Z0-9._-]*$";
+export const VALID_INSTANCE_NAME_FORMAT_PATTERN = '^[a-zA-Z][a-zA-Z0-9._-]*$';

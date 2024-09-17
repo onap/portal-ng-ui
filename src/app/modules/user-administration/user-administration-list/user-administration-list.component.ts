@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component } from '@angular/core';
 import { map, repeatWhen, shareReplay, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { AlertService } from 'src/app/modules/alerting';
@@ -41,7 +40,8 @@ export class UserAdministrationListComponent {
   readonly pageSize$ = new BehaviorSubject<number>(10);
   readonly loggedUserId$ = this.authService.loadCachedUserProfile().pipe(
     takeUntil(this.unsubscribeService.unsubscribe$),
-    map(userInfo => userInfo!.sub));
+    map(userInfo => userInfo!.sub),
+  );
 
   private readonly reload$ = new Subject<void>();
   readonly result$ = combineLatest([this.page$, this.pageSize$]).pipe(
@@ -70,8 +70,7 @@ export class UserAdministrationListComponent {
     private readonly unsubscribeService: UnsubscribeService,
     private readonly authService: AuthService,
     private readonly historyService: HistoryService,
-  ) {
-  }
+  ) {}
 
   changePage(page: number): void {
     this.page$.next(page);
@@ -83,7 +82,7 @@ export class UserAdministrationListComponent {
 
   openModal(userId: string, userName: string): void {
     // open confirmation modal for user deletion
-    const modalRef = this.modalService.open(ConfirmationModalComponent,{backdropClass:'backdropClass'});
+    const modalRef = this.modalService.open(ConfirmationModalComponent, { backdropClass: 'backdropClass' });
     modalRef.componentInstance.okText = this.translateService.instant('common.buttons.delete');
     modalRef.componentInstance.title = this.translateService.instant('userAdministration.list.modal.delete.title');
     modalRef.componentInstance.text = this.translateService.instant('userAdministration.list.modal.delete.text', {

@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 p {
   margin-bottom: 0 !important;
 }
@@ -32,7 +31,6 @@ li {
   padding-left: initial;
   margin-top: initial;
 }
-
 
 @media (max-width: 605px) {
   h2 {
@@ -57,4 +55,3 @@ li {
     padding-left: 2px !important;
   }
 }
-

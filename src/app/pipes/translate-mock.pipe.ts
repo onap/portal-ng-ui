@@ -16,8 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 /**
  * This class can be used to mock the `translate` pipe in jasmine test cases.
  *
@@ -31,12 +30,12 @@ import { Pipe, PipeTransform } from "@angular/core";
 */
 // Courtesy of: https://github.com/ngx-translate/core/issues/636#issuecomment-451137902
 @Pipe({
-    name: 'translate'
+  name: 'translate',
 })
 export class TranslatePipeMock implements PipeTransform {
-    public name = 'translate';
+  public name = 'translate';
 
-    public transform(query: string): any {
-        return query;
-    }
+  public transform(query: string): any {
+    return query;
+  }
 }

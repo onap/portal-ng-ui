@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError, TimeoutError } from 'rxjs';
@@ -45,7 +44,11 @@ interface ProblemDetail {
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
   errorDetail!: Problem;
-  constructor(private alertService: AlertService, private translateService: TranslateService, private router: Router) {}
+  constructor(
+    private alertService: AlertService,
+    private translateService: TranslateService,
+    private router: Router,
+  ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(

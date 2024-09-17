@@ -16,15 +16,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
-import {ActivatedRouteSnapshot, DetachedRouteHandle, BaseRouteReuseStrategy} from '@angular/router';
+import { ActivatedRouteSnapshot, DetachedRouteHandle, BaseRouteReuseStrategy } from '@angular/router';
 
 export class AppRouteReuseStrategy implements BaseRouteReuseStrategy {
   public shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
-    if(future.data.reuseComponent) {
-      return false
+    if (future.data.reuseComponent) {
+      return false;
     }
-    return (future.routeConfig === curr.routeConfig);
+    return future.routeConfig === curr.routeConfig;
   }
 
   retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle | null {
@@ -44,5 +43,4 @@ export class AppRouteReuseStrategy implements BaseRouteReuseStrategy {
   store(route: ActivatedRouteSnapshot, detachedTree: DetachedRouteHandle | null): void {
     //this is intentional
   }
-
 }

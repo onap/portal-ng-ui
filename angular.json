@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [ "clone-deep"],
+            "allowedCommonJsDependencies": ["clone-deep"],
             "aot": true,
             "outputPath": "dist/frontend",
             "index": "src/index.html",
@@ -25,7 +25,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/css/bootstrap-icons.css",
               "src/styles.css",
-               "./node_modules/@angular/cdk/overlay-prebuilt.css",
+              "./node_modules/@angular/cdk/overlay-prebuilt.css",
               {
                 "input": "src/assets/css/onap-styles.css",
                 "bundleName": "onap-styles",

@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { OAuthService } from 'angular-oauth2-oidc';
@@ -28,5 +27,8 @@ import { OAuthService } from 'angular-oauth2-oidc';
 export class ModalContentComponent {
   @Input() message: any;
 
-  constructor(public activeModal: NgbActiveModal, public oauthService: OAuthService) {}
+  constructor(
+    public activeModal: NgbActiveModal,
+    public oauthService: OAuthService,
+  ) {}
 }

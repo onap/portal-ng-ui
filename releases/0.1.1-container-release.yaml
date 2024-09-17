@@ -3,5 +3,5 @@ container_release_tag: 0.1.1
 project: portal-ng/ui
 ref: 24338bc2f78841a0475d91b49eb9458767ab97e9
 containers:
-    - name: portal-ng/ui
-      version: latest
+  - name: portal-ng/ui
+    version: latest

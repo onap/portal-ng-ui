@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { NgModule } from '@angular/core';
 import { AppStarterComponent } from './app-starter.component';
 import { AppStarterRoutingModule } from './app-starter-routing.module';

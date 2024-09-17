@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { Component, Input } from '@angular/core';
 import { ActionRowModel, ActionType, EntityUserHistoryActionModel } from '../../../../../model/user-last-action.model';
 import { Router } from '@angular/router';

@@ -16,7 +16,6 @@
   ~ SPDX-License-Identifier: Apache-2.0
   -->
 
-
 <div class="d-flex justify-content-center">
   <span>
     <ngb-alert *ngFor="let alert of alerts" type="alert" class="{{ cssClass(alert) }}" [dismissible]="false">
@@ -85,8 +84,20 @@
             [attr.aria-expanded]="!isCollapsed"
             aria-controls="collapseSupportInfo"
           >
-            <i *ngIf="isCollapsed" class="bi bi-chevron-right text-danger" style="font-size: 18px" aria-hidden="true" [attr.aria-label]="'common.buttons.openSupportLink' | translate"></i>
-            <i *ngIf="!isCollapsed" class="bi bi-chevron-down text-danger" style="font-size: 18px" aria-hidden="true" [attr.aria-label]="'common.buttons.closeSupportLink' | translate"></i>
+            <i
+              *ngIf="isCollapsed"
+              class="bi bi-chevron-right text-danger"
+              style="font-size: 18px"
+              aria-hidden="true"
+              [attr.aria-label]="'common.buttons.openSupportLink' | translate"
+            ></i>
+            <i
+              *ngIf="!isCollapsed"
+              class="bi bi-chevron-down text-danger"
+              style="font-size: 18px"
+              aria-hidden="true"
+              [attr.aria-label]="'common.buttons.closeSupportLink' | translate"
+            ></i>
           </button>
         </div>
 

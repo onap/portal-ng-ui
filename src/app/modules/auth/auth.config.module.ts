@@ -16,7 +16,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AuthConfig } from 'angular-oauth2-oidc';
 
