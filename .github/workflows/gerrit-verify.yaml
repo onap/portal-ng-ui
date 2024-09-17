@@ -103,7 +103,7 @@ jobs:
       - uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/node-build@master
         with:
           node-version: 20
-          build-tool: yarn
+          build-tool: npm
 
       - name: Nexus IQ Policy Evaluation
         # Somebody has set continue-on-error in the RelEng Reusable Workflows Repository
@@ -117,7 +117,7 @@ jobs:
         # uses: sonatype-nexus-community/iq-github-action@main
         # See: https://github.com/onap/portal-ng-ui/actions/runs/10527123076/job/29169584344
         # e.g. /entrypoint.sh: 18: [[: not found
-        uses: ModeSevenIndustrialSolutions/iq-github-action@main
+        uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/action/iq-github-action@master
         env:
           stage: 'build'
         with:
