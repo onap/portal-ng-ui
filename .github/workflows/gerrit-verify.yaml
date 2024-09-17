@@ -38,6 +38,8 @@ jobs:
       - name: Nexus IQ Policy Evaluation
         continue-on-error: true
         uses: ModeSevenIndustrialSolutions/iq-github-action@main
+        env:
+          stage: "build"
         with:
           serverUrl: ${{ vars.NEXUS_IQ_SERVER }}
           username: ${{ vars.NEXUS_IQ_USERNAME }}
