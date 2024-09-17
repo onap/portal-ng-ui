@@ -56,9 +56,9 @@ concurrency:
 jobs:
   prepare:
     runs-on: ubuntu-latest
+    if: vars.REPO_ORIGIN != 'github'
     steps:
       - name: Clear votes
-        if: vars.REPO_ORIGIN != 'github'
         # yamllint disable-line rule:line-length
         uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a # v0.6
         with:
