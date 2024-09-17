@@ -1,5 +1,5 @@
 ---
-name: Gerrit Composed Generic Verify CLM
+name: Nexus IQ Scan on Verify
 
 # yamllint disable-line rule:truthy
 on:
