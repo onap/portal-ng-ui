@@ -6,54 +6,44 @@ name: 'Nexus IQ Scan'
 
 # yamllint disable-line rule:truthy
 on:
-  # ToDo: convert to a reusable workflow later
   workflow_dispatch:
-    # workflow_call:
-    #    inputs:
-    ### Required when interacting with Gerrit
-    #      GERRIT_BRANCH:
-    #        description: 'Branch that change is against'
-    #        required: true
-    #        type: string
-    #      GERRIT_CHANGE_ID:
-    #        description: 'The ID for the change'
-    #        required: true
-    #        type: string
-    #      GERRIT_CHANGE_NUMBER:
-    #        description: 'The Gerrit number'
-    #        required: true
-    #        type: string
-    #      GERRIT_CHANGE_URL:
-    #        description: 'URL to the change'
-    #        required: true
-    #        type: string
-    #      GERRIT_EVENT_TYPE:
-    #        description: 'Type of Gerrit event'
-    #        required: true
-    #        type: string
-    #      GERRIT_PATCHSET_NUMBER:
-    #        description: 'The patch number for the change'
-    #        required: true
-    #        type: string
-    #      GERRIT_PATCHSET_REVISION:
-    #        description: 'The revision sha'
-    #        required: true
-    #        type: string
-    #      GERRIT_PROJECT:
-    #        description: 'Project in Gerrit'
-    #        required: true
-    #        type: string
-    #      GERRIT_REFSPEC:
-    #        description: 'Gerrit refspec of change'
-    #        required: true
-    #        type: string
-
-    ### Specific to this workflow
-    SOURCE-ORIGIN:
-      description: 'Code repository/origin [gerrit|other]'
-      required: false
-      type: string
-      default: 'gerrit'
+    inputs:
+      GERRIT_BRANCH:
+        description: 'Branch that change is against'
+        required: true
+        type: string
+      GERRIT_CHANGE_ID:
+        description: 'The ID for the change'
+        required: true
+        type: string
+      GERRIT_CHANGE_NUMBER:
+        description: 'The Gerrit number'
+        required: true
+        type: string
+      GERRIT_CHANGE_URL:
+        description: 'URL to the change'
+        required: true
+        type: string
+      GERRIT_EVENT_TYPE:
+        description: 'Type of Gerrit event'
+        required: true
+        type: string
+      GERRIT_PATCHSET_NUMBER:
+        description: 'The patch number for the change'
+        required: true
+        type: string
+      GERRIT_PATCHSET_REVISION:
+        description: 'The revision sha'
+        required: true
+        type: string
+      GERRIT_PROJECT:
+        description: 'Project in Gerrit'
+        required: true
+        type: string
+      GERRIT_REFSPEC:
+        description: 'Gerrit refspec of change'
+        required: true
+        type: string
 
 concurrency:
   # yamllint disable-line rule:line-length
@@ -83,54 +73,10 @@ jobs:
   node-verify-clm:
     runs-on: ubuntu-latest
     #needs: [prepare]
-    steps:
-      # Below needs to be swapped for GERRIT change/checkout for VERIFY jobs (NOT merge)
-      - uses: actions/checkout@v4
-        if: inputs.source-origin != 'gerrit'
-      # Prevents the need to pass GERRIT requirements into subsequently called actions/workflows
-      #- name: Export env variables
-      #  id: export-env-variables
-      #  uses: infovista-opensource/vars-to-env-action@1.0.0
-      #  with:
-      #    secrets: ${{ inputs.env-vars }}
-      #- name: Export env secrets
-      #  id: export-env-secrets
-      #  uses: infovista-opensource/vars-to-env-action@1.0.0
-      #  with:
-      #    secrets: ${{ inputs.env-secrets }}
-
-      # Build Node.js project
-      - uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/node-build@master
-        with:
-          node-version: 20
-          build-tool: npm
-
-      - name: Nexus IQ Policy Evaluation
-        # Somebody has set continue-on-error in the RelEng Reusable Workflows Repository
-        # continue-on-error: true
-        # Why?!?!?
-        # yamllint disable-line rule:line-length
-        # See: https://github.com/lfit/releng-reusable-workflows/blob/main/.github/workflows/composed-gradle-nexus-iq.yaml
-        # yamllint disable-line rule:line-length
-        # See: https://github.com/lfit/releng-reusable-workflows/blob/main/.github/workflows/composed-maven-nexus-iq.yaml
-        # This has multiple issues:
-        # uses: sonatype-nexus-community/iq-github-action@main
-        # See: https://github.com/onap/portal-ng-ui/actions/runs/10527123076/job/29169584344
-        # e.g. /entrypoint.sh: 18: [[: not found
-        uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/iq-github-action@master
-        env:
-          stage: 'build'
-        with:
-          serverUrl: ${{ vars.NEXUS_IQ_SERVER }}
-          username: ${{ vars.NEXUS_IQ_USERNAME }}
-          password: ${{ secrets.NEXUS_IQ_PASSWORD }}
-          #applicationId: ${{ github.repository_owner }}-${{ github.event.repository.name }}
-          # Temporarily force to ONAP because testing in ModeSevenIndustrialSolutions
-          applicationId: onap-${{ github.event.repository.name }}
-          stage: 'build'
-          # target: ''
-          writePolicyEvaluationJson: 'policy-eval-results.json'
-          # debug: true
+    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/nexus-iq.yaml@master
+    with:
+      node-version: 20
+      build-tool: npm
 
   #vote:
   #  if: inputs.source-origin == 'gerrit'

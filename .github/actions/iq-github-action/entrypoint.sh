@@ -1,4 +1,6 @@
 #!/bin/env -S bash -l
+# Was:
+#!/bin/sh -l
 
 # Copyright (c) 2019-present Sonatype, Inc.
 #
