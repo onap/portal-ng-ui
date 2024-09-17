@@ -67,21 +67,21 @@ jobs:
 #        run: sleep 10s
 
   generic-verify-clm:
-    # needs: prepare
-    # yamllint disable-line rule:line-length
-    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/composed-generic-nexus-iq.yaml@master
-    with:
-      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
-      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
-      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
-      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
-      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
-      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
-      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
-      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
-      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
-    secrets:
-      NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
+    runs-on: ubuntu-latest
+    steps:
+      # Below needs to be swapped for GERRIT change checkout for VERIFY jobs (NOT merge)
+      - uses: actions/checkout@v4
+
+      - name: Nexus IQ Policy Evaluation
+        continue-on-error: true
+        uses: ModeSevenIndustrialSolutions/iq-github-action@master
+        with:
+          serverUrl: ${{ env.NEXUS_IQ_SERVER }}
+          username: ${{ vars.NEXUS_IQ_USERNAME }}
+          password: ${{ secrets.NEXUS_IQ_PASSWORD }}
+          applicationId: ${{ env.APPLICATION_ID }}
+          stage: ${{ env.NEXUS_STAGE }}
+          target: ${{ env.NEXUS_TARGET }}
 
 #  vote:
 #    if: ${{ always() }}
