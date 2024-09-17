@@ -28,9 +28,13 @@ runs:
 
     # Install Yarn, show tooling versions
     - run: 'npm install --global yarn'
+      shell: bash
     - run: 'node -v'
+      shell: bash
     - run: 'npm -v'
+      shell: bash
     - run: 'yarn -v'
+      shell: bash
 
     # Build project with preferred tooling
     - run: 'npm install --production'
