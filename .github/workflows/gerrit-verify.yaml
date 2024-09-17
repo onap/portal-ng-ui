@@ -11,8 +11,6 @@ on:
   workflow_dispatch:
   # ToDo: convert to a reusable workflow later
   # workflow_call:
-
-  workflow_dispatch:
     inputs:
       GERRIT_BRANCH:
         description: 'Branch that change is against'
