@@ -29,14 +29,14 @@ runs:
     # Build project with preferred tooling
     - shell: bash
       if: inputs.build-tool == 'yarn'
-      run:
+      run: |
         # Build project using NPM
         echo "Building project using NPM"
         echo "npm install --production"
         npm install --production
     - shell: bash
       if: inputs.build-tool == 'npm'
-      run:
+      run: |
         # Build project using Yarn
         echo "Building project using Yarn"
         echo "yarn install --prod"
