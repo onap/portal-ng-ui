@@ -11,10 +11,12 @@ on:
       BUILD-TOOL:
         description: 'Used to build Node.js project [npm|yarn]'
         required: false
+        type: string
         default: 'yarn'
       NODE-VERSION:
         description: 'Node.js version to use for build'
         required: false
+        type: integer
         default: 20
 
 jobs:
