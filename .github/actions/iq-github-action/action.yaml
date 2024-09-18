@@ -1,4 +1,4 @@
-name: 'Sonatype Lifecycle GitHub Action'
+name: 'Sonatype Lifecycle Scan'
 author: 'Sonatype Community'
 description: 'Run a Sonatype Lifecycle policy evaluation as part of your GitHub Actions workflow.'
 inputs:
