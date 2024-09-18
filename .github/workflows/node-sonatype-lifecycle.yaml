@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: 2024 The Linux Foundation <https://linuxfoundation.org>
 
-name: 'node-nexus-iq.yaml [REUSABLE]'
+name: 'node-sonatype-lifecycle.yaml [REUSABLE]'
 
 # yamllint disable-line rule:truthy
 on:
@@ -32,7 +32,7 @@ on:
 jobs:
 
   node-verify-clm:
-    name: "Scan Node.js project with Nexus IQ"
+    name: "Node.js Sonatype Lifecycle"
     runs-on: ubuntu-latest
     steps:
 
@@ -46,7 +46,7 @@ jobs:
           node-version: ${{ inputs.node-version }}
           build-tool: ${{ inputs.build-tool }}
 
-      - name: Nexus IQ Policy Evaluation
+      - name: "Sonatype Lifecycle Scan"
         # Somebody has set continue-on-error in the RelEng Reusable Workflows Repository
         # continue-on-error: true
         # Why?!?!?

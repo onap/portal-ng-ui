@@ -75,7 +75,7 @@ jobs:
 
   # Only runs when master repository is in Gerrit
   gerrit-node-verify-clm:
-    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-nexus-iq.yaml@master
+    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-sonatype-lifecycle.yaml@master
     if: vars.REPO_ORIGIN != 'github'
     needs: [prepare]
     with:
@@ -86,7 +86,7 @@ jobs:
 
   # Only runs when master repository is in Gerrit
   github-node-verify-clm:
-    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-nexus-iq.yaml@master
+    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-sonatype-lifecycle.yaml@master
     if: vars.REPO_ORIGIN == 'github'
     with:
       node-version: 20
