@@ -49,14 +49,14 @@ export class UserSettingsService {
   }
 
   selectDashboard = () =>
-    this.getPreferences$().pipe(selectDistinctState<UserPreferencesModel, DashboardModel>(STATE_KEYS.DASHBOARD));
+    this.getPreferences$().pipe(selectDistinctState<UserPreferencesModel, DashboardModel>(STATE_KEYS.DASHBOARD as keyof UserPreferencesModel));
   selectDashboardApps = () =>
-    this.selectDashboard().pipe(selectDistinctState<DashboardModel, DashboardAppsModel>(STATE_KEYS.APPS));
+    this.selectDashboard().pipe(selectDistinctState<DashboardModel, DashboardAppsModel>(STATE_KEYS.APPS as keyof DashboardModel));
   selectDashboardAvailableTiles = () =>
-    this.selectDashboardApps().pipe(selectDistinctState<DashboardAppsModel, DashboardTileSettings[]>(STATE_KEYS.TILES));
+    this.selectDashboardApps().pipe(selectDistinctState<DashboardAppsModel, DashboardTileSettings[]>(STATE_KEYS.TILES as keyof DashboardAppsModel));
   selectLastUserAction = () =>
     this.selectDashboardApps().pipe(
-      selectDistinctState<DashboardAppsModel, LastUserActionSettings>(STATE_KEYS.USER_ACTIONS),
+      selectDistinctState<DashboardAppsModel, LastUserActionSettings>(STATE_KEYS.USER_ACTIONS as keyof DashboardAppsModel),
     );
 
   getPreferences(): void {
@@ -106,6 +106,8 @@ export class UserSettingsService {
   }
 }
 
-export function selectDistinctState<T, I>(key: string): UnaryFunction<Observable<T>, Observable<I>> {
-  return pipe(pluck<T, I>(key), distinctUntilChanged<I>());
+export function selectDistinctState<T, I>(key: keyof T): UnaryFunction<Observable<T>, Observable<I>> {
+  // return pipe(map(x => x[key] as I), distinctUntilChanged<I>());
+  return pipe(pluck(key), map(value => value as unknown as I), distinctUntilChanged());
+  // return pipe(pluck<T, I>(key), distinctUntilChanged<I>());
 }

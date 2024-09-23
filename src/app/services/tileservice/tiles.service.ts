@@ -19,7 +19,7 @@
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Tile, TilesListResponse } from '../../model/tile';
 import { map } from 'rxjs/operators';
@@ -50,8 +50,8 @@ export class TilesService {
    * GET tile by id
    * @param id to get specific tile
    */
-  getTileById(id: number): Promise<Tile> {
-    return this.httpClient.get<Tile>(urlTileApi + '/' + id).toPromise();
+  getTileById(id: number): Promise<Tile | undefined> {
+    return firstValueFrom(this.httpClient.get<Tile>(urlTileApi + '/' + id));
   }
 
   /**
@@ -59,11 +59,11 @@ export class TilesService {
    * @param tile
    * @returns the new saved tile
    */
-  saveTiles(tile: Tile): Promise<Tile> {
+  saveTiles(tile: Tile): Promise<Tile | undefined> {
     const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
-    return this.httpClient.post<Tile>(urlTileApi, tile, options).toPromise();
+    return firstValueFrom(this.httpClient.post<Tile>(urlTileApi, tile, options));
   }
 
   /**
@@ -71,11 +71,11 @@ export class TilesService {
    * @returns the updated hero
    * @param tile
    */
-  updateTiles(tile: Tile): Promise<Tile> {
+  updateTiles(tile: Tile): Promise<Tile | undefined> {
     const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
-    return this.httpClient.put<Tile>(urlTileApi + '/' + tile.id, tile, options).toPromise();
+    return firstValueFrom(this.httpClient.put<Tile>(urlTileApi + '/' + tile.id, tile, options));
   }
 
   /**

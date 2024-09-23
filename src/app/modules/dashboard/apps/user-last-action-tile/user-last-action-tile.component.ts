@@ -61,12 +61,12 @@ export class UserLastActionTileComponent implements OnInit {
     .pipe(shareReplay({ refCount: true, bufferSize: 1 }));
 
   public actionFilterType$ = this.userActionsSettings$.pipe(
-    selectDistinctState<LastUserActionSettings, ActionFilter>(STATE_KEYS.FILTER_TYPE),
+    selectDistinctState<LastUserActionSettings, ActionFilter>(STATE_KEYS.FILTER_TYPE as keyof LastUserActionSettings),
     shareReplay({ refCount: true, bufferSize: 1 }),
   );
 
   public actionIntervalType$ = this.userActionsSettings$.pipe(
-    selectDistinctState<LastUserActionSettings, ActionInterval>(STATE_KEYS.INTERVAL),
+    selectDistinctState<LastUserActionSettings, ActionInterval>(STATE_KEYS.INTERVAL as keyof LastUserActionSettings),
     shareReplay({ refCount: true, bufferSize: 1 }),
   );
 
