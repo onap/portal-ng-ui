@@ -3,6 +3,15 @@
 ## Getting started
 The portal-ng ui can either be developed against a remote cluster or it's dependencies can be run locally on your machine.
 
+### Allow unpriviliged (non-sudo) programs to bind to low ports (i.e 80)
+
+On linux, programs that run in an unprivileged mode are not allowed to bind to low ports (<=1024).
+A capability needs to be defined to allow the `node` process to do so:
+
+```sh
+sudo setcap 'cap_net_bind_service=+ep' `readlink -f \`which node\``
+```
+
 ### Developing against a remote cluster
 To develop against a remote cluster, the webpack proxy needs to be configured to forward requests to the remote cluster urls.
 For that we are providing a `staging.proxy.config.json.template` file that needs to be adjusted with your cluster hostnames and then saved as `staging.proxy.config.json`.

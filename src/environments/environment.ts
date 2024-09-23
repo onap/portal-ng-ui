@@ -33,7 +33,7 @@ export const environment: Environment = {
   production: false,
   keycloak: {
     hostname: window.location.origin, // Url of the Identity Provider
-    realm: 'ONAP',
+    realm: 'tnap',
     redirectUri: window.location.origin, // URL of the SPA to redirect the user to after login
     clientId: 'portal-app', // The Frontend is registered with this id at the auth-server
     responseType: 'code',
