@@ -41,7 +41,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 export class I18nModule {
   constructor(translate: TranslateService) {
     translate.addLangs(['en', 'de']);
-    const browserLang = translate.getBrowserLang();
+    const browserLang = translate.getBrowserLang() ?? 'en';
     translate.use(browserLang.match(/en|de/) ? browserLang : 'en');
   }
 }
