@@ -17,7 +17,7 @@
  */
 
 
-import { FormArray, FormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
 
 export function isNotUndefined<T>(val: T | undefined): val is T {
   return val !== undefined;
@@ -27,7 +27,7 @@ export function isNotNull<T>(val: T | null): val is T {
   return val !== null;
 }
 
-export function markAsDirtyAndValidate(formGroup: FormGroup): void {
+export function markAsDirtyAndValidate(formGroup: UntypedFormGroup): void {
   Object.values(formGroup.controls).forEach(control => {
     control.markAsDirty();
     control.updateValueAndValidity();
@@ -54,10 +54,10 @@ export function getRandomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export function areFormControlsValid(form: FormGroup): boolean {
+export function areFormControlsValid(form: UntypedFormGroup): boolean {
   const formControls = Object.keys(form.controls)
     .map(key => form.controls[key])
-    .filter(control => !(control instanceof FormArray));
+    .filter(control => !(control instanceof UntypedFormArray));
   return formControls.find(control => control.invalid && (control.dirty || control.touched)) === undefined;
 }
 
@@ -68,9 +68,9 @@ export function isString(value: any): boolean {
 export function resetSelectDefaultValue(cssSelector: string): void {
   setTimeout(() => {
     const element = document.querySelector(cssSelector);
-    if (element) {
+    if (element && document.querySelector(cssSelector)) {
       //@ts-ignore
-      document.querySelector(cssSelector)?.selectedIndex = -1;
+      document.querySelector(cssSelector).selectedIndex = -1;
     }
   }, 0);
 }

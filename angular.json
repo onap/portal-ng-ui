@@ -13,19 +13,25 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [ "clone-deep"],
+            "allowedCommonJsDependencies": [
+              "clone-deep"
+            ],
             "aot": true,
             "outputPath": "dist/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets", "src/keycloak-error.html"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/keycloak-error.html"
+            ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/css/bootstrap-icons.css",
               "src/styles.css",
-               "./node_modules/@angular/cdk/overlay-prebuilt.css",
+              "./node_modules/@angular/cdk/overlay-prebuilt.css",
               {
                 "input": "src/assets/css/onap-styles.css",
                 "bundleName": "onap-styles",
@@ -96,15 +102,24 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets", "src/keycloak-error.html"],
-            "styles": ["src/styles.css"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/keycloak-error.html"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         },
         "e2e": {
@@ -122,7 +137,6 @@
       }
     }
   },
-  "defaultProject": "frontend",
   "cli": {
     "cache": {
       "enabled": true,
@@ -130,6 +144,8 @@
       "environment": "all"
     },
     "analytics": "8f37c777-0688-43ed-a5a5-b315e820eff9",
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

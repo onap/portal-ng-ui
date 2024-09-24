@@ -18,7 +18,7 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import {
   CreateUserRequest,
   Role,
@@ -47,7 +47,7 @@ import { HistoryService } from '../../../services/history.service';
 })
 export class UserAdministrationFormComponent implements OnInit {
   public readonly userId: string | null;
-  public readonly keycloakUserForm: FormGroup;
+  public readonly keycloakUserForm: UntypedFormGroup;
   public user: UserResponse | undefined = undefined;
 
   public checkBoxes: {
@@ -70,17 +70,17 @@ export class UserAdministrationFormComponent implements OnInit {
   ) {
     this.userId = this.route.snapshot.paramMap.get('userId');
 
-    this.keycloakUserForm = new FormGroup({
-      id: new FormControl({ value: null, disabled: true }),
-      username: new FormControl({ value: null, disabled: this.userId !== null }, [
+    this.keycloakUserForm = new UntypedFormGroup({
+      id: new UntypedFormControl({ value: null, disabled: true }),
+      username: new UntypedFormControl({ value: null, disabled: this.userId !== null }, [
         Validators.required,
         Validators.maxLength(50),
         Validators.pattern(VALIDATION_PATTERN),
         Validators.pattern(NON_WHITE_SPACE_PATTERN),
       ]),
-      email: new FormControl(null, [Validators.email, Validators.required, Validators.pattern(VALIDATION_PATTERN)]),
-      firstName: new FormControl(null, [Validators.pattern(VALIDATION_PATTERN)]),
-      lastName: new FormControl(null, [Validators.pattern(VALIDATION_PATTERN)]),
+      email: new UntypedFormControl(null, [Validators.email, Validators.required, Validators.pattern(VALIDATION_PATTERN)]),
+      firstName: new UntypedFormControl(null, [Validators.pattern(VALIDATION_PATTERN)]),
+      lastName: new UntypedFormControl(null, [Validators.pattern(VALIDATION_PATTERN)]),
     });
   }
 
@@ -121,20 +121,20 @@ export class UserAdministrationFormComponent implements OnInit {
     }
   }
 
-  get userName(): FormControl {
-    return this.keycloakUserForm.get('username') as FormControl;
+  get userName(): UntypedFormControl {
+    return this.keycloakUserForm.get('username') as UntypedFormControl;
   }
 
-  get email(): FormControl {
-    return this.keycloakUserForm.get('email') as FormControl;
+  get email(): UntypedFormControl {
+    return this.keycloakUserForm.get('email') as UntypedFormControl;
   }
 
-  get firstName(): FormControl {
-    return this.keycloakUserForm.get('firstName') as FormControl;
+  get firstName(): UntypedFormControl {
+    return this.keycloakUserForm.get('firstName') as UntypedFormControl;
   }
 
-  get lastName(): FormControl {
-    return this.keycloakUserForm.get('lastName') as FormControl;
+  get lastName(): UntypedFormControl {
+    return this.keycloakUserForm.get('lastName') as UntypedFormControl;
   }
 
   public onSubmit(): void {
@@ -212,7 +212,7 @@ export class UserAdministrationFormComponent implements OnInit {
   private updateUserData(userResponse: Observable<UserResponse>, roleResponse: Observable<RoleListResponse>): void {
     forkJoin([userResponse, roleResponse])
       .pipe(
-        switchMap(([,]) =>
+        switchMap(() =>
           this.historyService.createUserHistoryAction({
             type: ActionType.EDIT,
             entity: EntityType.USERADMINISTRATION,
