@@ -18,7 +18,7 @@
 
 
 import { Inject, Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ACL_CONFIG, AclConfig } from '../modules/auth/injection-tokens';
@@ -29,7 +29,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class HasPermissionsGuard implements CanActivate {
+export class HasPermissionsGuard  {
   constructor(
     private readonly authService: AuthService,
     private readonly httpClient: HttpClient,

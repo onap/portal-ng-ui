@@ -18,7 +18,7 @@
 
 
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { UsersService } from '../../../openapi/output';
 import { catchError, map } from 'rxjs/operators';
@@ -26,7 +26,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable({
   providedIn: 'root',
 })
-export class EditUserCanActivateGuard implements CanActivate {
+export class EditUserCanActivateGuard  {
   constructor(private usersService: UsersService, private router: Router, private translateService: TranslateService) {}
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const userId = route.paramMap.get('userId');
