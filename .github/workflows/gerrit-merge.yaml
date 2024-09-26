@@ -97,6 +97,16 @@ jobs:
     secrets:
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+  # This is a test workflow, not production, and will be replaced
+  node-sonartype-lifecycle:
+    # yamllint disable-line rule:line-length
+    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-sonatype-lifecycle.yaml@master
+    with:
+      node-version: 20
+      build-tool: npm
+    secrets:
+      NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
+
   report-status:
     if: ${{ always() }}
     needs: [notify, call-prescan-sonarcloud]
