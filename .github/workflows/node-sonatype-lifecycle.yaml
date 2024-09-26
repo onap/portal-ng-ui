@@ -1,0 +1,48 @@
+---
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2024 The Linux Foundation <https://linuxfoundation.org>
+
+name: 'node-sonatype-lifecycle.yaml [REUSABLE]'
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_call:
+    inputs:
+      BUILD-TOOL:
+        description: 'Used to build Node.js project [npm|yarn]'
+        required: false
+        type: string
+        default: 'yarn'
+      NODE-VERSION:
+        description: 'Node.js version to use for build'
+        required: false
+        type: number
+        default: 20
+    secrets:
+      NEXUS_IQ_PASSWORD:
+        description: "Nexus IQ Password"
+        required: true
+
+jobs:
+
+  node-verify-clm:
+    name: "Node.js Sonatype Lifecycle"
+    runs-on: ubuntu-latest
+    steps:
+
+      # NOT necessary in GERRIT workflows
+      - uses: actions/checkout@v4
+
+      - name: "Build Node.js project"
+        # yamllint disable-line rule:line-length
+        uses: lfit/releng-reusable-workflows/.github/actions/node-build-action@5db64208d04fdb0558e8a3a1a1a762b88ffd483e # Initial version
+        with:
+          node-version: ${{ inputs.node-version }}
+          build-tool: ${{ inputs.build-tool }}
+
+      - name: "Run Nexus IQ/Sonatype Lifecycle Scan"
+        uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/sonatype-lifecycle@master
+        with:
+          scan-targets: '.'
+          java-version: '17'
+          iq-cli-version: 1.179.0-01
