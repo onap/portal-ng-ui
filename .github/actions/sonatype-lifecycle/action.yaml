@@ -12,6 +12,10 @@ inputs:
     required: true
   USERNAME:
     description: 'Username for Nexus IQ server'
+    required: true
+  PASSWORD:
+    description: 'PAssword for Nexus IQ server'
+    required: true
   # NOT Mandatory
   SCAN-TARGETS:
     description: 'Location of code to scan'
@@ -55,7 +59,7 @@ runs:
       uses: sonatype/actions/run-iq-cli@v1
       with:
         iq-server-url: ${{ inputs.NEXUS_IQ_SERVER }}
-        username: ${{ inputs.NEXUS_IQ_USERNAME }}
-        password: ${{ secrets.NEXUS_IQ_PASSWORD }}
+        username: ${{ inputs.USERNAME }}
+        password: ${{ inputs.PASSWORD }}
         application-id: ${{ github.repository_owner }}-${{ github.event.repository.name }}
         scan-targets: ${{ inputs.SCAN-TARGETS }}
