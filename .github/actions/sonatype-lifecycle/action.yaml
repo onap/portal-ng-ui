@@ -6,6 +6,13 @@ name: 'sonatype-lifecycle.yaml'
 description: "Runs the Sonatype Lifecycle (Nexus IQ) scanning tool"
 
 inputs:
+  # Mandatory
+  IQ-SERVER-URL:
+    description: 'URL for Nexus IQ server'
+    required: true
+  USERNAME:
+    description: 'Username for Nexus IQ server'
+  # NOT Mandatory
   SCAN-TARGETS:
     description: 'Location of code to scan'
     required: false
@@ -21,6 +28,8 @@ inputs:
     required: false
     type: string
     default: '1.179.0-01'
+
+
 secrets:
   NEXUS_IQ_PASSWORD:
     description: "Nexus IQ Password"
@@ -45,8 +54,8 @@ runs:
     - name: Run Sonatype CLI
       uses: sonatype/actions/run-iq-cli@v1
       with:
-        iq-server-url: ${{ vars.NEXUS_IQ_SERVER }}
-        username: ${{ vars.NEXUS_IQ_USERNAME }}
+        iq-server-url: ${{ inputs.NEXUS_IQ_SERVER }}
+        username: ${{ inputs.NEXUS_IQ_USERNAME }}
         password: ${{ secrets.NEXUS_IQ_PASSWORD }}
         application-id: ${{ github.repository_owner }}-${{ github.event.repository.name }}
         scan-targets: ${{ inputs.SCAN-TARGETS }}

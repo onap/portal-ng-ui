@@ -43,6 +43,8 @@ jobs:
       - name: "Run Nexus IQ/Sonatype Lifecycle Scan"
         uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/actions/sonatype-lifecycle@master
         with:
+          iq-server-url: ${{ vars.NEXUS_IQ_SERVER }}
+          username: ${{ vars.NEXUS_IQ_USERNAME }}
           scan-targets: '.'
           java-version: '17'
           iq-cli-version: 1.179.0-01
