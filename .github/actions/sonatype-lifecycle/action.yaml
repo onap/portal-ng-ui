@@ -61,5 +61,7 @@ runs:
         iq-server-url: ${{ inputs.IQ-SERVER-URL }}
         username: ${{ inputs.USERNAME }}
         password: ${{ inputs.PASSWORD }}
-        application-id: ${{ github.repository_owner }}-${{ github.event.repository.name }}
+        # Temporary patch for testing
+        application-id: onap-${{ github.event.repository.name }}
+        # application-id: ${{ github.repository_owner }}-${{ github.event.repository.name }}
         scan-targets: ${{ inputs.SCAN-TARGETS }}
