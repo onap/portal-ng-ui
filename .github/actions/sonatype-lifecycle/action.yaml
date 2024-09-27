@@ -58,7 +58,7 @@ runs:
     - name: Run Sonatype CLI
       uses: sonatype/actions/run-iq-cli@v1
       with:
-        iq-server-url: ${{ inputs.NEXUS_IQ_SERVER }}
+        iq-server-url: ${{ inputs.IQ-SERVER-URL }}
         username: ${{ inputs.USERNAME }}
         password: ${{ inputs.PASSWORD }}
         application-id: ${{ github.repository_owner }}-${{ github.event.repository.name }}
