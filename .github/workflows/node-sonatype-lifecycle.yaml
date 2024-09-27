@@ -45,6 +45,7 @@ jobs:
         with:
           iq-server-url: ${{ vars.NEXUS_IQ_SERVER }}
           username: ${{ vars.NEXUS_IQ_USERNAME }}
+          password: ${{ secrets.NEXUS_IQ_PASSWORD }}
           scan-targets: '.'
           java-version: '17'
           iq-cli-version: 1.179.0-01
