@@ -6,45 +6,41 @@ on:
   workflow_dispatch:
     inputs:
       GERRIT_BRANCH:
-        description: "Branch that change is against"
+        description: 'Branch that change is against'
         required: true
         type: string
       GERRIT_CHANGE_ID:
-        description: "The ID for the change"
+        description: 'The ID for the change'
         required: true
         type: string
       GERRIT_CHANGE_NUMBER:
-        description: "The Gerrit number"
+        description: 'The Gerrit number'
         required: true
         type: string
       GERRIT_CHANGE_URL:
-        description: "URL to the change"
+        description: 'URL to the change'
         required: true
         type: string
       GERRIT_EVENT_TYPE:
-        description: "Type of Gerrit event"
+        description: 'Type of Gerrit event'
         required: true
         type: string
       GERRIT_PATCHSET_NUMBER:
-        description: "The patch number for the change"
+        description: 'The patch number for the change'
         required: true
         type: string
       GERRIT_PATCHSET_REVISION:
-        description: "The revision sha"
+        description: 'The revision sha'
         required: true
         type: string
       GERRIT_PROJECT:
-        description: "Project in Gerrit"
+        description: 'Project in Gerrit'
         required: true
         type: string
       GERRIT_REFSPEC:
-        description: "Gerrit refspec of change"
+        description: 'Gerrit refspec of change'
         required: true
         type: string
-    secrets:
-      SONAR_TOKEN:
-        description: "Sonar Cloud access token"
-        required: true
 
 concurrency:
   # yamllint disable-line rule:line-length
@@ -57,7 +53,7 @@ jobs:
     steps:
       - name: Notify job start
         # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729  # v0.8
+        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729 # v0.8
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
@@ -70,6 +66,7 @@ jobs:
         run: sleep 10s
 
   # This is a test workflow, not production, and will be replaced
+  # Trivial change will trigger a verify run
   node-sonartype-lifecycle:
     # yamllint disable-line rule:line-length
     uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-sonatype-lifecycle.yaml@master
@@ -81,14 +78,14 @@ jobs:
 
   report-status:
     if: ${{ always() }}
-    needs: [notify, call-prescan-sonarcloud]
+    needs: [notify, node-sonartype-lifecycle]
     runs-on: ubuntu-latest
     steps:
       - name: Get workflow conclusion
         uses: technote-space/workflow-conclusion-action@v3
       - name: Report workflow conclusion
         # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729  # v0.8
+        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729 # v0.8
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
