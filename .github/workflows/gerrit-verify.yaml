@@ -66,8 +66,8 @@ jobs:
         run: sleep 10s
 
   # This is a test workflow, not production, and will be replaced
-  # Trivial change will trigger a verify run
   node-sonartype-lifecycle:
+    needs: [notify]
     # yamllint disable-line rule:line-length
     uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-sonatype-lifecycle.yaml@master
     with:
