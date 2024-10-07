@@ -12,9 +12,6 @@ jobs:
 
   # Only runs when master repository is in Gerrit
   gerrit-node-verify-clm:
-    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-sonatype-lifecycle.yaml@master
-    with:
-      node-version: 20
-      build-tool: npm
+    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-sonatype-lifecycle-releng.yaml@master
     secrets:
       NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
