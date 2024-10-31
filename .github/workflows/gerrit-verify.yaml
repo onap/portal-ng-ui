@@ -6,39 +6,39 @@ on:
   workflow_dispatch:
     inputs:
       GERRIT_BRANCH:
-        description: 'Branch that change is against'
+        description: "Branch that change is against"
         required: true
         type: string
       GERRIT_CHANGE_ID:
-        description: 'The ID for the change'
+        description: "The ID for the change"
         required: true
         type: string
       GERRIT_CHANGE_NUMBER:
-        description: 'The Gerrit number'
+        description: "The Gerrit number"
         required: true
         type: string
       GERRIT_CHANGE_URL:
-        description: 'URL to the change'
+        description: "URL to the change"
         required: true
         type: string
       GERRIT_EVENT_TYPE:
-        description: 'Type of Gerrit event'
+        description: "Type of Gerrit event"
         required: true
         type: string
       GERRIT_PATCHSET_NUMBER:
-        description: 'The patch number for the change'
+        description: "The patch number for the change"
         required: true
         type: string
       GERRIT_PATCHSET_REVISION:
-        description: 'The revision sha'
+        description: "The revision sha"
         required: true
         type: string
       GERRIT_PROJECT:
-        description: 'Project in Gerrit'
+        description: "Project in Gerrit"
         required: true
         type: string
       GERRIT_REFSPEC:
-        description: 'Gerrit refspec of change'
+        description: "Gerrit refspec of change"
         required: true
         type: string
 
@@ -65,20 +65,17 @@ jobs:
       - name: Allow replication
         run: sleep 10s
 
-  # This is a test workflow, not production, and will be replaced
-  node-sonartype-lifecycle:
+  build-nodejs:
     needs: [notify]
-    # yamllint disable-line rule:line-length
-    uses: ModeSevenIndustrialSolutions/portal-ng-ui/.github/workflows/node-sonatype-lifecycle.yaml@master
-    with:
-      node-version: 20
-      build-tool: npm
-    secrets:
-      NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Build Node.js project"
+        # yamllint disable-line rule:line-length
+        uses: lfit/releng-reusable-workflows/.github/actions/node-build-action@5db64208d04fdb0558e8a3a1a1a762b88ffd483e # 2024-09-24
 
   report-status:
     if: ${{ always() }}
-    needs: [notify, node-sonartype-lifecycle]
+    needs: [notify, build-nodejs]
     runs-on: ubuntu-latest
     steps:
       - name: Get workflow conclusion

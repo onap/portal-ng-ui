@@ -41,10 +41,6 @@ on:
         description: "Gerrit refspec of change"
         required: true
         type: string
-    secrets:
-      SONAR_TOKEN:
-        description: "Sonar Cloud access token"
-        required: true
 
 concurrency:
   # yamllint disable-line rule:line-length
@@ -57,7 +53,7 @@ jobs:
     steps:
       - name: Notify job start
         # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729  # v0.8
+        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729 # v0.8
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
@@ -72,7 +68,7 @@ jobs:
   call-prescan-sonarcloud:
     needs: notify
     # yamllint disable-line rule:line-length
-    uses: lfit/releng-reusable-workflows/.github/workflows/composed-generic-sonar-cloud.yaml@main
+    uses: lfit/releng-reusable-workflows/.github/workflows/composed-generic-sonar-cloud.yaml@e559e85bfc17ce024eabfa796d39ac27f806ec65 # 2024-07-19
     with:
       GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
       GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
@@ -95,18 +91,25 @@ jobs:
         -Dsonar.go.coverage.reportPaths=**/coverage.txt
         -Dsonar.verbose=true
     secrets:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  call-sonatype-lifecycle:
+    needs: [notify]
+    # yamllint disable-line rule:line-length
+    uses: lfit/releng-reusable-workflows/.github/workflows/reuse-sonatype-lifecycle.yaml@98e376a377e4622da10ce286a618343c733e41c2 # 2024-10-24
+    secrets:
+      NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
 
   report-status:
     if: ${{ always() }}
-    needs: [notify, call-prescan-sonarcloud]
+    needs: [notify, call-prescan-sonarcloud, call-sonatype-lifecycle]
     runs-on: ubuntu-latest
     steps:
       - name: Get workflow conclusion
         uses: technote-space/workflow-conclusion-action@v3
       - name: Report workflow conclusion
         # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729  # v0.8
+        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729 # v0.8
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
