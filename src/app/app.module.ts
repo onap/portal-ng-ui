@@ -43,6 +43,7 @@ import { UserAdministrationModule } from './modules/user-administration/user-adm
 import { SharedModule } from './shared.module';
 import { AppStarterModule } from './modules/app-starter/app-starter.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { InventoryComponent } from './modules/inventory/inventory.component';
 // Sentry.init({
 //   dsn: 'http://726f0fcf0f55429eb1c7e613d25d2daf@10.212.1.83:9000/2',
 
@@ -73,6 +74,7 @@ export function changeConfig() {
         PageNotFoundComponent,
         ConfirmationModalComponent,
         StatusPageComponent,
+        InventoryComponent,
     ],
     imports: [
         BrowserModule,
