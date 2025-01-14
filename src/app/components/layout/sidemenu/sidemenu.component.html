@@ -37,6 +37,13 @@
       >
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active-menu-item" [routerLink]="['/inventory']">
+        <i class="bi bi-grid mr-4" aria-hidden="true"></i>
+        <span class="d-sm-inline qa_menu_inventory">{{ 'layout.menu.items.inventory' | translate }}</span></a
+      >
+    </li>
+
     <li class="nav-item" [appHasPermissions]="'users.administration.list'">
       <a class="nav-link" routerLinkActive="active-menu-item" routerLink="/user-administration">
         <i class="bi bi-people mr-4" aria-hidden="true"></i>

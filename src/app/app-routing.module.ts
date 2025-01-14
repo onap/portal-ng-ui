@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'app-starter',
     loadChildren: () => import('./modules/app-starter/app-starter.module').then(m => m.AppStarterModule),
   },
+  {
+    path: 'inventory',
+    loadChildren: () => import('./modules/inventory/inventory.module').then(m => m.InventoryModule),
+  },
   { path: 'statusPage', component: StatusPageComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {

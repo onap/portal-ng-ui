@@ -17,7 +17,8 @@
     "dashboard.tile.ALARM_COUNT_TILE",
     "dashboard.tile.KPI_GRAPH_TILE",
     "dashboard.tile.USER_LAST_ACTION_TILE",
-    "treeview"
+    "treeview",
+    "inventory"
   ],
   "portal_operator": [
     "cellSite.map",
@@ -32,13 +33,15 @@
     "dashboard.tile.ALARM_COUNT_TILE",
     "dashboard.tile.KPI_GRAPH_TILE",
     "dashboard.tile.USER_LAST_ACTION_TILE",
-    "treeview"
+    "treeview",
+    "inventory"
   ],
   "portal_designer": [
     "kpi",
     "kpi.graphs",
     "kpi.grafana",
     "dashboard.tile.KPI_GRAPH_TILE",
-    "dashboard.tile.USER_LAST_ACTION_TILE"
+    "dashboard.tile.USER_LAST_ACTION_TILE",
+    "inventory"
   ]
 }
