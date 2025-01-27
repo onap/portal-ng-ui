@@ -65,34 +65,6 @@ jobs:
       - name: Allow replication
         run: sleep 10s
 
-  call-prescan-sonarcloud:
-    needs: notify
-    # yamllint disable-line rule:line-length
-    uses: lfit/releng-reusable-workflows/.github/workflows/composed-generic-sonar-cloud.yaml@e559e85bfc17ce024eabfa796d39ac27f806ec65 # 2024-07-19
-    with:
-      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
-      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
-      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
-      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
-      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
-      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
-      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
-      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
-      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
-      JDK_VERSION: "17"
-      ENV_VARS: "{}"
-      ENV_SECRETS: "{}"
-      SONAR_ARGS: >
-        -Dsonar.organization=onap
-        -Dsonar.projectKey=onap_portal-ng-ui
-        -Dsonar.projectName=portal-ng-ui
-        -Dsonar.build.sourceEncoding=UTF-8
-        -Dsonar.sources=.
-        -Dsonar.go.coverage.reportPaths=**/coverage.txt
-        -Dsonar.verbose=true
-    secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
   call-sonatype-lifecycle:
     needs: [notify]
     # yamllint disable-line rule:line-length
