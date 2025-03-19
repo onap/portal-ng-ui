@@ -1,0 +1,9 @@
+Code-Review+2: Fiete Ostkamp <fiete.ostkamp@telekom.de>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Bypass GHA <releng+onap.bypass.gha@linuxfoundation.org>
+Verified+1: ONAP GitHub Actions <collab-it+ecomp-jobbuilder@linuxfoundation.org>
+Submitted-by: Matthew Watkins <mwatkins@linuxfoundation.org>
+Submitted-at: Wed, 19 Mar 2025 09:28:28 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/portal-ng/ui/+/140496
+Project: portal-ng/ui
+Branch: refs/heads/master
