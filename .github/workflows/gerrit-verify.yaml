@@ -72,7 +72,7 @@ jobs:
       - uses: lfit/checkout-gerrit-change-action@54d751e8bd167bc91f7d665dabe33fae87aaaa63 # v0.9
       - name: "Build Node.js project"
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/node-build-action@v0.1.1 # 2025-04-09
+        uses: lfreleng-actions/node-build-action@v0.1.3 # 2025-04-09
         with:
           NPM_FLAGS: ""
 
