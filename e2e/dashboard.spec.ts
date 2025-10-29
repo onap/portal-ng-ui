@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022. Deutsche Telekom AG
+ * Copyright (c) 2025. Deutsche Telekom AG
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { test, expect } from '@playwright/test';
 
-import { browser, by, element } from 'protractor';
+test('has title', async ({ page }) => {
+  await page.goto('http://localhost:4200');
 
-export class AppPage {
-  navigateTo(): Promise<unknown> {
-    return browser.get(browser.baseUrl) as Promise<unknown>;
-  }
-
-  getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
-  }
-}
+  const dashboardHeading = page.locator('h2.qa_title');
+  await expect(dashboardHeading).toBeVisible();
+  expect(dashboardHeading).toHaveText('Dashboard');
+});
