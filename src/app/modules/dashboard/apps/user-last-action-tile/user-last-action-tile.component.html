@@ -63,7 +63,7 @@
         </div>
         <div class="card-body overflow-auto">
           <ng-container *ngIf="actions.length > 0; else noData">
-            <div *ngFor="let action of actions">
+            <div id="qa-div-action-rows" *ngFor="let action of actions">
               <app-action-row [action]="action">
                 <app-entity-user-administration-row
                   *ngIf="action.entity === EntityType.USERADMINISTRATION"

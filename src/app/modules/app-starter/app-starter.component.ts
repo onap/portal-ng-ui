@@ -17,29 +17,20 @@
  */
 
 
-import { Component, OnInit } from '@angular/core';
-import {  map } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import {  map, shareReplay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { from, Observable, of } from 'rxjs';
 import { Tile } from 'src/app/model/tile';
+import { TilesService } from 'src/app/services/tileservice/tiles.service';
 
 @Component({
   selector: 'app-app-starter',
   templateUrl: './app-starter.component.html',
   styleUrls: ['./app-starter.component.css'],
 })
-export class AppStarterComponent implements OnInit {
-  //I will leave this for future purpose in case we will have disabled tiles in the Portal
-  // disabledTiles:number[] = [11,12,13]
+export class AppStarterComponent {
+  public tiles$: Observable<Tile[]> = this.tileService.getTiles();
 
-  private readonly hostname = environment.hostname.replace('portal-ui-', '');
-
-  public readonly tiles$: Observable<Tile[]> = from(fetch('/assets/tiles/tiles.json?t=' + Date.now()).then(rsp => rsp.json()))
-      .pipe(
-          map(tiles => (tiles.items as Tile[])),
-          map(tiles => tiles.map(tile => ({ ...tile, redirectUrl: tile.redirectUrl.replace(/HOSTNAME/i, this.hostname) }))),
-      );
-
-
-  ngOnInit(): void {}
+  constructor(private tileService: TilesService) {}
 }
