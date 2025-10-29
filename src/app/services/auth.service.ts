@@ -34,17 +34,18 @@ import { BehaviorSubject, EMPTY, Observable, of } from 'rxjs';
 export class AuthService {
   userProfile$ = new BehaviorSubject<UserInfo | undefined>(undefined);
   constructor(private readonly oauthService: OAuthService, private router: Router, private alertService: AlertService, private translateService: TranslateService) {
+    this.loadUserProfile().then(userInfo => this.userProfile$.next(userInfo)).catch(e => {throw e})
     //renew cache every page reload
-    router.events.pipe(
-      filter((e): e is NavigationStart => e instanceof NavigationStart)
-    ).subscribe(() => {
-      try {
-        return this.loadUserProfile().then(userInfo => this.userProfile$.next(userInfo)).catch(e => {throw e})
-      }catch (e) {
-        this.alertService.error(this.translateService.instant('common.messages.keycloakAccessTokenNotValid'), {id: "keycloak", keepAfterRouteChange: true})
-        return Promise.resolve(null);
-      }
-    });
+    // router.events.pipe(
+    //   filter((e): e is NavigationStart => e instanceof NavigationStart)
+    // ).subscribe(() => {
+    //   try {
+    //     return this.loadUserProfile().then(userInfo => this.userProfile$.next(userInfo)).catch(e => {throw e})
+    //   }catch (e) {
+    //     this.alertService.error(this.translateService.instant('common.messages.keycloakAccessTokenNotValid'), {id: "keycloak", keepAfterRouteChange: true})
+    //     return Promise.resolve(null);
+    //   }
+    // });
   }
 
   userProfileCache: UserInfo | undefined = undefined;
@@ -65,7 +66,12 @@ export class AuthService {
    * Asynchronous because the needed UserInfo is fetched from Keycloak
    */
   hasSufficientRoles(): Observable<boolean> {
-    return this.loadCachedUserProfile().pipe(map(info => info?.roles.join(',') !== 'offline_access'));
+    return this.loadCachedUserProfile().pipe(map(info => {
+      if(!info?.roles) {
+        return false
+      }
+      return info.roles.join(',') !== 'offline_access'
+    }));
   }
 
   loadCachedUserProfile(): Observable<UserInfo | undefined> {

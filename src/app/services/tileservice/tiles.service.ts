@@ -19,70 +19,35 @@
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, from, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Tile, TilesListResponse } from '../../model/tile';
-import { map } from 'rxjs/operators';
-
-export const urlTileApi = environment.backendServerUrl + '/tiles';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
-// Tutorial on the http client: https://angular.io/tutorial/toh-pt6#get-heroes-with-httpclient
 export class TilesService {
-  constructor(private httpClient: HttpClient) {}
-  /**
-   * GET tiles from the server
-   */
-  getTiles(refresh = false): Observable<Tile[]> {
-    if (refresh) {
-      const headers = new HttpHeaders({ 'x-refresh': 'true' });
-      return this.httpClient
-        .get<TilesListResponse>(urlTileApi, { headers })
-        .pipe(map(tilesListResponse => tilesListResponse.items));
+  private readonly hostname = environment.hostname.replace('portal-ui-', '');
+  private readonly tilesUrl = '/assets/tiles/tiles.json';
+
+  private tiles$: Observable<Tile[]> | null = null;
+
+  constructor() {}
+
+  getTiles(): Observable<Tile[]> {
+    if (!this.tiles$) {
+      this.tiles$ = from(fetch(this.tilesUrl).then((rsp) => rsp.json())).pipe(
+        map((tiles) => tiles.items as Tile[]),
+        map((tiles) =>
+          tiles.map((tile) => ({
+            ...tile,
+            redirectUrl: tile.redirectUrl.replace(/HOSTNAME/i, this.hostname),
+          }))
+        ),
+        shareReplay(1) // Cache and share the result for future subscribers
+      );
     }
-
-    return this.httpClient.get<TilesListResponse>(urlTileApi).pipe(map(tilesListResponse => tilesListResponse.items));
-  }
-
-  /**
-   * GET tile by id
-   * @param id to get specific tile
-   */
-  getTileById(id: number): Promise<Tile | undefined> {
-    return firstValueFrom(this.httpClient.get<Tile>(urlTileApi + '/' + id));
-  }
-
-  /**
-   * POST: add a new tile to the database
-   * @param tile
-   * @returns the new saved tile
-   */
-  saveTiles(tile: Tile): Promise<Tile | undefined> {
-    const options = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    };
-    return firstValueFrom(this.httpClient.post<Tile>(urlTileApi, tile, options));
-  }
-
-  /**
-   * PUT: update the tile on the server
-   * @returns the updated hero
-   * @param tile
-   */
-  updateTiles(tile: Tile): Promise<Tile | undefined> {
-    const options = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    };
-    return firstValueFrom(this.httpClient.put<Tile>(urlTileApi + '/' + tile.id, tile, options));
-  }
-
-  /**
-   * DELETE: delete the tile from the server
-   * @param tile to delete
-   */
-  deleteTile(tile: Tile): Promise<void> {
-    return this.httpClient.delete<void>(urlTileApi + '/' + tile.id).toPromise();
+    return this.tiles$;
   }
 }

@@ -44,7 +44,8 @@ export class HasPermissionsDirective {
         .loadCachedUserProfile()
         .pipe(takeUntil(this.unsubscribeService.unsubscribe$))
         .subscribe(userProfile => {
-          const intersectionOfRoles = Object.keys(acl).filter(value => userProfile?.roles.includes(value));
+          const userRoles = userProfile?.roles ?? [];
+          const intersectionOfRoles = Object.keys(acl).filter(role => userRoles.includes(role));
           for (const role of intersectionOfRoles) {
             if (acl[role].includes(this.appHasPermissions)) {
               this.el.nativeElement.style.display = 'initial';
