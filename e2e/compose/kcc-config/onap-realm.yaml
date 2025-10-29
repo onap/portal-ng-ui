@@ -1,0 +1,48 @@
+realm: ONAP
+enabled: true
+clients:
+  - clientId: portal-app
+    redirectUris:
+      - http://localhost:4200/*
+    attributes:
+      "post.logout.redirect.uris": "+"
+    webOrigins:
+      - "*"
+    publicClient: "true"
+    protocolMappers:
+      - name: "User-Roles"
+        protocol: openid-connect
+        protocolMapper: "oidc-usermodel-realm-role-mapper"
+        config:
+          userinfo.token.claim: "true"
+          id.token.claim: "true"
+          access.token.claim: "true"
+          claim.name: "roles"
+          multivalued: "true"
+      - name: "SDC-User"
+        protocol: openid-connect
+        protocolMapper: "oidc-usermodel-attribute-mapper"
+        config:
+          userinfo.token.claim: "true"
+          user.attribute: "sdc_user"
+          id.token.claim: "true"
+          access.token.claim: "true"
+          claim.name: "sdc_user"
+          jsonType.label: "String"
+users:
+  - username: onap-admin
+    enabled: true
+    email: onap-admin@onap.com
+    firstName: onap
+    lastName: admin
+    emailVerified: true
+    credentials:
+      - type: password
+        secretData: "{\"value\":\"nD4K4x8HEgk6xlWIAgzZOE+EOjdbovJfEa7N3WXwIMCWCfdXpn7Riys7hZhI1NbKcc9QPI9j8LQB/JSuZVcXKA==\",\"salt\":\"T8X9A9tT2cyLvEjHFo+zuQ==\",\"additionalParameters\":{}}"
+        credentialData: "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
+    attributes:
+      sdc_user:
+        - "cs0008"
+    realmRoles:
+      - default-roles-onap
+      - portal_admin
