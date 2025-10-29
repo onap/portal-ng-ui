@@ -1,0 +1,137 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/users",
+    "queryParameters": {
+      "page": {
+        "equalTo": "1"
+      },
+      "pageSize": {
+        "equalTo": "10"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "items": [
+        {
+          "id": "1",
+          "username": "john.doe",
+          "email": "john.doe@example.com",
+          "firstName": "John",
+          "lastName": "Doe",
+          "enabled": true,
+          "realmRoles": [
+            "admin"
+          ]
+        },
+        {
+          "id": "2",
+          "username": "jane.smith",
+          "email": "jane.smith@example.com",
+          "firstName": "Jane",
+          "lastName": "Smith",
+          "enabled": true,
+          "realmRoles": [
+            "user"
+          ]
+        },
+        {
+          "id": "3",
+          "username": "sam.green",
+          "email": "sam.green@example.com",
+          "firstName": "Sam",
+          "lastName": "Green",
+          "enabled": false,
+          "realmRoles": [
+            "viewer"
+          ]
+        },
+        {
+          "id": "4",
+          "username": "emily.white",
+          "email": "emily.white@example.com",
+          "firstName": "Emily",
+          "lastName": "White",
+          "enabled": true,
+          "realmRoles": [
+            "editor",
+            "user"
+          ]
+        },
+        {
+          "id": "5",
+          "username": "michael.brown",
+          "email": "michael.brown@example.com",
+          "firstName": "Michael",
+          "lastName": "Brown",
+          "enabled": true,
+          "realmRoles": [
+            "admin"
+          ]
+        },
+        {
+          "id": "6",
+          "username": "claire.jones",
+          "email": "claire.jones@example.com",
+          "firstName": "Claire",
+          "lastName": "Jones",
+          "enabled": false,
+          "realmRoles": [
+            "user"
+          ]
+        },
+        {
+          "id": "7",
+          "username": "david.martin",
+          "email": "david.martin@example.com",
+          "firstName": "David",
+          "lastName": "Martin",
+          "enabled": true,
+          "realmRoles": [
+            "editor"
+          ]
+        },
+        {
+          "id": "8",
+          "username": "lisa.miller",
+          "email": "lisa.miller@example.com",
+          "firstName": "Lisa",
+          "lastName": "Miller",
+          "enabled": true,
+          "realmRoles": [
+            "admin",
+            "developer"
+          ]
+        },
+        {
+          "id": "9",
+          "username": "robert.taylor",
+          "email": "robert.taylor@example.com",
+          "firstName": "Robert",
+          "lastName": "Taylor",
+          "enabled": true,
+          "realmRoles": [
+            "user"
+          ]
+        },
+        {
+          "id": "10",
+          "username": "sarah.wilson",
+          "email": "sarah.wilson@example.com",
+          "firstName": "Sarah",
+          "lastName": "Wilson",
+          "enabled": false,
+          "realmRoles": [
+            "viewer"
+          ]
+        }
+      ],
+      "totalCount": 10
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
