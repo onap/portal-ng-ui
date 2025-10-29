@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/actions/[0-9a-fA-F-]{36}",
+    "queryParameters": {
+      "page": {
+        "equalTo": "1"
+      },
+      "pageSize": {
+        "equalTo": "1000"
+      },
+      "showLastHours": {
+        "equalTo": "1"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "items": [
+        {
+          "actionCreatedAt": "2025-10-30T09:34:30.257Z",
+          "action": {},
+          "saveInterval": 0
+        }
+      ],
+      "totalCount": 0
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
