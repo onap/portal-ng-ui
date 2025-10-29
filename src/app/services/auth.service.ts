@@ -65,7 +65,12 @@ export class AuthService {
    * Asynchronous because the needed UserInfo is fetched from Keycloak
    */
   hasSufficientRoles(): Observable<boolean> {
-    return this.loadCachedUserProfile().pipe(map(info => info?.roles.join(',') !== 'offline_access'));
+    return this.loadCachedUserProfile().pipe(map(info => {
+      if(!info?.roles) {
+        return false
+      }
+      return info.roles.join(',') !== 'offline_access'
+    }));
   }
 
   loadCachedUserProfile(): Observable<UserInfo | undefined> {
