@@ -45,11 +45,11 @@ test.describe('Dashboard', () => {
 
     await expect(dashboardPage.lastActionTile).toBeVisible();
     expect(dashboardPage.dropDown)
-    dashboardPage.dropDown.click()
+    await dashboardPage.dropDown.click()
     await expect(dashboardPage.lastActionInput).toBeVisible()
-    dashboardPage.lastActionInput.uncheck()
+    await dashboardPage.lastActionInput.uncheck()
     await expect(dashboardPage.lastActionTile).toHaveCount(0)
-    dashboardPage.lastActionInput.check()
+    await dashboardPage.lastActionInput.check()
     await expect(dashboardPage.lastActionInput).toBeVisible()
   });
 });
