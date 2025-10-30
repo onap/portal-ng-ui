@@ -1,9 +1,0 @@
-{
-  "request": {
-    "method": "POST",
-    "url": "/api/preferences"
-  },
-  "response": {
-    "status": 200
-  }
-}

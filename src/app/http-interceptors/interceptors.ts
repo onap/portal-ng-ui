@@ -19,6 +19,7 @@
 
 /* "Barrel" of Http Interceptors */
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CachingInterceptor } from './caching-interceptor';
 import { HttpErrorInterceptor } from './http-error.interceptor';
 import { MockInterceptor } from './mock.interceptor';
 import { LoadingIndicatorInterceptor } from 'src/app/http-interceptors/loading-indicator.interceptor';
@@ -36,5 +37,6 @@ export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: LoadingIndicatorInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: RequestidInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
 ];
