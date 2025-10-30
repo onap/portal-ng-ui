@@ -36,7 +36,10 @@ test.describe('Dashboard', () => {
 
     // Assert that there are exactly 1 such elements
     await expect(dashboardPage.actionRows).toHaveCount(1);
-    expect(dashboardPage.actionRows.nth(0)).toContainText('10:34');
+    // The displayed value is determined relative to the current date.
+    // In the future, this assertion may need to be adjusted for instance
+    // to also include the year 2025 (once the test is run in 2026+)
+    expect(dashboardPage.actionRows.nth(0)).toContainText('30 Oct');
   });
 
   test('Last user action tile can be hidden', async ({ page }) => {
@@ -45,11 +48,11 @@ test.describe('Dashboard', () => {
 
     await expect(dashboardPage.lastActionTile).toBeVisible();
     expect(dashboardPage.dropDown)
-    dashboardPage.dropDown.click()
+    await dashboardPage.dropDown.click()
     await expect(dashboardPage.lastActionInput).toBeVisible()
-    dashboardPage.lastActionInput.uncheck()
+    await dashboardPage.lastActionInput.uncheck()
     await expect(dashboardPage.lastActionTile).toHaveCount(0)
-    dashboardPage.lastActionInput.check()
+    await dashboardPage.lastActionInput.check()
     await expect(dashboardPage.lastActionInput).toBeVisible()
   });
 });
