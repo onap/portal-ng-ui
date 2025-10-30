@@ -15,19 +15,15 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-import type { Locator, Page } from '@playwright/test';
+import { test, expect } from "@playwright/test";
+import { UserAdministrationPage } from "./user-administration.page";
 
-export class DashboardPage {
-  readonly dashboardHeading: Locator = this.page.locator('h2.qa_title');
-  readonly dropDown: Locator = this.page.locator('#dropdownColumnSettings');
-  readonly lastActionTile: Locator = this.page.locator('.qa_user_last_action_tile');
-  readonly lastActionInput: Locator = this.page.locator('input.qa_dashboard_show_app_USER_LAST_ACTION_TILE');
-  readonly actionRows = this.page.locator('#qa-div-action-rows app-action-row');
+test.describe('User adminstration', () => {
+  test('User adminstration is visible', async ({ page }) => {
+    const userPage: UserAdministrationPage = new UserAdministrationPage(page);
+    await userPage.goto();
 
-
-  constructor(private readonly page: Page) {}
-
-  async goto() {
-    await this.page.goto('/dashboard');
-  }
-}
+    await expect(userPage.userAdministrationHeading).toBeVisible();
+    expect(userPage.userAdministrationHeading).toHaveText('User Administration');
+  });
+});
