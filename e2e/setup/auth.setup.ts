@@ -21,11 +21,11 @@ import * as fs from 'fs';
 // Declare the storage state path where the authentication will be saved
 const authFile = 'playwright/.auth/user.json';
 
-const data = fs.readFileSync('playwright/.auth/credentials.json', 'utf-8');
-const credentials = JSON.parse(data);
+// const data = fs.readFileSync('playwright/.auth/credentials.json', 'utf-8');
+// const credentials = JSON.parse(data);
 
-const username = credentials.username;
-const password = credentials.password;
+const username = 'onap-admin';
+const password = 'password';
 
 setup('Login and save authentication state', async ({ page }) => {
   // Navigate to your app; this should trigger the redirect to Keycloak

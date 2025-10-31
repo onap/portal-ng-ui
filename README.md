@@ -26,18 +26,29 @@ npm start
 ```
 
 ### Developing against local containers
-We are providing a docker-compose file that can be used to spin up the portal-ng and it's dependencies (like Keycloak or the bff) on your machine.
 
-To do that, execute the `run.sh` in the development folder:
+Use
 
 ```sh
-development/run.sh
+npm run start:e2e
 ```
 
-To stop the portal-ng, portal backend services, Keycloak and the databases run:
+to launch the webpack development server and run keycloak and wiremock via docker compose.
+This is also the setup that the e2e tests are run against.
+
+### E2E tests
+
+Run all tests
 
 ```sh
-development/stop.sh
+npm run test
+```
+
+Run individual tests
+
+```sh
+# runs test for `*create*.spec.ts` files
+npm run test create
 ```
 
 ### Access the ui

@@ -4,6 +4,15 @@
     "urlPath": "/api/users"
   },
   "response": {
-    "status": 200
+    "status": 200,
+    "jsonBody": {
+      "id": "testuser",
+      "username": "testuser",
+      "email": "test.user@onap.org",
+      "firstName": "test",
+      "lastName": "user",
+      "enabled": true,
+      "realmRoles": ["portal_admin"]
+    }
   }
 }

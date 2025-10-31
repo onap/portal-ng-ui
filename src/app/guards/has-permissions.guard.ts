@@ -43,7 +43,7 @@ export class HasPermissionsGuard  {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.loadCachedUserProfile().pipe(
       map(userProfile => {
-        // filter out the keys (the onap_ roles) that the user does not have
+        // filter out the keys (the portal_ roles) that the user does not have
         const intersectionOfRoles = Object.keys(this.acl).filter(role => userProfile?.roles.includes(role));
         return this.hasPermissions(next.data.permission, intersectionOfRoles);
       }));
