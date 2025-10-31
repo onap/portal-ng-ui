@@ -38,7 +38,12 @@ export default defineConfig({
     { name: 'setup', testMatch: /.*\.setup\.ts/ },
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'playwright/.auth/user.json',
+        baseURL: 'http://localhost:4200',
+      },
+      dependencies: ['setup'],
     },
 
     {
@@ -46,14 +51,19 @@ export default defineConfig({
       use: {
         ...devices['Desktop Firefox'],
         storageState: 'playwright/.auth/user.json',
-        baseURL: 'http://localhost:4200'
+        baseURL: 'http://localhost:4200',
       },
       dependencies: ['setup'],
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        storageState: 'playwright/.auth/user.json',
+        baseURL: 'http://localhost:4200',
+      },
+      dependencies: ['setup'],
     },
 
     /* Test against mobile viewports. */
