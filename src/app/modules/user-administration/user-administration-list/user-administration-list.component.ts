@@ -52,7 +52,7 @@ export class UserAdministrationListComponent {
             ...response,
             items: response.items.map(user => ({
               ...user,
-              realmRoles: user.realmRoles?.filter(role => role.startsWith('onap_')),
+              realmRoles: user.realmRoles?.filter(role => role.startsWith('portal_')),
             })),
           };
         }),
