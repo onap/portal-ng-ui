@@ -25,7 +25,7 @@ test.describe('Dashboard', () => {
     await dashboardPage.goto();
 
     await expect(dashboardPage.dashboardHeading).toBeVisible();
-    expect(dashboardPage.dashboardHeading).toHaveText('Dashboard');
+    await expect(dashboardPage.dashboardHeading).toHaveText('Dashboard');
   });
 
   test('Last user action tile is visible', async ({ page }) => {
