@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/roles"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "items": [
+        {
+          "id": "ADMIN12345",
+          "name": "portal_admin"
+        },
+        {
+          "id": "USER67890",
+          "name": "portal_operator"
+        }
+      ],
+      "totalCount": 2
+    }
+  }
+}
