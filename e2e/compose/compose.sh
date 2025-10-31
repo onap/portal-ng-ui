@@ -31,4 +31,9 @@ wait_for_keycloak() {
 }
 
 docker compose -f e2e/compose/docker-compose.yml up -d
+# restart wiremock for the process to pick up changes
+# in the wiremock/mappings directory
+# this is done because upon invocation of this script,
+# the containers managed by compose could already be up
+docker compose restart wiremock
 wait_for_keycloak

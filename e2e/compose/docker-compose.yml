@@ -29,7 +29,7 @@ services:
       - KEYCLOAK_URL=http://keycloak:9080
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=password
-    restart: unless-stopped
+    restart: on-failure:200
     networks:
       keycloak: {}
       keycloak-config-cli: {}
