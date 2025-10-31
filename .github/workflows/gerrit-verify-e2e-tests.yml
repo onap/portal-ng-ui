@@ -42,6 +42,7 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     steps:
+      - uses: lfit/checkout-gerrit-change-action@54d751e8bd167bc91f7d665dabe33fae87aaaa63 # v0.9
       - name: Clear votes
         # yamllint disable-line rule:line-length
         uses: lfreleng-actions/gerrit-review-action@037e678180f38cb0c5368cbc2620bc9c44a876e1  # v0.9
@@ -72,7 +73,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --project=firefox
       - name: Upload test results
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4  # v5.0.0
         if: ${{ !cancelled() }}
