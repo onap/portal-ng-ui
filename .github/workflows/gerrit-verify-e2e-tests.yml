@@ -38,11 +38,16 @@ on:
         description: "Gerrit refspec of change"
         required: true
         type: string
+
+concurrency:
+  # yamllint disable-line rule:line-length
+  group: gerrit-merge-${{ github.workflow }}-${{ github.event.inputs.GERRIT_CHANGE_ID || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   prepare:
     runs-on: ubuntu-latest
     steps:
-      - uses: lfit/checkout-gerrit-change-action@54d751e8bd167bc91f7d665dabe33fae87aaaa63 # v0.9
       - name: Clear votes
         # yamllint disable-line rule:line-length
         uses: lfreleng-actions/gerrit-review-action@037e678180f38cb0c5368cbc2620bc9c44a876e1  # v0.9
@@ -54,7 +59,6 @@ jobs:
           gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
           gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
           vote-type: clear
-          comment-only: true
       - name: Allow replication
         run: sleep 10s
   test:
@@ -63,7 +67,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
+        # https://github.com/lfreleng-actions/checkout-gerrit-change-action/commit/ba55fe20f019fd23c5f5f75dbda8eb5e8ae7543b
+        uses: lfreleng-actions/checkout-gerrit-change-action@ba55fe20f019fd23c5f5f75dbda8eb5e8ae7543b
       - name: Setup Node.js
         uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903  # v6.0.0
         with:
@@ -100,4 +105,3 @@ jobs:
           gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
           gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
           vote-type: ${{ env.WORKFLOW_CONCLUSION }}
-          comment-only: true
