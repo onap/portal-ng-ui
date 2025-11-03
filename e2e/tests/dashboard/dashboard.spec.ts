@@ -39,7 +39,7 @@ test.describe('Dashboard', () => {
     // The displayed value is determined relative to the current date.
     // In the future, this assertion may need to be adjusted for instance
     // to also include the year 2025 (once the test is run in 2026+)
-    expect(dashboardPage.actionRows.nth(0)).toContainText('30 Oct');
+    expect(dashboardPage.actionRows.nth(0)).toContainText('32 Oct');
   });
 
   test('Last user action tile can be hidden', async ({ page }) => {
