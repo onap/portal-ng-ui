@@ -70,6 +70,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: lfit/checkout-gerrit-change-action@54d751e8bd167bc91f7d665dabe33fae87aaaa63 # v0.9
+        with:
+          gerrit-refspec: ${{ inputs.GERRIT_REFSPEC }}
       - name: "Build Node.js project"
         # yamllint disable-line rule:line-length
         uses: lfreleng-actions/node-build-action@v0.1.1 # 2025-04-09
