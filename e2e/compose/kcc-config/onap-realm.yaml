@@ -1,5 +1,10 @@
 realm: ONAP
 enabled: true
+attributes:
+  # configures the hostname that is used in the
+  # /realms/tnap/.well-known/openid-configuration
+  # endpoint
+  frontendUrl: "http://localhost:4200"
 clients:
   - clientId: portal-app
     redirectUris:

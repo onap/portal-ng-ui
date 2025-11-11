@@ -21,18 +21,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found';
 import { StatusPageComponent } from './components/shared/status-page/status-page.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    path: 'dashboard', component: DashboardComponent
   },
   {
     path: 'app-starter',
     loadChildren: () => import('./modules/app-starter/app-starter.module').then(m => m.AppStarterModule),
   },
   { path: 'statusPage', component: StatusPageComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {
     path: 'user-administration',
     loadChildren: () =>
