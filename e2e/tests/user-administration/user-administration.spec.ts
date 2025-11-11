@@ -24,7 +24,7 @@ test.describe('User adminstration', () => {
     await userPage.goto();
 
     await expect(userPage.userAdministrationHeading).toBeVisible();
-    expect(userPage.userAdministrationHeading).toHaveText('User Administration');
+    await expect(userPage.userAdministrationHeading).toHaveText('User Administration');
   });
   test('Users table is working', async ({ page }) => {
     const userPage: UserAdministrationPage = new UserAdministrationPage(page);
@@ -63,6 +63,6 @@ test.describe('User adminstration', () => {
     }
 
     await expect(userPage.userAdministrationHeading).toBeVisible();
-    expect(userPage.userAdministrationHeading).toHaveText('User Administration');
+    await expect(userPage.userAdministrationHeading).toHaveText('User Administration');
   });
 });
