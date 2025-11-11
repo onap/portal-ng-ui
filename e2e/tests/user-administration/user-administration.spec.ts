@@ -24,7 +24,7 @@ test.describe('User adminstration', () => {
     await userPage.goto();
 
     await expect(userPage.userAdministrationHeading).toBeVisible();
-    expect(userPage.userAdministrationHeading).toHaveText('User Administration');
+    await expect(userPage.userAdministrationHeading).toHaveText('User Administration');
   });
   test('Users table is working', async ({ page }) => {
     const userPage: UserAdministrationPage = new UserAdministrationPage(page);
@@ -32,8 +32,7 @@ test.describe('User adminstration', () => {
 
     const rows = page.locator('.table-responsive tbody tr');
 
-    const numRows = await rows.count();
-    expect(numRows).toBe(10);
+    await expect(rows).toHaveCount(10);
 
     const expectedUsers = [
       { username: 'john.doe', firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' },
@@ -48,7 +47,7 @@ test.describe('User adminstration', () => {
       { username: 'sarah.wilson', firstName: 'Sarah', lastName: 'Wilson', email: 'sarah.wilson@example.com' },
     ];
 
-    for (let i = 0; i < numRows; i++) {
+    for (let i = 0; i < 10; i++) {
       const row = rows.nth(i);
 
       const username = await row.locator('td:nth-child(1)').innerText();
@@ -63,6 +62,6 @@ test.describe('User adminstration', () => {
     }
 
     await expect(userPage.userAdministrationHeading).toBeVisible();
-    expect(userPage.userAdministrationHeading).toHaveText('User Administration');
+    await expect(userPage.userAdministrationHeading).toHaveText('User Administration');
   });
 });
