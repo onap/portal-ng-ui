@@ -53,7 +53,7 @@ jobs:
     steps:
       - name: Notify job start
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/gerrit-review-action@4fd2a475c14c1249cba0054580eda415dccd628a # v0.8
+        uses: lfreleng-actions/gerrit-review-action@622e7aa3418e6476119b1606911fa8b96fce1f82 # v0.8
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
@@ -81,7 +81,7 @@ jobs:
         uses: technote-space/workflow-conclusion-action@69935d3f28b21a2e7ad513e43493795cc7224dcc # v3.0.3
       - name: Report workflow conclusion
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/gerrit-review-action@4fd2a475c14c1249cba0054580eda415dccd628a # v0.8
+        uses: lfreleng-actions/gerrit-review-action@622e7aa3418e6476119b1606911fa8b96fce1f82 # v0.8
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
