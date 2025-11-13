@@ -68,7 +68,7 @@ jobs:
     steps:
       - name: Checkout code
         # https://github.com/lfreleng-actions/checkout-gerrit-change-action/commit/ba55fe20f019fd23c5f5f75dbda8eb5e8ae7543b
-        uses: lfreleng-actions/checkout-gerrit-change-action@ba55fe20f019fd23c5f5f75dbda8eb5e8ae7543b
+        uses: lfreleng-actions/checkout-gerrit-change-action@5143c721e7b2d7fbf8b5654f8297284dd1e00afe
         with:
           gerrit-refspec: ${{ inputs.GERRIT_REFSPEC }}
           gerrit-project: ${{ inputs.GERRIT_PROJECT }}
