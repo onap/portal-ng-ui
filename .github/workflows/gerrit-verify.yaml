@@ -74,7 +74,7 @@ jobs:
           gerrit-refspec: ${{ inputs.GERRIT_REFSPEC }}
       - name: "Build Node.js project"
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/node-build-action@v0.1.1 # 2025-04-09
+        uses: lfreleng-actions/node-build-action@v0.2.0 # 2025-04-09
         with:
           NPM_FLAGS: ""
 
