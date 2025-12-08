@@ -67,7 +67,7 @@ jobs:
 
       - name: 'Run GitHub2Gerrit'
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/github2gerrit-action@406fc75fc67140e460782458e75d6dc6cd134a6b  # v0.1.23
+        uses: lfreleng-actions/github2gerrit-action@cf7b6472cdbe26400ee2cda48c0c68d43c5244a3  # v1.0.2
         with:
           USE_LOCAL_ACTION: true  # Use branch code for testing, not PyPI
           USE_PR_AS_COMMIT: true
