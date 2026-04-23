@@ -23,9 +23,9 @@
   "dependencies": {
     "@angular/animations": "17.3.12",
     "@angular/cdk": "17.3.10",
-    "@angular/common": "17.3.12",
-    "@angular/compiler": "17.3.12",
-    "@angular/core": "17.3.12",
+    "@angular/common": "19.2.16",
+    "@angular/compiler": "19.2.18",
+    "@angular/core": "19.2.20",
     "@angular/forms": "17.3.12",
     "@angular/localize": "17.3.12",
     "@angular/platform-browser": "17.3.12",
@@ -41,7 +41,7 @@
     "lodash": "4.18.1",
     "rxjs": "~7.4.0",
     "tslib": "2.3.0",
-    "uuid": "^13.0.0",
+    "uuid": "^14.0.0",
     "zone.js": "0.14.3"
   },
   "devDependencies": {
