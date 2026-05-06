@@ -12,6 +12,47 @@ Portal-NG Release Notes
     :depth: 2
 ..
 
+..      ==========================
+..      * * *   OSLO (0.1.4)   * * *
+..      ==========================
+
+Version: 0.1.4
+==============
+
+:Release Date: 2026-05-06
+
+Portal-NG UI Release Image Versions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ - onap/portal-ng/ui **0.1.4**
+
+**Changes**
+
+*  add playwright e2e tests
+*  add tests for user-administration
+*  add tests for user creation
+*  add app-starter tests
+*  fix role assignment in user creation
+*  fix e2e test github action
+*  fix playwright command arg
+*  adjust e2e test action
+*  update deps
+*  use release version of node-build-action
+*  configure dependabot not to create PR's for major versions
+*  chore: add dependabot config
+*  bump node from 18-alpine to 25-alpine
+*  CI: update all workflow action calls/locations needing updates
+*  CI: update GitHub2Gerrit workflow
+*  CI: deploy python based Github2Gerrit
+*  CI: remove duplicate G2G workflow
+*  Docs: replace blockdiag/seqdiag with Mermaid
+*  fix: set basepython to python3.13 in docs/tox.ini
+*  chore: remove broken sphinxcontrib-swaggerdoc module
+*  chore: update RTD and tox config for ubuntu-24.04
+*  bump various CI action and Angular dependency versions
+
+**********
+
 ..      =========================
 ..      * * *   NEW DELHI   * * *
 ..      =========================
