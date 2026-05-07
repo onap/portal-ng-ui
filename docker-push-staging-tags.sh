@@ -40,7 +40,8 @@ source_version() {
         exit 1
     fi
     # Source only the simple variable assignments (major, minor, patch)
-    eval "$(grep -E '^(major|minor|patch)=' "$props_file")"
+    # Strip carriage returns to handle Windows-style line endings
+    eval "$(grep -E '^(major|minor|patch)=' "$props_file" | tr -d '\r')"
 }
 
 source_version
