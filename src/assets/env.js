@@ -8,4 +8,7 @@
   window["env"]["keycloak"]["clientId"];
   window["env"]["customStyleEnabled"];
   window["env"]["loggingEnabled"];
+  window["env"]["tracingEnabled"];
+  window["env"]["tracingCollectorUrl"];
+  window["env"]["tracingServiceName"];
 })(this);

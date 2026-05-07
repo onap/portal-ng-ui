@@ -26,10 +26,13 @@ import { ajax } from 'rxjs/ajax';
 import { catchError, switchMap } from 'rxjs/operators';
 import { EMPTY, from } from 'rxjs';
 import { ACL_CONFIG, AclConfig } from './app/modules/auth/injection-tokens';
+import { initTracing } from './app/services/tracing.service';
 
 if (environment.production) {
   enableProdMode();
 }
+
+initTracing(environment);
 
 const fetchAclConfig$ = ajax.getJSON<AclConfig>(`assets/acl.json`);
 

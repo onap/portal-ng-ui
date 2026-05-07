@@ -22,6 +22,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { v4 as uuid } from 'uuid';
+import { trace } from '@opentelemetry/api';
 
 @Injectable()
 export class RequestidInterceptor implements HttpInterceptor {
@@ -31,7 +32,15 @@ export class RequestidInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
 
-    request = request.clone({ setHeaders: { 'X-Request-Id': uuid() } });
+    let requestId = uuid();
+    if (environment.tracing.enabled) {
+      const activeSpan = trace.getActiveSpan();
+      if (activeSpan) {
+        requestId = activeSpan.spanContext().traceId;
+      }
+    }
+
+    request = request.clone({ setHeaders: { 'X-Request-Id': requestId } });
     return next.handle(request);
   }
 }

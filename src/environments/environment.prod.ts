@@ -43,4 +43,9 @@ export const environment: Environment = {
   loggingUrl: window.location.origin + '/onap_logging',
   supportUrlLink: 'https://wiki.onap.org/',
   loggingEnabled: window["env"]["loggingEnabled"] || false,
+  tracing: {
+    enabled: window["env"]["tracingEnabled"] || false,
+    collectorUrl: window["env"]["tracingCollectorUrl"] || '/otlp/v1/traces',
+    serviceName: window["env"]["tracingServiceName"] || 'portal-ng-ui',
+  },
 };

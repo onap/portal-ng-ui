@@ -8,4 +8,7 @@
   window["env"]["keycloak"]["clientId"] = "${KEYCLOAK_CLIENT_ID}";
   window["env"]["customStyleEnabled"] = "${CUSTOM_STYLE_ENABLED}";
   window["env"]["loggingEnabled"] = "${LOGGING_ENABLED}";
+  window["env"]["tracingEnabled"] = "${TRACING_ENABLED}";
+  window["env"]["tracingCollectorUrl"] = "${TRACING_COLLECTOR_URL}";
+  window["env"]["tracingServiceName"] = "${TRACING_SERVICE_NAME}";
 })(this);
