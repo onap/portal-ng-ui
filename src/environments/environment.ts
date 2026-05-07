@@ -47,7 +47,12 @@ export const environment: Environment = {
   dateTimeFormat: 'dd/MM/yyyy  HH:mm:ss',
   loggingUrl: window.location.origin + '/onap_logging',
   supportUrlLink: 'https://wiki.onap.org/',
-  loggingEnabled: false
+  loggingEnabled: false,
+  tracing: {
+    enabled: false,
+    collectorUrl: '/otlp/v1/traces',
+    serviceName: 'portal-ng-ui',
+  },
 };
 /*
  * For easier debugging in development mode, you can import the following file

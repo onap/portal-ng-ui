@@ -27,6 +27,13 @@ export interface Environment {
   loggingUrl: string;
   loggingEnabled: boolean
   supportUrlLink: string
+  tracing: TracingEnvironment;
+}
+
+export interface TracingEnvironment {
+  enabled: boolean;
+  collectorUrl: string;
+  serviceName: string;
 }
 
 export interface KeycloakEnvironment {
