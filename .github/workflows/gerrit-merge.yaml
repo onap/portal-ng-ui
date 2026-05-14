@@ -68,7 +68,7 @@ jobs:
   call-sonatype-lifecycle:
     needs: [notify]
     # yamllint disable-line rule:line-length
-    uses: lfit/releng-reusable-workflows/.github/workflows/reuse-sonatype-lifecycle.yaml@37bbdea5cca2f21e502f7ff580306c78307d1d41 # v0.3.1
+    uses: lfit/releng-reusable-workflows/.github/workflows/reuse-sonatype-lifecycle.yaml@9b7880d03148ac73ba5f4e32d423b322db94ebc1 # v0.3.4
     secrets:
       NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
 
