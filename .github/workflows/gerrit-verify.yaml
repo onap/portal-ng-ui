@@ -113,7 +113,7 @@ jobs:
       contents: read
       pull-requests: read # repository-metadata-action queries PR data
     # yamllint disable-line rule:line-length
-    uses: lfreleng-actions/node-workflows/.github/workflows/build-test.yaml@c488b3bab77452d04e259e93ff03478566cc0ca1 # v0.0.4
+    uses: lfreleng-actions/node-workflows/.github/workflows/build-test.yaml@d781fc1bde8f850a6aeff00d7725154c0f1b18da # v0.1.1
     with:
       # When GERRIT_DISABLED is true the gerrit_* values are blanked so the
       # reusable workflow falls back to a standard checkout.
@@ -127,12 +127,15 @@ jobs:
       # Angular 17 supports Node ^18.13 || ^20.9; the project declares
       # no engines or .nvmrc, so pin rather than auto-detect
       node_version: "18"
-      # Soft-fail legs: npm test maps to the Playwright e2e suite,
-      # which needs the compose environment the dedicated e2e workflow
-      # provides; the project ships no lockfile (the audit synthesises
-      # one) and the dependency tree carries known findings; report
-      # the results without voting -1
-      test_permit_fail: true
+      # Skip the tests job: npm test maps to the Playwright e2e suite,
+      # which needs the compose environment provided by the dedicated
+      # gerrit-verify-e2e-tests.yml workflow. Running it here would
+      # duplicate that suite without its supporting environment, so
+      # the dedicated workflow owns e2e testing for this project.
+      tests_enabled: false
+      # Soft-fail the remaining legs: the project ships no lockfile
+      # (the audit synthesises one) and the dependency tree carries
+      # known findings; report the results without voting -1
       audit_permit_fail: true
       grype_permit_fail: true
 
