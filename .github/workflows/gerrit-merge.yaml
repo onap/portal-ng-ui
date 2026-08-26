@@ -77,10 +77,14 @@ jobs:
     needs: [notify]
     permissions:
       contents: read
+    # The lane defaults to a standard checkout of the triggering ref,
+    # which on a merge dispatch is the post-merge branch state -- the
+    # same thing the predecessor scanned. No pre-scan build: this is a
+    # Node project and the lane builds Maven, Gradle and Go only.
     # yamllint disable-line rule:line-length
-    uses: lfit/releng-reusable-workflows/.github/workflows/reuse-sonatype-lifecycle.yaml@5fa62e396473e823e2bb0f45b744e94c4f842faa  # v0.7.4
+    uses: lfreleng-actions/security-workflows/.github/workflows/sonatype-lifecycle.yaml@5882f138dd24fcd6cb4ebc8bb3a68cee45a437a6  # v0.3.0
     secrets:
-      NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
+      nexus_iq_password: ${{ secrets.NEXUS_IQ_PASSWORD }}
 
   report-status:
     name: Report status
