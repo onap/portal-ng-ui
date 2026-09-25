@@ -18,7 +18,8 @@
 
 import { Component, Injectable, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import VersionJson from 'src/assets/version.json';
+import { from, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { KeyboardShortcuts } from '../../../services/shortcut.service';
 
 @Injectable({
@@ -30,16 +31,20 @@ import { KeyboardShortcuts } from '../../../services/shortcut.service';
   styleUrls: ['./sidemenu.component.css'],
 })
 export class SidemenuComponent {
-  versionNumber: string;
+  // Fetched at runtime rather than imported, so that a version.json mounted by the deployment is shown
+  // instead of the placeholder the file carries at build time.
+  readonly versionNumber$: Observable<string> = from(
+    fetch('assets/version.json').then(rsp => rsp.json() as Promise<{ number: string }>),
+  ).pipe(
+    map(version => version.number),
+    catchError(() => of('')),
+  );
 
   @Input() isSidebarCollapsed = false;
 
   public ACCESS_KEY = KeyboardShortcuts;
   public isKpiDashboardSubMenuCollapsed = false;
 
-  constructor() {
-    this.versionNumber = VersionJson.number;
-  }
   collapsed() {
     this.isKpiDashboardSubMenuCollapsed = !this.isKpiDashboardSubMenuCollapsed;
   }

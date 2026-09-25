@@ -17,27 +17,43 @@
  */
 
 
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { firstValueFrom } from 'rxjs';
 
 import { SidemenuComponent } from './sidemenu.component';
 
 describe('SidemenuComponent', () => {
-  let component: SidemenuComponent;
   let fixture: ComponentFixture<SidemenuComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  async function render(): Promise<HTMLElement> {
+    await TestBed.configureTestingModule({
       declarations: [SidemenuComponent],
+      imports: [TranslateModule.forRoot()],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(SidemenuComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
+    await firstValueFrom(fixture.componentInstance.versionNumber$);
+    fixture.detectChanges();
+    return fixture.nativeElement.querySelector('.portal-version-number');
+  }
+
+  it('shows the version from the deployed assets/version.json', async () => {
+    const fetchSpy = spyOn(window, 'fetch').and.resolveTo(new Response(JSON.stringify({ number: '0.2.0' })));
+
+    const version = await render();
+
+    expect(fetchSpy).toHaveBeenCalledWith('assets/version.json');
+    expect(version.textContent?.trim()).toBe('0.2.0');
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('shows no version when assets/version.json cannot be loaded', async () => {
+    spyOn(window, 'fetch').and.rejectWith(new TypeError('Failed to fetch'));
+
+    const version = await render();
+
+    expect(version.textContent?.trim()).toBe('');
   });
 });
